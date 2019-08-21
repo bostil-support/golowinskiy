@@ -12543,11 +12543,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\RSamuseu\\Desktop\\golowinskiy-client\\Golowinskiy.Client\\Golowinskiy.Web\\Golowinskiy.Web.csproj",
+      "projectUniqueName": "C:\\Users\\RSamuseu\\Desktop\\golowinskiy-client-tmp\\golowinskiy\\Golowinskiy.Client\\Golowinskiy.Web\\Golowinskiy.Web.csproj",
       "projectName": "Golowinskiy.Web",
-      "projectPath": "C:\\Users\\RSamuseu\\Desktop\\golowinskiy-client\\Golowinskiy.Client\\Golowinskiy.Web\\Golowinskiy.Web.csproj",
+      "projectPath": "C:\\Users\\RSamuseu\\Desktop\\golowinskiy-client-tmp\\golowinskiy\\Golowinskiy.Client\\Golowinskiy.Web\\Golowinskiy.Web.csproj",
       "packagesPath": "C:\\Users\\RSamuseu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\RSamuseu\\Desktop\\golowinskiy-client\\Golowinskiy.Client\\Golowinskiy.Web\\obj\\",
+      "outputPath": "C:\\Users\\RSamuseu\\Desktop\\golowinskiy-client-tmp\\golowinskiy\\Golowinskiy.Client\\Golowinskiy.Web\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
