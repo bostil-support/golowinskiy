@@ -1,0 +1,35 @@
+﻿<h2>Регистрация</h2>
+@*<div class="showSpinner" *ngIf="showSpinner">
+    <i class="fa fa-spinner fa-spin"></i>
+</div>
+<div class="showMessage" *ngIf="message.text">
+    <div class="alert alert-{{message.type}}">
+        {{ message.text }}
+    </div>
+</div>*@
+<form>
+    <div class="form-group">
+        <input type="text" placeholder="Ваше имя" id="userName">
+    </div>
+    <div class="form-group">
+        <input type="text" placeholder="Ваш мобильный номер" id="mobile">
+    </div>
+    <div class="form-group">
+        <input type="email" placeholder="Ваш e-mail" id="email">
+        <span class="error-msg">
+            <span>Заполните Email</span>
+            <span>Введите корректный Email</span>
+        </span>
+    </div>
+    <div class="form-group">
+        <input type="password" placeholder="Пароль" id="password">
+        <span class="error-msg">
+            <span>Заполните пароль</span>
+        </span>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-block btn-primary" onclick="Registration()">
+            Зарегистрироваться
+        </button>
+    </div>
+</form>

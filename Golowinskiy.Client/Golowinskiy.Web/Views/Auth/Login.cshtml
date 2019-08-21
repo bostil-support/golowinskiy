@@ -1,0 +1,34 @@
+﻿<h2>Вход для зарегистрированных пользователей</h2>
+@*<div class="showSpinner" *ngIf="showSpinner">
+    <i class="fa fa-spinner fa-spin"></i>
+</div>
+<div class="showMessage" *ngIf="message.text">
+    <div class="alert alert-{{message.type}}">
+        {{ message.text }}
+    </div>
+</div>*@
+<form>
+    <div class="form-group">
+        <input type="text" placeholder="Ваш e-mail" id="email">
+        <span class="form-help-text">
+            <span>Заполните Email</span>
+        </span>
+    </div>
+    <div class="form-group">
+        <input type="text" placeholder="Пароль" id="password">
+        <span class="form-help-text">
+            <span>Заполните пароль</span>
+        </span>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-block btn-primary" type="button" onclick="Login()">
+            Войти
+        </button>
+    </div>
+    <div class="form-group">
+        <a onclick="ShowRecoveryWindow()">Забыли пароль</a>
+    </div>
+    <div class="form-group">
+        <a onclick="ShowRegistrationWindow()">Зарегистрироваться</a>
+    </div>
+</form>
