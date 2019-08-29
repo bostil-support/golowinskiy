@@ -36,7 +36,12 @@ namespace Golowinskiy.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await _userManager.FindByEmailAsync(model.Email);
+                var user = _userManager.Users.FirstOrDefault(item => item.PhoneNumber == model.PhoneNumber);
+
+                if(user == null)
+                {
+                    return BadRequest("Неправильный моб.номер");
+                }
 
                 var result =
                     await _signInManager.PasswordSignInAsync(user,
@@ -49,16 +54,16 @@ namespace Golowinskiy.Web.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        return Ok("Вы вошли в систему как пользователь");
                     }
                 }
                 else
                 {
-                    return Json("Неправильный логин и (или) пароль");
+                    return BadRequest("Неправильный пароль");
 
                 }
             }
-            return View(model);
+            return View("~Views/Auth/Login", model);
         }
 
         [HttpGet]
@@ -72,6 +77,12 @@ namespace Golowinskiy.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                bool IsPhoneExist = _userManager.Users.Any(item => item.PhoneNumber == model.PhoneNumber);
+                if(IsPhoneExist)
+                {
+                    return BadRequest("Пользователь с таким номером телефона уже существует");
+                }
+
                 User user = new User
                 {
                     UserName = model.UserName,
@@ -83,23 +94,27 @@ namespace Golowinskiy.Web.Controllers
                 if (result.Succeeded)
                 {
                     await _signInManager.SignInAsync(user, false);
-                    return RedirectToAction("Index", "Home");
+                    return Ok("Вы зарегистрированы успешно");
                 }
                 else
                 {
-                    foreach (var error in result.Errors)
-                    {
-                        ModelState.AddModelError(string.Empty, error.Description);
-                    }
+                    return BadRequest(result.Errors.ElementAt(0).Code);
                 }
             }
-            return View(model);
+            return View("~Views/Auth/Registration", model);
         }
 
         [HttpGet]
         public IActionResult ModalWindow()
         {
             return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> LogOut()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]

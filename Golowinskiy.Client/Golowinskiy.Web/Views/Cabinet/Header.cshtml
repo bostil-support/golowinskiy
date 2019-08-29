@@ -1,0 +1,20 @@
+﻿@model Golowinskiy.Web.Models.CabinetViewModel
+
+<link rel="stylesheet" href="~/css/cabinet-user-components.css" />
+<div class="cabinet-user">
+    <div class="dropdown">
+        <div class="cabinet-user_item dropdown-toggle" role="button" id="dropdownMenu" data-toggle="dropdown">
+            <span class="name" onclick="openLogOut()">
+                Здравствуйте, <span id="userName">@Model.UserName</span>
+            </span>
+        </div>
+        <div class="cabinet-user_item dropdown-menu" aria-labelledby="dropdownMenu" id="logMenu">
+            <a asp-area="" asp-controller="Auth" asp-action="LogOut">
+                <span class="dropdown-item">
+                    <i class="fa fa-power-off icon"></i>
+                    Выйти
+                </span>
+            </a>
+        </div>
+    </div>
+</div>

@@ -3,7 +3,7 @@
 
 @font-face {
     font-family: 'calibril';
-    src: url('/assets/fonts/calibril.ttf');
+    src: url('/fonts/calibril.ttf');
 }
 
 * {
@@ -186,3 +186,12 @@ h2 {
     .btn-primary > .form-help-text {
         color: red;
     }
+
+#productsSum, #productsCount {
+    display: inline;
+}
+
+#doc_clock, #doc_day {
+    opacity: 1;
+    transition: opacity 1s;
+}

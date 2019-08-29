@@ -1,4 +1,10 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿window.onload = function () {
+    let now = new Date();
+    document.getElementById('doc_clock').textContent = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
+    document.getElementById('doc_day').textContent = now.toLocaleDateString('ru', { weekday: 'long', month: 'long', day: 'numeric' });
 
-// Write your JavaScript code.
+    setTimeout(() => {
+        document.getElementById('doc_clock').style.opacity = 0;
+        document.getElementById('doc_day').style.opacity = 0;
+    }, 3000);
+};

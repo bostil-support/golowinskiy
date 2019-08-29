@@ -10,7 +10,6 @@
         <link rel="stylesheet" href="~/css/styles.css" />
         <link rel="stylesheet" href="~/css/header-components.css" />
         <link rel="stylesheet" href="~/css/footer-components.css" />
-        <link rel="stylesheet" href="~/css/constants.scss" />
         <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'
               integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
     </environment>
@@ -54,30 +53,30 @@
                         <!-- end -->
                     </div>
                 </div>
-                <div class="header_list_item">
+                <div class="header_list_item" id="header-viget">
                     <!-- begin show for desktop fersion-->
                     <a>
                         <div class="header_list_item_back">
-                            <span>Вернуться к каталогу</span>
+                            <span id="spanBack" onclick="location.href='../Home/Index'">Вернуться к каталогу</span>
                         </div>
                     </a>
                     <a>
                         <div class="header_list_item_cabinet">
                             <i class="fa fa-user" aria-hidden="true"></i>
-                            <span onclick="location.href='../Auth/ModalWindow'">Личный кабинет</span>
+                            <span onclick="location.href='../Cabinet/Cabinet'">Личный кабинет</span>
                             @*<span onclick="showAuthWindow()">Личный кабинет</span>*@
                         </div>
                     </a>
-                    <app-cabinet-user></app-cabinet-user>
+                    <div id="cbn-u"></div>
                     <!-- end -->
                     <!-- begin show for desktop fersion-->
                     <a>
                         <div class="header_list_item_advertisement">
-                            <button>Подать объявление</button>
+                            <button onclick="location.href='../Product/AddProduct'" type="button">Подать объявление</button>
                         </div>
                     </a>
                     <!-- end -->
-                    <a onclick="cartClick()">
+                    <a onclick="cartClick()" id="sumLink">
                         <div class="header_list_item_basket">
                             <div class="basket">
                                 <img src="~/images/cart.png">
@@ -97,71 +96,52 @@
                 </div>
             </div>
         </header>
-    @*<ul class="menu_list">
-        <li class="menu_list_item_close">
-            <i onclick="closeMenu()" class="fa fa-times" aria-hidden="true"></i>
-        </li>
-        <li class="menu_list_item menu_list_item_cabinet">
-            <i class="fa fa-user" aria-hidden="true"></i>
-            <span>Личный кабинет</span>
-        </li>
-        <li class="menu_list_item">
-            <span>Подать объявление</span>
-        </li>
-        <li class="menu_list_item" onclick="back()">
-            <span>Вернуться к каталогу</span>
-        </li>
-        <li class="menu_list_item menu_list_item_user">
-            <div class="name">Здравствуйте</div>
-            <div class="exit" onclick="onLogout()">
-                <i class="fa fa-power-off icon"></i>
-                <span>Выйти</span>
-            </div>
-        </li>
-    </ul>*@
 
-    <partial name="_CookieConsentPartial" />
+        <partial name="_CookieConsentPartial" />
 
-    <div class="container body-content">
 
-        @RenderBody()
-    </div>
-
-    <footer id="footer">
-        <div class="footer_list">
-            <div class="footer_list_item">
-                <p>Головинский район</p>
-                <p>г.Москва, ул.Смольная, 7</p>
-            </div>
-            <div class="footer_list_item_right">
-                <p>8 (916) 161 61 46</p>
-                <p>golovinskiy-rf@mail.ru</p>
-            </div>
+        <div class="container body-content">
+            @RenderBody()
         </div>
-    </footer>
+        <div class="data" id="doc_time">
+            <p id="doc_clock" class="data-time"></p>
+            <p id="doc_day"></p>
+        </div>
+        <footer id="footer">
+            <div class="footer_list">
+                <div class="footer_list_item">
+                    <p>Головинский район</p>
+                    <p>г.Москва, ул.Смольная, 7</p>
+                </div>
+                <div class="footer_list_item_right">
+                    <p>8 (916) 161 61 46</p>
+                    <p>golovinskiy-rf@mail.ru</p>
+                </div>
+            </div>
+        </footer>
 
-    <environment include="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery"
-                crossorigin="anonymous"
-                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
-        </script>
-        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                crossorigin="anonymous"
-                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
-        </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
-    </environment>
+        <environment include="Development">
+            <script src="~/lib/jquery/dist/jquery.js"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+            <script src="~/js/site.js"></script>
+        </environment>
+        <environment exclude="Development">
+            <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                    asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                    asp-fallback-test="window.jQuery"
+                    crossorigin="anonymous"
+                    integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+            </script>
+            <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                    asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                    crossorigin="anonymous"
+                    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+            </script>
+            <script src="~/js/site.min.js" asp-append-version="true"></script>
+        </environment>
 
-    @RenderSection("Scripts", required: false)
+        @RenderSection("Scripts", required: false)
     </div>
 </body>
 </html>

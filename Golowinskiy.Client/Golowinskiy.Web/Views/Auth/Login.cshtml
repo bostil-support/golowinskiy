@@ -1,21 +1,20 @@
 ﻿<h2>Вход для зарегистрированных пользователей</h2>
 @*<div class="showSpinner" *ngIf="showSpinner">
     <i class="fa fa-spinner fa-spin"></i>
-</div>
-<div class="showMessage" *ngIf="message.text">
-    <div class="alert alert-{{message.type}}">
-        {{ message.text }}
-    </div>
 </div>*@
+<div class="showMessage">
+    <div class="alert">       
+    </div>
+</div>
 <form>
     <div class="form-group">
-        <input type="text" placeholder="Ваш e-mail" id="email">
+        <input type="text" placeholder="Ваш моб.телефон" id="mobile">
         <span class="form-help-text">
-            <span>Заполните Email</span>
+            <span>Заполните моб.телефон</span>
         </span>
     </div>
     <div class="form-group">
-        <input type="text" placeholder="Пароль" id="password">
+        <input type="password" placeholder="Пароль" id="password">
         <span class="form-help-text">
             <span>Заполните пароль</span>
         </span>

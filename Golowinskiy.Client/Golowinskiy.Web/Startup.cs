@@ -14,6 +14,8 @@ using Golowinskiy.Web.Context;
 using Microsoft.EntityFrameworkCore;
 using Golowinskiy.Web.Entities;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace Golowinskiy.Web
 {
@@ -31,9 +33,20 @@ namespace Golowinskiy.Web
             string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<GolowinskiyDBContext>(options =>
                 options.UseSqlServer(connection));
-            services.AddIdentity<User, IdentityRole>()
+            services.AddIdentity<User, IdentityRole>(options =>
+            {
+                options.Password.RequiredLength = 1;
+                options.Password.RequireDigit = false;
+                options.Password.RequireNonAlphanumeric = false;   
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+            })
                 .AddEntityFrameworkStores<GolowinskiyDBContext>();
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
+
+            services.AddSingleton<IFileProvider>(
+            new PhysicalFileProvider(
+                Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
 
             services.Configure<CookiePolicyOptions>(options =>
             {

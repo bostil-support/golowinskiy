@@ -5,7 +5,7 @@ namespace Golowinskiy.Web.Models.Auth
     public class LoginViewModel
     {
         [Required]
-        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
 
         [Required]
         [DataType(DataType.Password)]

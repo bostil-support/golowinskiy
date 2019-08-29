@@ -6,7 +6,7 @@
             $('.modal_inner').html(data);
         }
     });
-}
+};
 
 function ShowRegistrationWindow() {
     $.ajax({
@@ -29,18 +29,22 @@ function ShowRecoveryWindow() {
 }
 
 function Login() {
-    var email = document.getElementById("email").value;
+    var mobile = document.getElementById("mobile").value;
     var password = document.getElementById("password").value;
 
     $.ajax({
         type: 'POST',
         url: '/Auth/LoginAsync',
         data: {
-            Email: email,
+            PhoneNumber: mobile,
             Password: password
         },
         success: function (data) {
-            $('.modal_inner').html(data);
+            $('.alert').text(data);
+            setTimeout(() => window.location.href = '/Cabinet/Cabinet', 2000);
+        },
+        error: function (jqXHR, exception) {
+            $('.alert').text(jqXHR);
         }
     });
 }
@@ -60,7 +64,16 @@ function Registration() {
             Email: email,
             Password: password
         },
-        success: function (message) {
+        success: function (data) {
+            $('.alert').text(data);
+            setTimeout(() => window.location.href = '/Home/Index', 2000);
+        },
+        error: function (jqXHR, exception) {
+            if (jqXHR.responseText == "DuplicateUserName") {
+                $('.alert').text("Пользователь с именем " + userName + " уже существует");
+            } else {
+                $('.alert').text(jqXHR.responseText);
+            }
         }
     });
 }
