@@ -26,7 +26,7 @@ namespace Golowinskiy.Web.Controllers
 
         [HttpGet]
         public IActionResult Header()
-        {
+        {  
             var model = new CabinetViewModel();
             model.UserName = HttpContext.User.Identity.Name;
             return PartialView(model);

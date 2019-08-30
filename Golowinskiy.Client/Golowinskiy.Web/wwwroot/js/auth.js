@@ -44,7 +44,7 @@ function Login() {
             setTimeout(() => window.location.href = '/Cabinet/Cabinet', 2000);
         },
         error: function (jqXHR, exception) {
-            $('.alert').text(jqXHR);
+            $('.alert').text(jqXHR.responseText);
         }
     });
 }
@@ -69,7 +69,7 @@ function Registration() {
             setTimeout(() => window.location.href = '/Home/Index', 2000);
         },
         error: function (jqXHR, exception) {
-            if (jqXHR.responseText == "DuplicateUserName") {
+            if (jqXHR.responseText === "DuplicateUserName") {
                 $('.alert').text("Пользователь с именем " + userName + " уже существует");
             } else {
                 $('.alert').text(jqXHR.responseText);

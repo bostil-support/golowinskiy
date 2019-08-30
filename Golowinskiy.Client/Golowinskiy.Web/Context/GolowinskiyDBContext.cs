@@ -11,5 +11,7 @@ namespace Golowinskiy.Web.Context
         {
             Database.EnsureCreated();
         }
+
+        public DbSet<Category> Categories { get; set; }
     }
 }
