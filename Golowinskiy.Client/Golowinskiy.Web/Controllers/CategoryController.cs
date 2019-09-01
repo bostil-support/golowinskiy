@@ -22,9 +22,15 @@ namespace Golowinskiy.Web.Controllers
         {
             var categories = db.Categories.ToList();
             List<CategoryViewModel> outputCategories = new List<CategoryViewModel>();
-            foreach(var item in categories)
+
+            foreach (var item in categories)
             {
-                outputCategories.Add(new CategoryViewModel() { ParentId = item.ParentId, Name = item.Name });
+                outputCategories.Add(new CategoryViewModel()
+                {
+                    Id = item.Id,
+                    ParentId = item.ParentId,
+                    Name = item.Name
+                });
             }
 
             var output = GenerateCategories(outputCategories);
