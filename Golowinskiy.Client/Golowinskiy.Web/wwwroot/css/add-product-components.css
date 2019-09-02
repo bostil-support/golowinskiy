@@ -520,7 +520,6 @@ button, input {
     font-size: 1rem;
     line-height: 1.5;
     border-radius: .25rem;
-    cursor: pointer;
 }
 
 i.fa.fa-upload.arrow {
@@ -552,4 +551,20 @@ i.delete {
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
     text-align: center;
+}
+
+a {
+    cursor:pointer;
+}
+
+.alert {
+    color: rgba(24, 150, 145, 1);
+    background: #1e721e2e;
+    margin-bottom: 25px;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    font-size: 18px;
 }

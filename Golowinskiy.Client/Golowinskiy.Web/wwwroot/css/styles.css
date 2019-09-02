@@ -117,7 +117,7 @@ body {
 
     /*end login, registration, recovery components*/
 #fon-image {
-    background: url("http://golowinskiy-api.bostil.ru/mainimages/10.01.2019.jpg") 50% 50% no-repeat;
+    /*background: url("http://golowinskiy-api.bostil.ru/mainimages/10.01.2019.jpg") 50% 50% no-repeat;*/
     background-size: cover !important;
     position: relative;
     min-height: calc(100vh);

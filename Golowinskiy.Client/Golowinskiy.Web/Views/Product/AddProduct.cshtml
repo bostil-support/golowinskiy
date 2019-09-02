@@ -67,9 +67,6 @@
         </div>
 
         <div class="form">
-
-
-
             <div class="form-group"
                  style="display: none;">
                 <div class="row justify-content-md-center">
@@ -88,7 +85,7 @@
                         <label>Наименование товара, услуги *</label>
                     </div>
                     <div class="col-lg-4">
-                        <input type="text" id="TName" onblur="IsEmptyTName()" onkeyup="IsEmptyTName()">
+                        <input type="text" id="TName" onblur="isEmptyTName()" onkeyup="isEmptyTName()" onchange="checkFilledRequiredFields()">
                         <span class="form-help-text">
                             <span>
                                 Заполните наименование товара, услуги
@@ -104,7 +101,7 @@
                         <label>Описание товара, услуги</label>
                     </div>
                     <div class="col-lg-4">
-                        <textarea type="textarea" id="TDescription"></textarea>
+                        <textarea type="textarea" id="TDescription" onchange="checkFilledRequiredFields()"></textarea>
                     </div>
                 </div>
             </div>
@@ -115,7 +112,7 @@
                         <label>Цена</label>
                     </div>
                     <div class="col-lg-4">
-                        <input type="text" id="TCost" onkeypress="return /[0-9.]/i.test(event.key)">
+                        <input type="text" id="TCost" onkeypress="return /[0-9.]/i.test(event.key)" onchange="checkFilledRequiredFields()">
                     </div>
                 </div>
             </div>
@@ -148,14 +145,14 @@
                                 <img id="addtImg1" style="width:100px; height:70px" alt="">
                                 <i class="fa fa-upload arrow disabled" aria-hidden="true"></i>
                             </div>
-                            <i class="fa fa-times delete" id="removeImg1" style="visibility:hidden" onclick="RemoveAdditionalImage(this, 1)"></i>
+                            <i class="fa fa-times delete" id="removeImg1" style="visibility:hidden" onclick="removeAdditionalImage(this, 1)"></i>
                         </div>
                     </div>
                 </div>
                 <div class="row justify-content-md-center">
                     <div class="col col-lg-4 mb-3 hover_btn"
                          id="submit-area">
-                        <button type="button" class="btn btn-block btn-primary" id="btn-sbmt" name="submitButton" onclick="SaveProduct()">
+                        <button type="button" class="btn btn-block btn-primary" id="btn-sbmt" name="submitButton" onclick="saveProduct()">
                             Разместить объявление
                         </button>
 

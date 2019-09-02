@@ -15,6 +15,8 @@
         document.getElementById('additionalImage' + countChildDivs).disabled = false;
         document.getElementsByClassName('disabled')[0].classList.remove("disabled");
     }
+
+    checkFilledRequiredFields();
 }
 
 function attachAdditImage(input) {
@@ -44,7 +46,7 @@ function attachAdditImage(input) {
     }
 }
 
-function RemoveAdditionalImage(i, numberImg) {
+function removeAdditionalImage(i, numberImg) {
     let removeDiv = document.getElementById('additional-div-img' + numberImg);
     removeDiv.remove();
     i.remove();
@@ -62,7 +64,10 @@ function RemoveAdditionalImage(i, numberImg) {
     } 
 }
 
-function SaveProduct() {
+function saveProduct() {
+    if (document.getElementById('btn-sbmt').style.cursor !== 'pointer') {
+        return;
+    }
 
     let formData = new FormData();
     formData.append('UserId', $('#userId').val());
@@ -90,17 +95,54 @@ function SaveProduct() {
         processData: false,
         contentType: false,
         data: formData,
-        success: function () {
-
-        }
+        success: saveProductSuccess
     });
 }
 
-function IsEmptyTName() {
+function saveProductSuccess() {
+    let inputs = document.getElementsByTagName('input');
+    for (let i = 1; i < inputs.length; i++) {
+        inputs[i].value = "";
+    }
+
+    let descr = document.getElementById('TDescription');
+    descr.value = "";
+
+    document.getElementById('btn-sbmt').style.opacity = 0.65;
+    document.getElementById('btn-sbmt').style.cursor = 'default';
+
+    document.getElementsByClassName('alert')[0].textContent = 'Объявление успешно добавлено';
+    window.setTimeout(() => {
+        document.getElementsByClassName('alert')[0].textContent = '';
+    }, 10000);
+}
+
+function isEmptyTName() {
     let text = document.getElementById('TName').value;
-    if (text.length === 0) {
+    if (text === "") {
         document.getElementsByClassName('form-help-text')[0].style.display = 'inline';
     } else {
         document.getElementsByClassName('form-help-text')[0].style.display = 'none';
+    }
+}
+
+function checkFilledRequiredFields() {
+    let isFilled = false;
+
+    let name = document.getElementById('TName').value;
+    let descripton = document.getElementById('TDescription').value;
+    let price = document.getElementById('TCost').value;
+    let image = document.getElementById('mainImage').value;
+
+    if (name && descripton && price && image) {    
+        isFilled = true;
+    }      
+
+    if (isFilled) {
+        document.getElementById('btn-sbmt').style.opacity = 1;
+        document.getElementById('btn-sbmt').style.cursor = 'pointer';
+    } else {
+        document.getElementById('btn-sbmt').style.opacity = 0.65;
+        document.getElementById('btn-sbmt').style.cursor = 'default';
     }
 }

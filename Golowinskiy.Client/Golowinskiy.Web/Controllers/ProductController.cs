@@ -71,15 +71,15 @@ namespace Golowinskiy.Web.Controllers
                 fs.Read(newProduct.Imagedata, 0, newProduct.Imagedata.Length);
             }
 
-            db.Products.Add(newProduct);
-            db.SaveChanges();
+            await db.Products.AddAsync(newProduct);
+            await db.SaveChangesAsync();
 
-            if(product.AdditionalImages.Count > 0)
+            if(product.AdditionalImages != null)
             {
                 SaveAddtImages(product.AdditionalImages);
             }
 
-            return View();
+            return Ok();
         }
 
         public void SaveAddtImages(List<IFormFile> additionalImages)
