@@ -12,8 +12,7 @@
         'http://golowinskiy-api.bostil.ru/mainimages/10.01.2019.jpg',
         'http://golowinskiy-api.bostil.ru/mainimages/18.01.2019.jpg',
         'http://golowinskiy-api.bostil.ru/mainimages/19.01.2019.jpg',
-        'http://golowinskiy-api.bostil.ru/mainimages/21.01.2019.jpg',
-        'http://golowinskiy-api.bostil.ru/mainimages/20.09.2019.jpg'
+        'http://golowinskiy-api.bostil.ru/mainimages/21.01.2019.jpg'
     ];
 
     var fon = this.document.getElementById('fon-image');
