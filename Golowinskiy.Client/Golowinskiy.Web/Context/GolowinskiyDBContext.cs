@@ -12,6 +12,8 @@ namespace Golowinskiy.Web.Context
             Database.EnsureCreated();
         }
 
+        public DbSet<AdditionalImage> AdditionalImages { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Product> Products { get; set; }
     }
 }

@@ -1,17 +1,20 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Golowinskiy.Web.Entities;
+using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 
 namespace Golowinskiy.Web.Models.Product
 {
     public class AddProductViewModel
     {
+        public string UserId { get; set; }
+
         public string UserName { get; set; }
 
         public string Email { get; set; }
 
-        public IFormFile MainPhoto { get; set; }
+        public IFormFile MainImage { get; set; }
 
-        public List<IFormFile> AdditionalPhoto { get; set; }
+        public List<IFormFile> AdditionalImages { get; set; }
 
         public string ProductName { get; set; }
 
@@ -26,6 +29,5 @@ namespace Golowinskiy.Web.Models.Product
         public string ProductArticle { get; set; }
 
         public string TransformationMechanism { get; set; }
-
     }
 }

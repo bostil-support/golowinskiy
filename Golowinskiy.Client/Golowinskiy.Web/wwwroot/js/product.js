@@ -1,4 +1,4 @@
-﻿function attachMainPhoto(input) {
+﻿function attachMainImage(input) {
     if (input.files && input.files[0]) {
         let reader = new FileReader();
 
@@ -9,15 +9,15 @@
         reader.readAsDataURL(input.files[0]);
     }
 
-    if (document.getElementById('mainPhoto').value !== '') {
+    if (document.getElementById('mainImage').value !== '') {
         let element = document.getElementById("addt-imgs");
         let countChildDivs = element.getElementsByClassName('upload').length;
-        document.getElementById('additionalPhoto' + countChildDivs).disabled = false;
+        document.getElementById('additionalImage' + countChildDivs).disabled = false;
         document.getElementsByClassName('disabled')[0].classList.remove("disabled");
     }
 }
 
-function attachAdditPhoto(input) {
+function attachAdditImage(input) {
     let element = document.getElementById("addt-imgs");
     if (input.files && input.files[0]) {
         let reader = new FileReader();
@@ -30,7 +30,7 @@ function attachAdditPhoto(input) {
             array[array.length - 1].style["visibility"] = "visible";
 
             let html = '<div class="upload btn-file" id="additional-div-img' + (countChildDivs + 1) + '">' +
-                '<input id="additionalPhoto' + (countChildDivs + 1) + '" type="file" onchange="attachAdditPhoto(this)">' +
+                '<input id="additionalImage' + (countChildDivs + 1) + '" type="file" onchange="attachAdditImage(this)">' +
                 '<img id="addtImg' + (countChildDivs + 1) + '" style="width:100px; height:70px" alt="">' +
                 '<i class="fa fa-upload arrow" aria-hidden="true"></i>' +
                 '<i class="fa fa-rotate-right"></i>' +
@@ -55,7 +55,7 @@ function RemoveAdditionalImage(i, numberImg) {
     for (let index = numberImg; index <= count; index++)
     {
         document.getElementById('additional-div-img' + (index + 1)).id = 'additional-div-img' + index;
-        document.getElementById('additionalPhoto' + (index + 1)).id = 'additionalPhoto' + index;
+        document.getElementById('additionalImage' + (index + 1)).id = 'additionalImage' + index;
         document.getElementById('addtImg' + (index + 1)).id = 'addtImg' + index;
         document.getElementById('removeImg' + (index + 1)).id = 'removeImg' + index;
         document.getElementById('removeImg' + index).setAttribute("onClick", "RemoveAdditionalImage(this," + index + ")");
@@ -65,16 +65,15 @@ function RemoveAdditionalImage(i, numberImg) {
 function SaveProduct() {
 
     let formData = new FormData();
-    formData.append('UserName', $('#userName').text());
-    formData.append('Email', $('#email').text());
-    formData.append('MainPhoto', $('#mainPhoto')[0].files[0]);
+    formData.append('UserId', $('#userId').val());
+    formData.append('MainImage', $('#mainImage')[0].files[0]);
 
     let listAddtImgs = [];
     let addtImgs = document.getElementById('addt-imgs');
     let count = addtImgs.getElementsByTagName('div').length;
 
     for (let i = 0; i < count - 1; i++) {
-        formData.append('AdditionalPhoto', $('#additionalPhoto' + (i + 1))[0].files[0]);
+        formData.append('AdditionalImages', $('#additionalImage' + (i + 1))[0].files[0]);
     }
 
     formData.append('ProductName', $('#TName').val());

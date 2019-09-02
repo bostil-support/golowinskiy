@@ -19,6 +19,25 @@ namespace Golowinskiy.Web.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Golowinskiy.Web.Entities.AdditionalImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("FileName");
+
+                    b.Property<byte[]>("Imagedata");
+
+                    b.Property<int>("ProductId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("AdditionalImages");
+                });
+
             modelBuilder.Entity("Golowinskiy.Web.Entities.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -32,6 +51,43 @@ namespace Golowinskiy.Web.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("Golowinskiy.Web.Entities.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CategoryId");
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("FileName");
+
+                    b.Property<byte[]>("Imagedata");
+
+                    b.Property<double>("Price");
+
+                    b.Property<string>("ProductArticle");
+
+                    b.Property<string>("ProductName");
+
+                    b.Property<string>("ProductType");
+
+                    b.Property<string>("TransformationMechanism");
+
+                    b.Property<string>("UserId");
+
+                    b.Property<string>("VideoLink");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Golowinskiy.Web.Entities.User", b =>
@@ -193,6 +249,26 @@ namespace Golowinskiy.Web.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("Golowinskiy.Web.Entities.AdditionalImage", b =>
+                {
+                    b.HasOne("Golowinskiy.Web.Entities.Product", "Product")
+                        .WithMany("AdditionalImages")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Golowinskiy.Web.Entities.Product", b =>
+                {
+                    b.HasOne("Golowinskiy.Web.Entities.Category", "Category")
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Golowinskiy.Web.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
