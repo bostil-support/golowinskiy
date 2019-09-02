@@ -12,5 +12,7 @@ namespace Golowinskiy.Web.Entities
         public int ParentId { get; set; }
 
         public string Name { get; set; }
+
+        public List<Product> Products { get; set; }
     }
 }
