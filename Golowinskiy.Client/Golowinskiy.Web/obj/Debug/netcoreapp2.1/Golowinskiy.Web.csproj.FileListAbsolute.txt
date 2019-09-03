@@ -68,14 +68,6 @@ C:\Users\RSamuseu\Desktop\golowinskiy-client\Golowinskiy.Client\Golowinskiy.Web\
 C:\Users\RSamuseu\Desktop\golowinskiy-client\Golowinskiy.Client\Golowinskiy.Web\obj\Debug\netcoreapp2.1\Razor\Views\Cabinet\Cabinet.g.cshtml.cs
 C:\Users\RSamuseu\Desktop\golowinskiy-client\Golowinskiy.Client\Golowinskiy.Web\obj\Debug\netcoreapp2.1\Razor\Views\Product\AddProduct.g.cshtml.cs
 C:\Users\RSamuseu\Desktop\golowinskiy-client\Golowinskiy.Client\Golowinskiy.Web\obj\Debug\netcoreapp2.1\Razor\Views\Category\Categories.g.cshtml.cs
-C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy.Web\obj\Debug\netcoreapp2.1\Golowinskiy.Web.csprojAssemblyReference.cache
-C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy.Web\obj\Debug\netcoreapp2.1\Golowinskiy.Web.csproj.CoreCompileInputs.cache
-C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy.Web\obj\Debug\netcoreapp2.1\Golowinskiy.Web.RazorAssemblyInfo.cache
-C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy.Web\obj\Debug\netcoreapp2.1\Golowinskiy.Web.RazorAssemblyInfo.cs
-C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy.Web\obj\Debug\netcoreapp2.1\Golowinskiy.Web.AssemblyInfoInputs.cache
-C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy.Web\obj\Debug\netcoreapp2.1\Golowinskiy.Web.AssemblyInfo.cs
-C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy.Web\obj\Debug\netcoreapp2.1\Golowinskiy.Web.dll
-C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy.Web\obj\Debug\netcoreapp2.1\Golowinskiy.Web.pdb
 C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy.Web\bin\Debug\netcoreapp2.1\Golowinskiy.Web.deps.json
 C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy.Web\bin\Debug\netcoreapp2.1\Golowinskiy.Web.runtimeconfig.json
 C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy.Web\bin\Debug\netcoreapp2.1\Golowinskiy.Web.runtimeconfig.dev.json
@@ -83,6 +75,12 @@ C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Clien
 C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy.Web\bin\Debug\netcoreapp2.1\Golowinskiy.Web.pdb
 C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy.Web\bin\Debug\netcoreapp2.1\Golowinskiy.Web.Views.dll
 C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy.Web\bin\Debug\netcoreapp2.1\Golowinskiy.Web.Views.pdb
+C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy.Web\obj\Debug\netcoreapp2.1\Golowinskiy.Web.csprojAssemblyReference.cache
+C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy.Web\obj\Debug\netcoreapp2.1\Golowinskiy.Web.csproj.CoreCompileInputs.cache
+C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy.Web\obj\Debug\netcoreapp2.1\Golowinskiy.Web.RazorAssemblyInfo.cache
+C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy.Web\obj\Debug\netcoreapp2.1\Golowinskiy.Web.RazorAssemblyInfo.cs
+C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy.Web\obj\Debug\netcoreapp2.1\Golowinskiy.Web.AssemblyInfoInputs.cache
+C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy.Web\obj\Debug\netcoreapp2.1\Golowinskiy.Web.AssemblyInfo.cs
 C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy.Web\obj\Debug\netcoreapp2.1\Golowinskiy.Web.TagHelpers.input.cache
 C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy.Web\obj\Debug\netcoreapp2.1\Golowinskiy.Web.TagHelpers.output.cache
 C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy.Web\obj\Debug\netcoreapp2.1\Golowinskiy.Web.RazorCoreGenerate.cache
@@ -104,4 +102,6 @@ C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Clien
 C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy.Web\obj\Debug\netcoreapp2.1\Golowinskiy.Web.RazorTargetAssemblyInfo.cache
 C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy.Web\obj\Debug\netcoreapp2.1\Golowinskiy.Web.RazorTargetAssemblyInfo.cs
 C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy.Web\obj\Debug\netcoreapp2.1\Golowinskiy.Web.Views.pdb
+C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy.Web\obj\Debug\netcoreapp2.1\Golowinskiy.Web.dll
+C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy.Web\obj\Debug\netcoreapp2.1\Golowinskiy.Web.pdb
 C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy.Web\obj\Debug\netcoreapp2.1\Golowinskiy.Web.csproj.CopyComplete

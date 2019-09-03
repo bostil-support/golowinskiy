@@ -21,7 +21,7 @@
     ];
 
     var fon = this.document.getElementById('fon-image');
-    var index = Math.floor(Math.random() * 6);
+    var index = Math.floor(Math.random() * 5);
     fon.style.background = 'url("' + backgroundImgs[index] + '") 50% 50% no-repeat';
 
     let now = new Date();
