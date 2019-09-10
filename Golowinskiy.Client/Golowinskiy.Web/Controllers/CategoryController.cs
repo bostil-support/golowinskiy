@@ -6,6 +6,7 @@ using Golowinskiy.Web.Context;
 using Golowinskiy.Web.Entities;
 using Golowinskiy.Web.Models.Category;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Golowinskiy.Web.Controllers
 {
@@ -18,9 +19,10 @@ namespace Golowinskiy.Web.Controllers
             db = context;
         }
 
-        public IActionResult GetCategories()
+        public async Task<IActionResult> GetCategories()
         {
-            var categories = db.Categories.ToList();
+            var products = db.Products.Include(x => x.AdditionalImages).ToList();
+            var categories = await db.Categories.Include(x=>x.Products).ToListAsync();
             List<CategoryViewModel> outputCategories = new List<CategoryViewModel>();
 
             foreach (var item in categories)
@@ -29,13 +31,14 @@ namespace Golowinskiy.Web.Controllers
                 {
                     Id = item.Id,
                     ParentId = item.ParentId,
-                    Name = item.Name
+                    Name = item.Name,
+                    Count = item.Products.Count
                 });
             }
-
+        
             var output = GenerateCategories(outputCategories);
 
-            return View("~/Views/Category/Categories", output);
+            return PartialView("~/Views/Category/Categories.cshtml", output);
         }
 
         public List<CategoryViewModel> GenerateCategories(List<CategoryViewModel> listOnputModel)
@@ -44,6 +47,7 @@ namespace Golowinskiy.Web.Controllers
                 from a in listOnputModel
                 where a.ParentId == 0
                 select a).ToList();
+
             foreach (var parentCat in parentsCategories)
             {
                 if (parentsCategories.Count > 0)

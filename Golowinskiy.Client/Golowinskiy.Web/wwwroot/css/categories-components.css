@@ -1,18 +1,24 @@
-﻿ul.left-menu {
-    margin: 20px 0 0 0;
-    padding: 0;
+﻿ul.left-menu > li {
+    cursor: pointer;
+    list-style: none;
+    background: #ffffff;
 }
 
-h5 {
-    font-size: 16px;
-    padding: 3px;
-    font-weight: bold;
-    width: 250px;
-    background: #ffffff;
-    margin: 0;
-    border-top: 2px solid #189691;
-    border-right: 2px solid #189691;
-    border-left: 2px solid #189691;
+    ul.left-menu > li.choose {
+        background: #189691;
+        /*cursor: pointer;
+        list-style: none;
+        background: #ffffff;*/
+    }
+
+
+        ul.left-menu > li.choose > a {
+            color: #ffff;
+        }
+
+ul.left-menu {
+    margin: 0px 0 0 0;
+    padding: 0;
 }
 
 ul {
@@ -48,7 +54,7 @@ li {
     }
 }
 
-a {
+li > a {
     display: block;
     color: #000000;
     font-size: 12px;
@@ -57,14 +63,20 @@ a {
     font-weight: bold;
 }
 
+a:focus {
+    color:#000000;
+    text-decoration: none;
+}
+
 li.active > a {
-    background: #189691;
-    color: #fff;
+    /*background: #189691;
+    color: #fff;*/
+    color:#000000;
     padding-left: 5px;
 }
 
 .active > ul {
-    display: block !important;
+    display: none !important;
     position: absolute;
     top: -2px;
     left: 246px;
@@ -76,3 +88,33 @@ li.active > a {
         width: 100%;
     }
 }
+
+.text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.flex-nowrap {
+    flex-wrap: nowrap !important;
+}
+
+.flex-column {
+    flex-direction: column !important;
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+/*.choose {
+    background: #189691;
+    display: block !important;
+    position: absolute;
+    top: -2px;
+    left: 246px;
+}*/

@@ -13,6 +13,8 @@ namespace Golowinskiy.Web.Models.Category
 
         public string Name { get; set; }
 
+        public int Count { get; set; }
+
         public List<CategoryViewModel> ListInnerCat { get; set; } = new List<CategoryViewModel>();
     }
 }

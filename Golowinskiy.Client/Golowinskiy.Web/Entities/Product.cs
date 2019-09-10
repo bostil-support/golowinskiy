@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,17 +12,17 @@ namespace Golowinskiy.Web.Entities
 
         public int CategoryId { get; set; }
 
-        public Category Category { get; set; }
+        public  Category Category { get; set; }
 
         public string UserId { get; set; }
 
-        public User User { get; set; }
+        public  User User { get; set; }
 
         public string FileName { get; set; }
 
         public byte[] Imagedata { get; set; }
 
-        public List<AdditionalImage> AdditionalImages { get; set; }
+        public  List<AdditionalImage> AdditionalImages { get; set; }
 
         public string ProductName { get; set; }
 

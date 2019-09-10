@@ -1,0 +1,78 @@
+﻿@model List<Golowinskiy.Web.Models.Product.ProductViewModel>
+
+<link rel="stylesheet" href="~/css/products-components.css">
+<div id="selectedCategory">
+    <div id="breadcrumbs" class="breadcrumbs_container">
+    </div>
+    <div class="products_list">
+        @foreach (var product in Model)
+        {
+            <input type="hidden" value="@product.Id"/>
+            <div class="products_list_item" onclick="showDetails('@product.Id')">
+                <div class="products_list_item_main">
+                    <img>
+                </div>
+                <div class="products_list_item_footer">
+                    <h4>@product.Name</h4>
+                    <div class="price">
+                        <p>@product.Price руб.</p>
+                        @*<div>
+                                <div class="add_cart">
+                                    <span>В корзину</span>
+                                </div>
+                            </div>*@
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        window.onload = function () {
+            document.getElementById('categories').style.display = 'none';
+            document.getElementById('doc_time').style.display = 'none';
+
+            let backgroundImgs = [
+                'http://golowinskiy-api.bostil.ru/mainimages/08.12.2018.jpg',
+                'http://golowinskiy-api.bostil.ru/mainimages/10.01.2019.jpg',
+                'http://golowinskiy-api.bostil.ru/mainimages/18.01.2019.jpg',
+                'http://golowinskiy-api.bostil.ru/mainimages/19.01.2019.jpg',
+                'http://golowinskiy-api.bostil.ru/mainimages/21.01.2019.jpg'
+            ];
+
+            let fon = this.document.getElementById('fon-image');
+            let index = Math.floor(Math.random() * 5);
+            fon.style.background = 'url("' + backgroundImgs[index] + '") 50% 50% no-repeat';
+
+            $.ajax({
+                type: "GET",
+                url: "/Product/BreadCrumbs?categoryId=" + @ViewBag.categoryId,
+                success: function (data) {
+                    $('#breadcrumbs').append(data);
+                }
+            });
+        };
+
+        function showDetails(id) {
+            $.ajax({
+                type: "GET",
+                url: "/Product/ProductDetail?id=" + id,
+                success: function (data) {
+                    $('.container.body-content').append(data);
+                }
+            });
+        }
+
+        function putInBasket() {
+
+        }
+
+        function closeWindow() {
+            var child = document.getElementById('detail-page');
+            var parent = child.parentNode;
+            parent.removeChild(child);
+        }
+    </script>
+}

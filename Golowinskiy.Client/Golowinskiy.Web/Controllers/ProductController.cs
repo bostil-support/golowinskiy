@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Http;
 using Golowinskiy.Web.Context;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using Golowinskiy.Web.Models.Category;
 
 namespace Golowinskiy.Web.Controllers
 {
@@ -112,5 +114,65 @@ namespace Golowinskiy.Web.Controllers
             db.AdditionalImages.AddRange(addtImages);
             db.SaveChanges();
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetProductsByCategory(int categoryId)
+        {
+            var products = await db.Products.Where(x => x.CategoryId == categoryId).Include(x => x.User).ToListAsync();
+            var productModel = new List<ProductViewModel>();
+
+            foreach (var prod in products)
+            {
+                productModel.Add(new ProductViewModel()
+                {
+                    Id = prod.Id,
+                    Name = prod.ProductName,
+                    Price = prod.Price
+                });
+            }
+
+            ViewBag.CategoryId = categoryId;
+            return View("~/Views/Product/CategoryProducts.cshtml", productModel);
+        }
+
+        public IActionResult BreadCrumbs(int categoryId)
+        {
+            List<BreadCrumbViewModel> model = new List<BreadCrumbViewModel>();
+            model = GetCategoryList(model, categoryId);
+
+            return PartialView(model);
+        }
+
+        public List<BreadCrumbViewModel> GetCategoryList(List<BreadCrumbViewModel> categoryNames, int categoryId)
+        {
+            var category = db.Categories.FirstOrDefault(x => x.Id == categoryId);
+            categoryNames.Add(new BreadCrumbViewModel() { Id = category.Id, Name = category.Name });
+
+            if(category.ParentId != 0)
+            {
+                GetCategoryList(categoryNames, category.ParentId);
+            }
+
+            return categoryNames;
+        }
+
+        //[HttpGet]
+        //public async Task<IActionResult> ProductDetail(int id)
+        //{
+        //    var uses = db.Users.ToList();
+        //    var product = await db.Products.FirstOrDefaultAsync(x => x.Id == id);
+
+        //    var model = new ProductViewModel()
+        //    {
+        //        Id = product.Id,
+        //        Email = product.User.Email,
+        //        Phone = product.User.PhoneNumber,
+        //        ProductName = product.ProductName,
+        //        Description = product.Description,
+        //        Price = product.Price
+        //    };
+
+        //    return PartialView(model);
+        //}
     }
 }

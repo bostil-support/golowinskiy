@@ -146,3 +146,4 @@ function checkFilledRequiredFields() {
         document.getElementById('btn-sbmt').style.cursor = 'default';
     }
 }
+
