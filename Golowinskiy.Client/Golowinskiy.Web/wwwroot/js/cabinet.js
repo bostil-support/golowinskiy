@@ -11,7 +11,7 @@
             $('#userName').css('display', 'inline');
         }
     });
-
+   
     var backgroundImgs = [
         'http://golowinskiy-api.bostil.ru/mainimages/08.12.2018.jpg',
         'http://golowinskiy-api.bostil.ru/mainimages/10.01.2019.jpg',

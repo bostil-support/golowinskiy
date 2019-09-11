@@ -25,9 +25,7 @@ namespace Golowinskiy.Web.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("FileName");
-
-                    b.Property<byte[]>("Imagedata");
+                    b.Property<string>("ImageLink");
 
                     b.Property<int>("ProductId");
 
@@ -63,9 +61,7 @@ namespace Golowinskiy.Web.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<string>("FileName");
-
-                    b.Property<byte[]>("Imagedata");
+                    b.Property<string>("MainImage");
 
                     b.Property<double>("Price");
 

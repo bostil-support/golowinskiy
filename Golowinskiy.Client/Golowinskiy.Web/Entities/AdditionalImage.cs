@@ -13,8 +13,6 @@ namespace Golowinskiy.Web.Entities
 
         public  Product Product { get; set; }
 
-        public string FileName { get; set; }
-
-        public byte[] Imagedata { get; set; }
+        public string ImageLink { get; set; }
     }
 }

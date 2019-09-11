@@ -307,7 +307,7 @@
     }
 }
 
-.detail_product_item_right > .additional_images > img {
+.detail_product_item_right > .additional_images > .images > img {
     margin: 0 5px;
     max-width: 90px;
     height: auto;

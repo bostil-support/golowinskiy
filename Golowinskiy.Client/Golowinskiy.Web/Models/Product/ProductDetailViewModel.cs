@@ -28,6 +28,8 @@ namespace Golowinskiy.Web.Models.Product
 
         public string TransformationMechanism { get; set; }
 
-        public IFormFile MainImage { get; set; }
+        public string MainImageLink { get; set; }
+
+        public List<string> AdditionalImagesLink { get; set; }
     }
 }

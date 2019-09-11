@@ -6,11 +6,128 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="%2a%2a\**" />
+    <Compile Remove="obj\**" />
+    <Content Remove="%2a%2a\**" />
+    <Content Remove="obj\**" />
+    <EmbeddedResource Remove="%2a%2a\**" />
+    <EmbeddedResource Remove="obj\**" />
+    <None Remove="%2a%2a\**" />
+    <None Remove="obj\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="%2a%2a/%2a.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="%2a%2a\%2a.config" />
+    <Content Remove="%2a%2a\%2a.cshtml" />
+    <Content Remove="%2a%2a\%2a.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="%2a%2a/%2a.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="%2a%2a/%2a" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Context\GolowinskiyDBContext.cs" />
+    <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\CabinetController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Entities\AdditionalImage.cs" />
+    <Compile Include="Entities\Category.cs" />
+    <Compile Include="Entities\Product.cs" />
+    <Compile Include="Entities\User.cs" />
+    <Compile Include="Migrations\20190822063935_init.cs" />
+    <Compile Include="Migrations\20190822063935_init.Designer.cs" />
+    <Compile Include="Migrations\20190830070438_CategoryModel.cs" />
+    <Compile Include="Migrations\20190830070438_CategoryModel.Designer.cs" />
+    <Compile Include="Migrations\20190902073041_ProductModel.cs" />
+    <Compile Include="Migrations\20190902073041_ProductModel.Designer.cs" />
+    <Compile Include="Migrations\20190902081842_EditProductModel.cs" />
+    <Compile Include="Migrations\20190902081842_EditProductModel.Designer.cs" />
+    <Compile Include="Migrations\20190902085542_EditAddtImgModel.cs" />
+    <Compile Include="Migrations\20190902085542_EditAddtImgModel.Designer.cs" />
+    <Compile Include="Migrations\20190906070746_virtual.cs" />
+    <Compile Include="Migrations\20190906070746_virtual.Designer.cs" />
+    <Compile Include="Migrations\20190911083743_ImageEdit.cs" />
+    <Compile Include="Migrations\20190911083743_ImageEdit.Designer.cs" />
+    <Compile Include="Migrations\GolowinskiyDBContextModelSnapshot.cs" />
+    <Compile Include="Models\Auth\LoginViewModel.cs" />
+    <Compile Include="Models\Auth\RegistrationViewModel.cs" />
+    <Compile Include="Models\Cabinet\CabinetViewModel.cs" />
+    <Compile Include="Models\Category\BreadCrumbViewModel.cs" />
+    <Compile Include="Models\Category\CategoryViewModel.cs" />
+    <Compile Include="Models\ErrorViewModel.cs" />
+    <Compile Include="Models\Product\AddProductViewModel.cs" />
+    <Compile Include="Models\Product\ProductDetailViewModel.cs" />
+    <Compile Include="Models\Product\ProductViewModel.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="TagHelpers\CategoriesTagHelper.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.Development.json" />
+    <Content Include="appsettings.json" />
+    <Content Include="bin\Debug\netcoreapp2.1\Golowinskiy.Web.deps.json" />
+    <Content Include="bin\Debug\netcoreapp2.1\Golowinskiy.Web.runtimeconfig.dev.json" />
+    <Content Include="bin\Debug\netcoreapp2.1\Golowinskiy.Web.runtimeconfig.json" />
+    <Content Include="bin\Release\netcoreapp2.1\Golowinskiy.Web.deps.json" />
+    <Content Include="bin\Release\netcoreapp2.1\Golowinskiy.Web.runtimeconfig.dev.json" />
+    <Content Include="bin\Release\netcoreapp2.1\Golowinskiy.Web.runtimeconfig.json" />
+    <Content Include="Properties\launchSettings.json" />
+    <Content Include="Views\Auth\Login.cshtml" />
+    <Content Include="Views\Auth\ModalWindow.cshtml" />
+    <Content Include="Views\Auth\Recovery.cshtml" />
+    <Content Include="Views\Auth\Registration.cshtml" />
+    <Content Include="Views\Cabinet\Cabinet.cshtml" />
+    <Content Include="Views\Cabinet\Header.cshtml" />
+    <Content Include="Views\Category\Categories.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Product\AddProduct.cshtml" />
+    <Content Include="Views\Product\BreadCrumbs.cshtml" />
+    <Content Include="Views\Product\CategoryProducts.cshtml" />
+    <Content Include="Views\Product\ProductDetail.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_CookieConsentPartial.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <Content Include="Views\_ViewImports.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\netcoreapp2.1\Golowinskiy.Web.dll" />
+    <None Include="bin\Debug\netcoreapp2.1\Golowinskiy.Web.pdb" />
+    <None Include="bin\Debug\netcoreapp2.1\Golowinskiy.Web.Views.dll" />
+    <None Include="bin\Debug\netcoreapp2.1\Golowinskiy.Web.Views.pdb" />
+    <None Include="bin\Release\netcoreapp2.1\Golowinskiy.Web.dll" />
+    <None Include="bin\Release\netcoreapp2.1\Golowinskiy.Web.pdb" />
+    <None Include="bin\Release\netcoreapp2.1\Golowinskiy.Web.Views.dll" />
+    <None Include="bin\Release\netcoreapp2.1\Golowinskiy.Web.Views.pdb" />
+    <None Include="Golowinskiy.Web.csproj.user" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml.user" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="2.1.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\products\" />
   </ItemGroup>
 
 </Project>

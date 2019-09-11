@@ -10,7 +10,7 @@
             <input type="hidden" value="@product.Id"/>
             <div class="products_list_item" onclick="showDetails('@product.Id')">
                 <div class="products_list_item_main">
-                    <img>
+                    <img src="@product.MainImageLink">
                 </div>
                 <div class="products_list_item_footer">
                     <h4>@product.Name</h4>
@@ -63,10 +63,6 @@
                     $('.container.body-content').append(data);
                 }
             });
-        }
-
-        function putInBasket() {
-
         }
 
         function closeWindow() {

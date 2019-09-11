@@ -18,9 +18,7 @@ namespace Golowinskiy.Web.Entities
 
         public  User User { get; set; }
 
-        public string FileName { get; set; }
-
-        public byte[] Imagedata { get; set; }
+        public string MainImage { get; set; }
 
         public  List<AdditionalImage> AdditionalImages { get; set; }
 

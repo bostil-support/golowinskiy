@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Golowinskiy.Web.Context;
 using Golowinskiy.Web.Entities;
@@ -19,10 +20,10 @@ namespace Golowinskiy.Web.Controllers
             db = context;
         }
 
+        [HttpGet]
         public async Task<IActionResult> GetCategories()
         {
-            var products = db.Products.Include(x => x.AdditionalImages).ToList();
-            var categories = await db.Categories.Include(x=>x.Products).ToListAsync();
+            var categories = await db.Categories.Include(x => x.Products).ToListAsync();
             List<CategoryViewModel> outputCategories = new List<CategoryViewModel>();
 
             foreach (var item in categories)
@@ -35,7 +36,31 @@ namespace Golowinskiy.Web.Controllers
                     Count = item.Products.Count
                 });
             }
-        
+
+            var output = GenerateCategories(outputCategories);
+            return PartialView("~/Views/Category/Categories.cshtml", output);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetCategoriesByUser(string userId)
+        {
+            var products = db.Products.Include(x => x.AdditionalImages).ToList();
+            var userCategory = await db.Categories.Where(x => x.Products.Count > 0).Include(x => x.Products).ToListAsync();
+            var categories = GenerateUserCategory(userCategory);
+
+            List<CategoryViewModel> outputCategories = new List<CategoryViewModel>();
+
+            foreach (var item in categories)
+            {
+                outputCategories.Add(new CategoryViewModel()
+                {
+                    Id = item.Id,
+                    ParentId = item.ParentId,
+                    Name = item.Name,
+                    Count = item.Products.Count
+                });
+            }
+
             var output = GenerateCategories(outputCategories);
 
             return PartialView("~/Views/Category/Categories.cshtml", output);
@@ -80,6 +105,38 @@ namespace Golowinskiy.Web.Controllers
                     continue;
                 }
             }
+        }
+
+        public List<Category> GenerateUserCategory(List<Category> categories)
+        {
+            List<Category> outputCategories = new List<Category>();
+
+            foreach(var category in categories)
+            {
+                outputCategories = AddUserCategories(outputCategories, category.Id);
+            }
+
+            return outputCategories;
+        }
+
+        public List<Category> AddUserCategories(List<Category> outputCategories, int parentId)
+        {
+            while (parentId > 0)
+            {
+                var parentCategory = db.Categories.Include(x => x.Products).FirstOrDefault(x => x.Id == parentId);
+
+                if (!outputCategories.Contains(parentCategory))
+                {
+                    outputCategories.Add(parentCategory);
+                    parentId = parentCategory.ParentId;
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            return outputCategories;
         }
     }
 }

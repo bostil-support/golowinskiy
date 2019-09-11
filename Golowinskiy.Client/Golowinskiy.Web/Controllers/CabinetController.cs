@@ -6,6 +6,7 @@ using Golowinskiy.Web.Entities;
 using Golowinskiy.Web.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Golowinskiy.Web.Controllers
@@ -19,9 +20,13 @@ namespace Golowinskiy.Web.Controllers
                            && HttpContext.User.Identity.IsAuthenticated;
 
             if (isAuthenticate)
+            {
                 return View();
+            }
             else
+            {
                 return Redirect("~/Auth/ModalWindow");
+            }
         }
 
         [HttpGet]
@@ -29,6 +34,7 @@ namespace Golowinskiy.Web.Controllers
         {  
             var model = new CabinetViewModel();
             model.UserName = HttpContext.User.Identity.Name;
+            model.UserId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
             return PartialView(model);
         }
     }

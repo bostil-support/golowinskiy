@@ -26,7 +26,7 @@ namespace Golowinskiy.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> AddProduct()
+        public async Task<IActionResult> GetAddProductView()
         {
             bool isAuthenticate = (HttpContext.User != null)
                 && HttpContext.User.Identity.IsAuthenticated;
@@ -42,7 +42,7 @@ namespace Golowinskiy.Web.Controllers
                     Email = user.Email
                 };
 
-                return View(model);
+                return View("~/Views/Product/AddProduct.cshtml", model);
             }
             else
             {
@@ -55,9 +55,8 @@ namespace Golowinskiy.Web.Controllers
         {
             var newProduct = new Product()
             {
-                CategoryId = 50,
+                CategoryId = 27145,
                 UserId = product.UserId,
-                FileName = product.MainImage.FileName,
                 ProductName = product.ProductName,
                 Description = product.Description,
                 Price = product.Price,
@@ -67,21 +66,35 @@ namespace Golowinskiy.Web.Controllers
                 TransformationMechanism = product.TransformationMechanism
             };
 
-            using (var fs = product.MainImage.OpenReadStream())
-            {
-                newProduct.Imagedata = new byte[fs.Length];
-                fs.Read(newProduct.Imagedata, 0, newProduct.Imagedata.Length);
-            }
-
             await db.Products.AddAsync(newProduct);
             await db.SaveChangesAsync();
 
-            if(product.AdditionalImages != null)
+            SaveMainImage(product.MainImage);
+
+            if (product.AdditionalImages != null)
             {
                 SaveAddtImages(product.AdditionalImages);
             }
 
             return Ok();
+        }
+
+        public void SaveMainImage(IFormFile image)
+        {
+            var currentProduct = db.Products.LastOrDefault();
+
+            var path = Path.Combine("wwwroot", "images", "products", currentProduct.Id.ToString());
+            if (!Directory.Exists(path))
+            {
+                DirectoryInfo dir = Directory.CreateDirectory(path);
+            }
+
+            var stream = new FileStream(Path.Combine(path, image.FileName), FileMode.Create);
+            image.CopyToAsync(stream);
+
+            currentProduct.MainImage = path.Remove(0, 7).Replace('\\','/') + '/'  + image.FileName;
+            db.Products.Update(currentProduct);
+            db.SaveChanges();
         }
 
         public void SaveAddtImages(List<IFormFile> additionalImages)
@@ -93,20 +106,23 @@ namespace Golowinskiy.Web.Controllers
                 productId = newProduct.Id;
             }
 
+            var path = Path.Combine("wwwroot", "images", "products", productId.ToString(), "additionalImages");
+            if (!Directory.Exists(path))
+            {
+                DirectoryInfo dir = Directory.CreateDirectory(path);
+            }
+
             var addtImages = new List<AdditionalImage>();
             foreach(var img in additionalImages)
             {
+                var stream = new FileStream(Path.Combine(path, img.FileName), FileMode.Create);
+                img.CopyToAsync(stream);
+
                 var newImage = new AdditionalImage()
                 {
                     ProductId = productId,
-                    FileName = img.FileName,
+                    ImageLink = path.Remove(0, 7).Replace('\\', '/') + '/' + img.FileName
                 };
-
-                using (var fs = img.OpenReadStream())
-                {
-                    newImage.Imagedata = new byte[fs.Length];
-                    fs.Read(newImage.Imagedata, 0, newImage.Imagedata.Length);
-                }
 
                 addtImages.Add(newImage);
             }
@@ -122,13 +138,14 @@ namespace Golowinskiy.Web.Controllers
             var productModel = new List<ProductViewModel>();
 
             foreach (var prod in products)
-            {
+            {                
                 productModel.Add(new ProductViewModel()
                 {
                     Id = prod.Id,
                     Name = prod.ProductName,
-                    Price = prod.Price
-                });
+                    Price = prod.Price,
+                    MainImageLink = prod.MainImage
+            });
             }
 
             ViewBag.CategoryId = categoryId;
@@ -156,23 +173,31 @@ namespace Golowinskiy.Web.Controllers
             return categoryNames;
         }
 
-        //[HttpGet]
-        //public async Task<IActionResult> ProductDetail(int id)
-        //{
-        //    var uses = db.Users.ToList();
-        //    var product = await db.Products.FirstOrDefaultAsync(x => x.Id == id);
+        [HttpGet]
+        public async Task<IActionResult> ProductDetail(int id)
+        {
+            var uses = db.Users.ToList();
+            var product = await db.Products.Include(x => x.AdditionalImages).FirstOrDefaultAsync(x => x.Id == id);
 
-        //    var model = new ProductViewModel()
-        //    {
-        //        Id = product.Id,
-        //        Email = product.User.Email,
-        //        Phone = product.User.PhoneNumber,
-        //        ProductName = product.ProductName,
-        //        Description = product.Description,
-        //        Price = product.Price
-        //    };
+            List<string> addtImgs = new List<string>();
+            foreach(var img in product.AdditionalImages)
+            {
+                addtImgs.Add(img.ImageLink);
+            }
 
-        //    return PartialView(model);
-        //}
+            var model = new ProductDetailViewModel()
+            {
+                Id = product.Id,
+                Email = product.User.Email,
+                Phone = product.User.PhoneNumber,
+                ProductName = product.ProductName,
+                Description = product.Description,
+                Price = product.Price,
+                MainImageLink = product.MainImage,
+                AdditionalImagesLink = addtImgs
+            };
+
+            return PartialView(model);
+        }
     }
 }
