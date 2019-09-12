@@ -30,7 +30,7 @@
             <div class="col-lg-8 col-xs-12 text-right">
                 <div class="contact pt-2 pb-2 pr-2">
                     <h5>Контактная информация</h5>
-                    <input id="userId" value="@Model.UserId"  type="hidden" />
+                    <input id="userId" value="@Model.UserId" type="hidden" />
                     <div class="row">
                         <div class="col-lg-12 col-xs-12">
                             <span id="userName">@Model.UserName</span>
@@ -49,10 +49,17 @@
             </div>
         </div>
 
+        <div id="categories" class="categories">
+            <div class="ps-widget__header">
+                <h5>Выберите раздел каталога</h5>
+            </div>
+        </div>
+
         <div class="row justify-content-md-center choosed">
             <div class="col-lg-8 col-xs-12 no-padding">
                 Вы выбрали раздел
-                <app-breadcrumbs [categories]="categories" (click)="breadcrumbsClick()"></app-breadcrumbs>
+                <div id="breadcrumbs" class="breadcrumbs_container">
+                </div>
             </div>
         </div>
         <div class="row justify-content-md-center choosed">

@@ -6,6 +6,8 @@ namespace Golowinskiy.Web.Models.Product
 {
     public class AddProductViewModel
     {
+        public int CategoryId { get; set; }
+
         public string UserId { get; set; }
 
         public string UserName { get; set; }

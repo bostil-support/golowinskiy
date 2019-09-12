@@ -48,7 +48,7 @@
 
             $.ajax({
                 type: "GET",
-                url: "/Product/BreadCrumbs?categoryId=" + @ViewBag.categoryId,
+                url: "/Product/BreadCrumbs?categoryId=" + @ViewBag.categoryId + "&action=" + false,
                 success: function (data) {
                     $('#breadcrumbs').append(data);
                 }

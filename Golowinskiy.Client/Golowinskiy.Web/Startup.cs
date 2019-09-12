@@ -44,6 +44,11 @@ namespace Golowinskiy.Web
                 .AddEntityFrameworkStores<GolowinskiyDBContext>();
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
 
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.ExpireTimeSpan = TimeSpan.FromDays(30);
+            });
+
             services.AddSingleton<IFileProvider>(
             new PhysicalFileProvider(
                 Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));

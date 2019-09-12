@@ -54,7 +54,7 @@ using Golowinskiy.Web.Models;
             WriteLiteral("<h2>Восстановление пароля</h2>\r\n");
             EndContext();
             BeginContext(278, 437, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "82def3e60812478aa30f9eba6b60b495", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "56347822440940e3b6a012ae189054e0", async() => {
                 BeginContext(284, 424, true);
                 WriteLiteral(@"
     <div class=""form-group"">

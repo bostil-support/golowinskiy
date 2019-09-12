@@ -1,4 +1,19 @@
-﻿function attachMainImage(input) {
+﻿var productCategoryId;
+
+window.onload = function () {
+    let spinner = document.getElementsByClassName('showSpinner')[0];
+    spinner.style.display = 'block';
+    $.ajax({
+        type: "GET",
+        url: "/Category/GetCategories",
+        success: function (data) {
+            spinner.style.display = 'none';
+            $('#categories').append(data);
+        }
+    });
+};
+
+function attachMainImage(input) {
     if (input.files && input.files[0]) {
         let reader = new FileReader();
 
@@ -69,7 +84,11 @@ function saveProduct() {
         return;
     }
 
+    let spinner = document.getElementsByClassName('showSpinner')[0];
+    spinner.style.display = 'block';
+
     let formData = new FormData();
+    formData.append('CategoryId', productCategoryId);
     formData.append('UserId', $('#userId').val());
     formData.append('MainImage', $('#mainImage')[0].files[0]);
 
@@ -100,6 +119,9 @@ function saveProduct() {
 }
 
 function saveProductSuccess() {
+    let spinner = document.getElementsByClassName('showSpinner')[0];
+    spinner.style.display = 'none';
+
     let inputs = document.getElementsByTagName('input');
     for (let i = 1; i < inputs.length; i++) {
         inputs[i].value = "";
@@ -147,3 +169,45 @@ function checkFilledRequiredFields() {
     }
 }
 
+function showSubCategories(li, event) {
+    event.cancelBubble = true;
+
+    let parent = li.parentNode;
+    checkChoosenCategory(parent);
+
+    li.classList.remove('active');
+    li.classList.add('choose');
+    li.childNodes[1].style.display = 'block !important';
+    li.childNodes[1].style.position = 'absolute';
+    li.childNodes[1].style.top = '-2px';
+    li.childNodes[1].style.left = '246px';
+    li.parentNode.style.overflow = 'visible';
+
+    lastChoosenElement = li;
+
+    let height = li.childNodes[1].offsetHeight;
+    document.getElementsByClassName('choosed')[0].style.marginTop = height;
+}
+
+function checkChoosenCategory(parent) {
+    let x = Array.from(parent.childNodes)
+        .filter(node => node.className.includes('choose'));
+
+    if (x.length !== 0) {
+        let ul = x[0].childNodes[1];
+        checkChoosenCategory(ul);
+    }
+
+    x.forEach(node => node.className = node.className.replace('choose', 'active'));
+}
+
+function categoryClick(categoryId) {
+    productCategoryId = categoryId;
+    $.ajax({
+        type: "GET",
+        url: "/Product/BreadCrumbs?categoryId=" + productCategoryId + "&action=" + true,
+        success: function (data) {
+            $('#breadcrumbs').append(data);
+        }
+    });
+}

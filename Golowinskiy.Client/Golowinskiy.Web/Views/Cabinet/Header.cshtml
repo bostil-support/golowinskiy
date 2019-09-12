@@ -4,14 +4,14 @@
 <div class="cabinet-user">
     <input type="hidden" id="userId" value="@Model.UserId" />
     <div class="dropdown">
-        <div class="cabinet-user_item dropdown-toggle" role="button" id="dropdownMenu" data-toggle="dropdown">
-            <span class="name" onclick="openLogOut()">
+        <div class="cabinet-user_item dropdown-toggle" role="button" id="dropdownMenu" data-toggle="dropdown"  onclick="openLogOut()">
+            <span class="name">
                 Здравствуйте, <span id="userName">@Model.UserName</span>
             </span>
         </div>
         <div class="cabinet-user_item dropdown-menu" aria-labelledby="dropdownMenu" id="logMenu">
             <a asp-area="" asp-controller="Auth" asp-action="LogOut">
-                <span class="dropdown-item">
+                <span class="dropdown-item" id="exitSpan">
                     <i class="fa fa-power-off icon"></i>
                     Выйти
                 </span>

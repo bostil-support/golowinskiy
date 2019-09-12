@@ -32,6 +32,7 @@
 
 let lastChoosenElement;
 
+
 function showSubCategories(li, event) {
     event.cancelBubble = true;
 
@@ -59,5 +60,9 @@ function checkChoosenCategory(parent) {
     }
      
     x.forEach(node => node.className = node.className.replace('choose', 'active'));
+}
+
+function categoryClick(categoryId) {
+    window.location.href = "/Product/GetProductsByCategory?categoryId=" + categoryId;
 }
 

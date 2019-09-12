@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Golowinskiy.Web.Models.Category;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
@@ -16,15 +17,15 @@ namespace Golowinskiy.Web.TagHelpers
             output.TagMode = TagMode.StartTagAndEndTag;
         }
 
-        private void AddCategory(List<CategoryViewModel> Items, TagHelperOutput output)
+        private void AddCategory(List<CategoryViewModel> items, TagHelperOutput output)
         {
-            if (Items.Count == 0)
+            if (items.Count == 0)
             {
                 return;
             }
-
+            
             output.Content.AppendHtml($@"<ul class='sub-menu left-menu text-truncate'>");
-            foreach (var item in Items)
+            foreach (var item in items)
             {
                 if (item.ListInnerCat.Count != 0)
                 {
@@ -33,7 +34,8 @@ namespace Golowinskiy.Web.TagHelpers
                 }
                 else
                 {
-                    output.Content.AppendHtml($@"<li class='menu-item'><a href='Product/GetProductsByCategory?categoryId={item.Id}'>{item.Name} ({item.Count})</a>");
+                    //output.Content.AppendHtml($@"<li class='menu-item'><a href='/Product/GetProductsByCategory?categoryId={item.Id}'>{item.Name} ({item.Count})</a>");
+                    output.Content.AppendHtml($@"<li class='menu-item'><a onclick=categoryClick({item.Id})>{item.Name} ({item.Count})</a>");
                 }
 
                 output.Content.AppendHtml($@"</li>");

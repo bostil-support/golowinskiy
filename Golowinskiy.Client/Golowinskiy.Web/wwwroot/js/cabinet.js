@@ -1,16 +1,16 @@
 ﻿window.onload = function () {
-    $.ajax({
-        type: "GET",
-        url: "/Cabinet/Header",
-        success: function (data) {
-            $('#sumLink').css('display', 'none');
-            $('.header_list_item_cabinet').css('display', 'none');
-            $('#spanBack').css('display', 'inline');
-            $('#cbn-u').html(data);
-            $('.name').css('display', 'inline');
-            $('#userName').css('display', 'inline');
-        }
-    });
+        $.ajax({
+            type: "GET",
+            url: "/Cabinet/Header",
+            success: function (data) {
+                $('#sumLink').css('display', 'none');
+                $('.header_list_item_cabinet').css('display', 'none');
+                $('#spanBack').css('display', 'inline');
+                $('#cbn-u').html(data);
+                $('.name').css('display', 'inline');
+                $('#userName').css('display', 'inline');
+            }
+        });
    
     var backgroundImgs = [
         'http://golowinskiy-api.bostil.ru/mainimages/08.12.2018.jpg',
@@ -19,6 +19,14 @@
         'http://golowinskiy-api.bostil.ru/mainimages/19.01.2019.jpg',
         'http://golowinskiy-api.bostil.ru/mainimages/21.01.2019.jpg'
     ];
+
+    $.ajax({
+        type: "GET",
+        url: "/Category/GetCategoriesByUser",
+        success: function (data) {
+            $('#categories').append(data);
+        }
+    });
 
     var fon = this.document.getElementById('fon-image');
     var index = Math.floor(Math.random() * 5);
@@ -40,4 +48,8 @@ function openLogOut() {
     } else {
         $('#logMenu').css('display', 'block');
     }
+}
+
+function categoryClick(categoryId) {
+    window.location.href = "/Product/GetProductsByCategory?categoryId=" + categoryId;
 }

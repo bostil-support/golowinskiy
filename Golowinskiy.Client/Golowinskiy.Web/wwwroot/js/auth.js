@@ -7,7 +7,7 @@
         }
     });
 
-    var backgroundImgs = [
+    let backgroundImgs = [
         'http://golowinskiy-api.bostil.ru/mainimages/08.12.2018.jpg',
         'http://golowinskiy-api.bostil.ru/mainimages/10.01.2019.jpg',
         'http://golowinskiy-api.bostil.ru/mainimages/18.01.2019.jpg',
@@ -16,8 +16,8 @@
         'http://golowinskiy-api.bostil.ru/mainimages/20.09.2019.jpg'
     ];
 
-    var fon = this.document.getElementById('fon-image');
-    var index = Math.floor(Math.random() * 5);
+    let fon = this.document.getElementById('fon-image');
+    let index = Math.floor(Math.random() * 5);
     fon.style.background = 'url("' + backgroundImgs[index] + '") 50% 50% no-repeat';
 
     $.ajax({
@@ -59,8 +59,13 @@ function ShowRecoveryWindow() {
 }
 
 function Login() {
-    var mobile = document.getElementById("mobile").value;
-    var password = document.getElementById("password").value;
+    let spinner = document.getElementsByClassName('showSpinner')[0];
+    spinner.style.display = 'block';
+    let showMessage = document.getElementsByClassName('showMessage')[0];
+    let alert = document.getElementsByClassName('alert')[0];
+
+    let mobile = document.getElementById("mobile").value;
+    let password = document.getElementById("password").value;
 
     $.ajax({
         type: 'POST',
@@ -70,20 +75,31 @@ function Login() {
             Password: password
         },
         success: function (data) {
-            $('.alert').text(data);
+            spinner.style.display = 'none';
+            showMessage.style.display = 'block';
+            alert.classList.add('alert-success');
+            alert.innerHTML = data;
             setTimeout(() => window.location.href = '/Cabinet/Cabinet', 2000);
         },
         error: function (jqXHR, exception) {
-            $('.alert').text(jqXHR.responseText);
+            spinner.style.display = 'none';
+            showMessage.style.display = 'block';
+            alert.classList.add('alert-danger');
+            alert.innerHTML = jqXHR.responseText;
         }
     });
 }
 
 function Registration() {
-    var userName = document.getElementById("userName").value;
-    var mobile = document.getElementById("mobile").value;
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
+    let spinner = document.getElementsByClassName('showSpinner')[0];
+    spinner.style.display = 'block';
+    let showMessage = document.getElementsByClassName('showMessage')[0];
+    let alert = document.getElementsByClassName('alert')[0];
+
+    let userName = document.getElementById("userName").value;
+    let mobile = document.getElementById("mobile").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
 
     $.ajax({
         type: 'POST',
@@ -95,20 +111,27 @@ function Registration() {
             Password: password
         },
         success: function (data) {
-            $('.alert').text(data);
+            spinner.style.display = 'none';
+            showMessage.style.display = 'block';
+            alert.classList.add('alert-success');
+            alert.innerHTML = data;
             setTimeout(() => window.location.href = '/Home/Index', 2000);
         },
         error: function (jqXHR, exception) {
+            spinner.style.display = 'none';
+            showMessage.style.display = 'block';
+            alert.classList.add('alert-danger');
             if (jqXHR.responseText === "DuplicateUserName") {
-                $('.alert').text("Пользователь с именем " + userName + " уже существует");
+                alert.innerHTML = jqXHR.responseText;
+                alert.innerHTML = "Пользователь с именем " + userName + " уже существует";
             } else {
-                $('.alert').text(jqXHR.responseText);
+                alert.innerHTML = jqXHR.responseText;
             }
         }
     });
 }
 
 function CloseModalWindow() {
-    var modal = document.getElementById("myModal");
+    let modal = document.getElementById("myModal");
     modal.style.display = "none";
 }

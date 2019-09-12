@@ -55,7 +55,7 @@ namespace Golowinskiy.Web.Controllers
         {
             var newProduct = new Product()
             {
-                CategoryId = 27145,
+                CategoryId = product.CategoryId,
                 UserId = product.UserId,
                 ProductName = product.ProductName,
                 Description = product.Description,
@@ -152,10 +152,12 @@ namespace Golowinskiy.Web.Controllers
             return View("~/Views/Product/CategoryProducts.cshtml", productModel);
         }
 
-        public IActionResult BreadCrumbs(int categoryId)
+        public IActionResult BreadCrumbs(int categoryId, bool action)
         {
             List<BreadCrumbViewModel> model = new List<BreadCrumbViewModel>();
             model = GetCategoryList(model, categoryId);
+            ViewBag.IsAddProduct = action;
+            model.Reverse();
 
             return PartialView(model);
         }

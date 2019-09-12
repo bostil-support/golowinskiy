@@ -70,3 +70,4 @@ C:\Users\RSamuseu\Desktop\golowinskiy-client\Golowinskiy.Client\Golowinskiy.Web\
 C:\Users\RSamuseu\Desktop\golowinskiy-client\Golowinskiy.Client\Golowinskiy.Web\obj\Debug\netcoreapp2.1\Golowinskiy.Web.dll
 C:\Users\RSamuseu\Desktop\golowinskiy-client\Golowinskiy.Client\Golowinskiy.Web\obj\Debug\netcoreapp2.1\Golowinskiy.Web.pdb
 C:\Users\RSamuseu\Desktop\golowinskiy-client\Golowinskiy.Client\Golowinskiy.Web\obj\Debug\netcoreapp2.1\Golowinskiy.Web.csproj.CopyComplete
+C:\Users\RSamuseu\Desktop\golowinskiy-client\Golowinskiy.Client\Golowinskiy.Web\obj\Debug\netcoreapp2.1\Golowinskiy.Web.csprojAssemblyReference.cache

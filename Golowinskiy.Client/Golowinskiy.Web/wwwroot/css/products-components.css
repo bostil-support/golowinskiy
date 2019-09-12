@@ -8,6 +8,7 @@
     left: 48%;
     right: 48%;
     z-index: 5000;
+    display: none;
 }
 
 i{
