@@ -48,6 +48,9 @@ function showSubCategories(li, event) {
     li.parentNode.style.overflow = 'visible';
 
     lastChoosenElement = li;
+
+    let height = li.childNodes[1].offsetHeight;
+    document.getElementsByTagName('footer').style.marginTop = height;
 }
 
 function checkChoosenCategory(parent) {

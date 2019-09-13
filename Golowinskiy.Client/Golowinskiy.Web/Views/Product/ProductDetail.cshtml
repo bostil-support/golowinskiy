@@ -12,9 +12,9 @@
                 <i class="fa fa-chevron-left" aria-hidden="true"></i>
             </div>
             <div class="image">
-                <img src="@Model.MainImageLink">
+                <img src="@Model.MainImageLink" id="mainImg">
             </div>
-            <div class="arrows next">
+            <div class="arrows next" onclick="showNextProduct()">
                 <i class="fa fa-chevron-right" aria-hidden="true"></i>
             </div>
         </div>
@@ -22,7 +22,7 @@
         <div class="detail_product_item_main_information">
             <div class="text">
                 <h4>@Model.ProductName</h4>
-                <p>@Model.Price</p>
+                <p>@Model.Price руб.</p>
             </div>
 
             <div class="change">
@@ -50,21 +50,14 @@
 
     <div class="detail_product_item detail_product_item_right">
         <h4>@Model.ProductName</h4>
-        <p>{{ element.catalog }}</p>
-    
-       
+        <p></p>
+          
         <div class="additional_images">
-            <div class="arrows prew">
-                <i class="fa fa-chevron-left" aria-hidden="true"></i>
-            </div>
             <div class="images">
                 @foreach (var img in Model.AdditionalImagesLink)
                 {
-                    <img src="@img">
+                    <img src="@img" onmouseover="showAddtImage('@img')" onmouseout="showAddtImage('@Model.MainImageLink')">
                 }
-            </div>
-            <div class="arrows next">
-                <i class="fa fa-chevron-right" aria-hidden="true"></i>
             </div>
         </div>
 

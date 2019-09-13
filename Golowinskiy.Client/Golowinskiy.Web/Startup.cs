@@ -47,6 +47,7 @@ namespace Golowinskiy.Web
             services.ConfigureApplicationCookie(options =>
             {
                 options.ExpireTimeSpan = TimeSpan.FromDays(30);
+                options.SlidingExpiration = true;
             });
 
             services.AddSingleton<IFileProvider>(

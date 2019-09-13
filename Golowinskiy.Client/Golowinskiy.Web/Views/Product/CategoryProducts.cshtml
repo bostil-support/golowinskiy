@@ -1,14 +1,17 @@
 ﻿@model List<Golowinskiy.Web.Models.Product.ProductViewModel>
 
 <link rel="stylesheet" href="~/css/products-components.css">
+<div class="showSpinner" id="spinProd">
+    <i class="fa fa-spinner fa-spin"></i>
+</div>
 <div id="selectedCategory">
     <div id="breadcrumbs" class="breadcrumbs_container">
     </div>
     <div class="products_list">
         @foreach (var product in Model)
         {
-            <input type="hidden" value="@product.Id"/>
-            <div class="products_list_item" onclick="showDetails('@product.Id')">
+            <input type="hidden" value="@product.Id" />
+            <div class="products_list_item" onclick="showDetails(this, '@product.Id')">
                 <div class="products_list_item_main">
                     <img src="@product.MainImageLink">
                 </div>
@@ -31,6 +34,9 @@
 @section Scripts{
     <script>
         window.onload = function () {
+            let spinner = document.getElementsByClassName('showSpinner')[0];
+            spinner.style.display = 'block';
+
             document.getElementById('categories').style.display = 'none';
             document.getElementById('doc_time').style.display = 'none';
 
@@ -53,22 +59,56 @@
                     $('#breadcrumbs').append(data);
                 }
             });
+            spinner.style.display = 'none';
         };
 
-        function showDetails(id) {
+        function showDetails(choosenDiv, id) {
+            choosenDiv.classList.add('choose');
+
+            if (document.getElementById('detail-page') !== null) {
+                let child = document.getElementById('detail-page');
+                let parent = child.parentNode;
+                parent.removeChild(child);
+            }
+
             $.ajax({
                 type: "GET",
                 url: "/Product/ProductDetail?id=" + id,
                 success: function (data) {
                     $('.container.body-content').append(data);
+                    if (document.getElementsByClassName('products_list_item').length > 1) {
+                        document.getElementsByClassName('arrows')[0].style.display = 'block';
+                        document.getElementsByClassName('arrows')[1].style.display = 'block';
+                    }
                 }
             });
         }
 
         function closeWindow() {
-            var child = document.getElementById('detail-page');
-            var parent = child.parentNode;
+            let child = document.getElementById('detail-page');
+            let parent = child.parentNode;
             parent.removeChild(child);
+
+            let choosenDiv = document.getElementsByClassName('choose')[0];
+            choosenDiv.classList.remove('choose');
+        }
+
+        function showAddtImage(src) {
+            let mainImg = document.getElementById('mainImg');
+            mainImg.src = src;
+        }
+
+        function showNextProduct(currProd) {
+            let choosenDiv = document.getElementsByClassName('choose')[0];
+            let arrProdDivs = Array.from(document.getElementsByClassName('products_list_item'));
+            let index = arrProdDivs.indexOf(choosenDiv);
+
+            choosenDiv.classList.remove('choose');
+            if (index != arrProdDivs.length - 1) {
+                arrProdDivs[index + 1].click();
+            } else {
+                arrProdDivs[0].click();
+            }
         }
     </script>
 }

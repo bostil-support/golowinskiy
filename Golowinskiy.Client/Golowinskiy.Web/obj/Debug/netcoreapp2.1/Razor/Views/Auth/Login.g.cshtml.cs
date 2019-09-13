@@ -54,7 +54,7 @@ using Golowinskiy.Web.Models;
             WriteLiteral("<h2>Вход для зарегистрированных пользователей</h2>\r\n<div class=\"showSpinner\" id=\"spinLogin\">\r\n    <i class=\"fa fa-spinner fa-spin\"></i>\r\n</div>\r\n<div class=\"showMessage\">\r\n    <div class=\"alert\">       \r\n    </div>\r\n</div>\r\n");
             EndContext();
             BeginContext(224, 820, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b15a1531e8404055b75ab35ec5a6bcd4", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "391a56dd23d547098d2feeeaa7b919bc", async() => {
                 BeginContext(230, 807, true);
                 WriteLiteral(@"
     <div class=""form-group"">

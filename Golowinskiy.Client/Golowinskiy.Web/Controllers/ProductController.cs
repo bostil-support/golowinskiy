@@ -149,6 +149,7 @@ namespace Golowinskiy.Web.Controllers
             }
 
             ViewBag.CategoryId = categoryId;
+
             return View("~/Views/Product/CategoryProducts.cshtml", productModel);
         }
 

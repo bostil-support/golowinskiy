@@ -3,7 +3,7 @@
     padding: 0;
 }
 
-.showSpinner {
+/*.showSpinner {
     position: fixed;
     top: 47%;
     left: 47%;
@@ -15,7 +15,7 @@
         color: #ffffff;
         -webkit-animation: fa-spin 2s infinite linear;
         animation: fa-spin 2s infinite linear;
-    }
+    }*/
 
 .detail_product {
     display: flex;
@@ -104,6 +104,7 @@
 .arrows {
     font-size: 34px;
     cursor: pointer;
+    display: none;
 }
 
 @media screen and (max-width: 1078px) {
@@ -431,4 +432,16 @@
 
 .in_cart > i {
     color: white;
+}
+
+.arrows > i {
+    color: #ffffff;
+}
+
+.next > i {
+    margin-left: 20%;
+}
+
+.prev > i {
+    margin-right: 20%;
 }
