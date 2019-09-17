@@ -217,7 +217,7 @@
 }
 
 .change {
-    display: none;
+    display: flex;
 }
 
     .change > .edit, .delete {
@@ -236,7 +236,7 @@
         }
     }
 
-.change > span {
+.edit > span, .delete > span {
     color: #ffffff;
     font-size: 25px;
     display: inline;

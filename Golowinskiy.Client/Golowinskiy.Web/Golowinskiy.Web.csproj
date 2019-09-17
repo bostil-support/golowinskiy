@@ -69,6 +69,7 @@
     <Compile Include="Models\Product\AddProductViewModel.cs" />
     <Compile Include="Models\Product\ProductDetailViewModel.cs" />
     <Compile Include="Models\Product\ProductViewModel.cs" />
+    <Compile Include="Models\Product\EditProductViewModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="TagHelpers\CategoriesTagHelper.cs" />
@@ -95,6 +96,7 @@
     <Content Include="Views\Product\AddProduct.cshtml" />
     <Content Include="Views\Product\BreadCrumbs.cshtml" />
     <Content Include="Views\Product\CategoryProducts.cshtml" />
+    <Content Include="Views\Product\EditProduct.cshtml" />
     <Content Include="Views\Product\ProductDetail.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_CookieConsentPartial.cshtml" />

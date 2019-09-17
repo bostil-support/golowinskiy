@@ -110,5 +110,18 @@
                 arrProdDivs[0].click();
             }
         }
+
+        function deleteProduct(id) {
+             $.ajax({
+                type: "Delete",
+                 url: "/Product/DeleteProduct?id=" + id,
+                 success: deleteProducSuccess
+            });
+        }
+
+        function deleteProducSuccess() {
+            closeWindow();
+            window.location.href = '../Product/GetProductsByCategory?id=' + @ViewBag.categoryId;
+        }
     </script>
 }

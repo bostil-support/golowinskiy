@@ -26,16 +26,16 @@
             </div>
 
             <div class="change">
-                <div class="edit">
+                <div class="edit" onclick="window.location.href='../Product/EditProduct?id=@Model.Id'">
                     <span>Редактировать</span>
                 </div>
 
-                <div class="delete">
+                <div class="delete" >
                     <span>Удалить</span>
                 </div>
             </div>
 
-            <div>
+            @*<div>
                 <div class="basketShop" onclick="putInBasket(this)">
                     <img src="~/images/white-cart.png">
                     <span>В корзину</span>
@@ -44,7 +44,7 @@
                     <i class="fa fa-check"></i>
                     <span>В корзине</span>
                 </div>
-            </div>
+            </div>*@
         </div>
     </div>
 

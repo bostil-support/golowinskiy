@@ -56,7 +56,7 @@ using Golowinskiy.Web.Models;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(66, 64, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "c5fdb34761bd4049b2ac00d810dbee63", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "00e2869af6954d3b8b647b232d452790", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -75,7 +75,7 @@ using Golowinskiy.Web.Models;
             WriteLiteral("\r\n<div class=\"ps-widget__content\">\r\n    ");
             EndContext();
             BeginContext(170, 28, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("categories", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "7cea01942d8a4169b73807097b3badd9", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("categories", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "361fdb2b9b3c44548da3b860d26757d7", async() => {
             }
             );
             __Golowinskiy_Web_TagHelpers_CategoriesTagHelper = CreateTagHelper<global::Golowinskiy.Web.TagHelpers.CategoriesTagHelper>();

@@ -202,5 +202,47 @@ namespace Golowinskiy.Web.Controllers
 
             return PartialView(model);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> EditProduct(int id)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var product = await db.Products.FindAsync(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            EditProductViewModel model = new EditProductViewModel()
+            {
+                UserName = user.UserName,
+                Email = user.Email,
+                ProductName = product.ProductName,
+                Description = product.Description,
+                Price = product.Price,
+                MainImageLink = product.MainImage,
+                VideoLink = product.VideoLink,
+                ProductType = product.ProductType, 
+                ProductArticle = product.ProductArticle,
+                TransformationMechanism = product.TransformationMechanism
+            };
+
+            return View(model);
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteProduct(int id)
+        {
+            var product = await db.Products.FindAsync(id);
+            if(product == null)
+            {
+                return NotFound();
+            }
+
+            db.Products.Remove(product);
+            await db.SaveChangesAsync();
+
+            return NoContent();
+        }
     }
 }
