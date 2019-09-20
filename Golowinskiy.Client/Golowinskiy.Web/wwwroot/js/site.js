@@ -65,7 +65,8 @@ function checkChoosenCategory(parent) {
     x.forEach(node => node.className = node.className.replace('choose', 'active'));
 }
 
-function categoryClick(categoryId) {
+function categoryClick(li, categoryId) {
+
     window.location.href = "/Product/GetProductsByCategory?categoryId=" + categoryId;
 }
 

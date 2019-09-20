@@ -2,6 +2,13 @@
 
 <link rel="stylesheet" href="~/css/detail-page-components.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    .carousel-inner > .item > img,
+    .carousel-inner > .item > a > img {
+        width: 70%;
+        margin: auto;
+    }
+</style>
 <div id="detail-page" class="detail_product">
     <div class="close">
         <i class="fa fa-times" aria-hidden="true" onclick="closeWindow()"></i>
@@ -26,40 +33,40 @@
             </div>
 
             <div class="change">
-                <div class="edit" onclick="window.location.href='../Product/EditProduct?id=@Model.Id'">
+                <div class="edit" onclick="window.location.href='../Product/GetEditProductView?id=@Model.Id'">
                     <span>Редактировать</span>
                 </div>
 
-                <div class="delete" >
+                <div class="delete" onclick="deleteProduct(@Model.Id)">
                     <span>Удалить</span>
                 </div>
             </div>
 
             @*<div>
-                <div class="basketShop" onclick="putInBasket(this)">
-                    <img src="~/images/white-cart.png">
-                    <span>В корзину</span>
-                </div>
-                <div class="basketShop in_cart">
-                    <i class="fa fa-check"></i>
-                    <span>В корзине</span>
-                </div>
-            </div>*@
+                    <div class="basketShop" onclick="putInBasket(this)">
+                        <img src="~/images/white-cart.png">
+                        <span>В корзину</span>
+                    </div>
+                    <div class="basketShop in_cart">
+                        <i class="fa fa-check"></i>
+                        <span>В корзине</span>
+                    </div>
+                </div>*@
         </div>
     </div>
 
     <div class="detail_product_item detail_product_item_right">
         <h4>@Model.ProductName</h4>
         <p></p>
-          
+
         <div class="additional_images">
-            <div class="images">
-                @foreach (var img in Model.AdditionalImagesLink)
-                {
-                    <img src="@img" onmouseover="showAddtImage('@img')" onmouseout="showAddtImage('@Model.MainImageLink')">
-                }
+                <div class="images">
+                    @foreach (var img in Model.AdditionalImagesLink)
+                    {
+                        <img src="@img" onmouseover="showAddtImage('@img')" onmouseout="showAddtImage('@Model.MainImageLink')">
+                    }
+                </div>
             </div>
-        </div>
 
         <div class="description" id="show_description">
             <p>@Model.Description</p>

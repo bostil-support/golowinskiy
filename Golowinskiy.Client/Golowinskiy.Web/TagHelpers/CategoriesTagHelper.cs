@@ -35,7 +35,7 @@ namespace Golowinskiy.Web.TagHelpers
                 else
                 {
                     //output.Content.AppendHtml($@"<li class='menu-item'><a href='/Product/GetProductsByCategory?categoryId={item.Id}'>{item.Name} ({item.Count})</a>");
-                    output.Content.AppendHtml($@"<li class='menu-item'><a onclick=categoryClick({item.Id})>{item.Name} ({item.Count})</a>");
+                    output.Content.AppendHtml($@"<li class='menu-item' onclick='categoryClick(this, {item.Id})'><a>{item.Name} ({item.Count})</a>");
                 }
 
                 output.Content.AppendHtml($@"</li>");

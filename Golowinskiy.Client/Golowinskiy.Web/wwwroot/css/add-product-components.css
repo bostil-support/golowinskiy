@@ -442,6 +442,7 @@ dl, ol, ul {
     width: 100%;
     padding-right: 15px;
     padding-left: 15px;
+    display: flex;
 }
 
 label {
@@ -523,14 +524,22 @@ button, input {
     font-family: inherit;
 }
 
-#btn-sbmt {
-    opacity: .65;
+#btn-sbmt, #btn-edit {
     color: #fff;
     border: 1px solid transparent;
     padding: .375rem .75rem;
     font-size: 1rem;
     line-height: 1.5;
     border-radius: .25rem;
+}
+
+    #btn-sbmt {
+        opacity: 0.65;
+    }
+
+#btn-edit {
+    opacity: 1;
+    cursor: pointer;
 }
 
 i.fa.fa-upload.arrow {
@@ -548,10 +557,9 @@ i.fa.fa-upload.arrow {
     color: #189691;
 }
 
-i.delete {
+i.delete, #remove-main {
     position: static;
     margin-right: 5px;
-    margin-left: -10px;
     margin-bottom: 60px;
     cursor: pointer;
     display: inline-block;
@@ -564,8 +572,16 @@ i.delete {
     text-align: center;
 }
 
+i.delete {
+    margin-left: -15px;
+}
+
+#remove-main {
+    margin-left: 5px;
+}
+
 a {
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .alert {
@@ -731,3 +747,7 @@ li.active > a {
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
     }
+
+#removeMainImg {
+    margin-left: 3px;
+}

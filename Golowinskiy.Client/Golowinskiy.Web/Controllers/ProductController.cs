@@ -26,7 +26,7 @@ namespace Golowinskiy.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAddProductView()
+        public async Task<IActionResult> GetProductView()
         {
             bool isAuthenticate = (HttpContext.User != null)
                 && HttpContext.User.Identity.IsAuthenticated;
@@ -35,14 +35,16 @@ namespace Golowinskiy.Web.Controllers
             {
                 var user = await _userManager.GetUserAsync(User);
 
-                AddProductViewModel model = new AddProductViewModel()
+                EditProductViewModel model = new EditProductViewModel()
                 {
                     UserId = user.Id,
                     UserName = user.UserName,
                     Email = user.Email
                 };
 
-                return View("~/Views/Product/AddProduct.cshtml", model);
+                ViewBag.IsEdit = false;
+
+                return View("~/Views/Product/Product.cshtml", model);
             }
             else
             {
@@ -51,7 +53,7 @@ namespace Golowinskiy.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddNewProduct(AddProductViewModel product)
+        public async Task<IActionResult> AddNewProduct(EditProductViewModel product)
         {
             var newProduct = new Product()
             {
@@ -69,20 +71,20 @@ namespace Golowinskiy.Web.Controllers
             await db.Products.AddAsync(newProduct);
             await db.SaveChangesAsync();
 
-            SaveMainImage(product.MainImage);
+            var lastProduct = db.Products.LastOrDefault();
+
+            SaveMainImage(product.MainImage, lastProduct);
 
             if (product.AdditionalImages != null)
-            {
-                SaveAddtImages(product.AdditionalImages);
+            {               
+                SaveAddtImages(product.AdditionalImages, lastProduct);
             }
 
             return Ok();
         }
 
-        public void SaveMainImage(IFormFile image)
+        public void SaveMainImage(IFormFile image, Product currentProduct)
         {
-            var currentProduct = db.Products.LastOrDefault();
-
             var path = Path.Combine("wwwroot", "images", "products", currentProduct.Id.ToString());
             if (!Directory.Exists(path))
             {
@@ -97,15 +99,9 @@ namespace Golowinskiy.Web.Controllers
             db.SaveChanges();
         }
 
-        public void SaveAddtImages(List<IFormFile> additionalImages)
+        public void SaveAddtImages(List<IFormFile> additionalImages, Product currentProduct)
         {
-            int productId = 0;
-            var newProduct = db.Products.LastOrDefault();
-            if(newProduct != null)
-            {
-                productId = newProduct.Id;
-            }
-
+            int productId = currentProduct.Id;
             var path = Path.Combine("wwwroot", "images", "products", productId.ToString(), "additionalImages");
             if (!Directory.Exists(path))
             {
@@ -135,11 +131,11 @@ namespace Golowinskiy.Web.Controllers
         public async Task<IActionResult> GetProductsByCategory(int categoryId)
         {
             var products = await db.Products.Where(x => x.CategoryId == categoryId).Include(x => x.User).ToListAsync();
-            var productModel = new List<ProductViewModel>();
+            var productModel = new List<ProductCategoryViewModel>();
 
             foreach (var prod in products)
             {                
-                productModel.Add(new ProductViewModel()
+                productModel.Add(new ProductCategoryViewModel()
                 {
                     Id = prod.Id,
                     Name = prod.ProductName,
@@ -204,30 +200,75 @@ namespace Golowinskiy.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> EditProduct(int id)
+        public async Task<IActionResult> GetEditProductView(int id)
         {
             var user = await _userManager.GetUserAsync(User);
-            var product = await db.Products.FindAsync(id);
+            var product = await db.Products.Include(x => x.AdditionalImages).FirstOrDefaultAsync(x => x.Id == id);
             if (product == null)
             {
                 return NotFound();
             }
 
+            Dictionary<int, string> addtImgs = new Dictionary<int, string>();
+            foreach (var img in product.AdditionalImages)
+            {
+                addtImgs.Add(img.Id, img.ImageLink);
+            }
+   
             EditProductViewModel model = new EditProductViewModel()
             {
+                Id = product.Id,
+                CategoryId = product.CategoryId,
                 UserName = user.UserName,
                 Email = user.Email,
                 ProductName = product.ProductName,
                 Description = product.Description,
                 Price = product.Price,
                 MainImageLink = product.MainImage,
+                AdditionalImageLinks = addtImgs,
                 VideoLink = product.VideoLink,
                 ProductType = product.ProductType, 
                 ProductArticle = product.ProductArticle,
                 TransformationMechanism = product.TransformationMechanism
             };
 
-            return View(model);
+            ViewBag.IsEdit = true;
+
+            return View("~/Views/Product/Product.cshtml", model);
+        }
+
+
+        [HttpPut]
+        public async Task<IActionResult> EditProduct(EditProductViewModel model)
+        {
+            var product = await db.Products.FindAsync(model.Id);
+            if (product == null)
+            {
+                return BadRequest();
+            }
+
+            product.ProductName = model.ProductName;
+            product.Description = model.Description;
+            product.Price = model.Price;
+            product.VideoLink = model.VideoLink;
+            product.ProductType = model.ProductType;
+            product.ProductArticle = model.ProductArticle;
+            product.TransformationMechanism = model.TransformationMechanism;
+
+            db.Products.Update(product);
+            await db.SaveChangesAsync();
+
+            if(model.MainImage != null)
+            {
+                SaveMainImage(model.MainImage, product);
+            }
+            
+            if (model.AdditionalImages != null)
+            {
+                SaveAddtImages(model.AdditionalImages, product);
+            }
+
+            return Ok();
         }
 
         [HttpDelete]
@@ -240,6 +281,21 @@ namespace Golowinskiy.Web.Controllers
             }
 
             db.Products.Remove(product);
+            await db.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteAddtImage(int id)
+        {
+            var img = await db.AdditionalImages.FindAsync(id);
+            if (img == null)
+            {
+                return NotFound();
+            }
+
+            db.AdditionalImages.Remove(img);
             await db.SaveChangesAsync();
 
             return NoContent();

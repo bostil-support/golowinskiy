@@ -50,7 +50,7 @@ function openLogOut() {
     }
 }
 
-function categoryClick(categoryId) {
+function categoryClick(li, categoryId) {
     window.location.href = "/Product/GetProductsByCategory?categoryId=" + categoryId;
     document.getElementsByClassName('basketShop')[0].style.display = 'none';
     document.getElementsByClassName('change')[0].style.display = 'block';

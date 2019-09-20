@@ -1,4 +1,4 @@
-﻿@model List<Golowinskiy.Web.Models.Product.ProductViewModel>
+﻿@model List<Golowinskiy.Web.Models.Product.ProductCategoryViewModel>
 
 <link rel="stylesheet" href="~/css/products-components.css">
 <div class="showSpinner" id="spinProd">
@@ -19,11 +19,6 @@
                     <h4>@product.Name</h4>
                     <div class="price">
                         <p>@product.Price руб.</p>
-                        @*<div>
-                                <div class="add_cart">
-                                    <span>В корзину</span>
-                                </div>
-                            </div>*@
                     </div>
                 </div>
             </div>
@@ -121,7 +116,7 @@
 
         function deleteProducSuccess() {
             closeWindow();
-            window.location.href = '../Product/GetProductsByCategory?id=' + @ViewBag.categoryId;
+            window.location.href = '../Product/GetProductsByCategory?categoryId=' + @ViewBag.CategoryId;
         }
     </script>
 }
