@@ -71,3 +71,4 @@ C:\Users\RSamuseu\Desktop\golowinskiy-client\Golowinskiy.Client\Golowinskiy.Web\
 C:\Users\RSamuseu\Desktop\golowinskiy-client\Golowinskiy.Client\Golowinskiy.Web\obj\Debug\netcoreapp2.1\Golowinskiy.Web.csproj.CopyComplete
 C:\Users\RSamuseu\Desktop\golowinskiy-client\Golowinskiy.Client\Golowinskiy.Web\obj\Debug\netcoreapp2.1\Golowinskiy.Web.csprojAssemblyReference.cache
 C:\Users\RSamuseu\Desktop\golowinskiy-client\Golowinskiy.Client\Golowinskiy.Web\obj\Debug\netcoreapp2.1\Razor\Views\Product\Product.g.cshtml.cs
+C:\Users\RSamuseu\Desktop\golowinskiy-client\Golowinskiy.Client\Golowinskiy.Web\obj\Debug\netcoreapp2.1\Razor\Views\Product\CategProd.g.cshtml.cs

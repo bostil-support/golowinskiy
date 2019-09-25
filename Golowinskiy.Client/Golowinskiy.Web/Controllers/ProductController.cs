@@ -134,14 +134,14 @@ namespace Golowinskiy.Web.Controllers
             var productModel = new List<ProductCategoryViewModel>();
 
             foreach (var prod in products)
-            {                
+            {
                 productModel.Add(new ProductCategoryViewModel()
                 {
                     Id = prod.Id,
                     Name = prod.ProductName,
                     Price = prod.Price,
                     MainImageLink = prod.MainImage
-            });
+                });
             }
 
             ViewBag.CategoryId = categoryId;
@@ -175,9 +175,10 @@ namespace Golowinskiy.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> ProductDetail(int id)
         {
-            var uses = db.Users.ToList();
+            var users = db.Users.ToList();
+            var currentUser = await _userManager.GetUserAsync(User);
             var product = await db.Products.Include(x => x.AdditionalImages).FirstOrDefaultAsync(x => x.Id == id);
-
+            
             List<string> addtImgs = new List<string>();
             foreach(var img in product.AdditionalImages)
             {
@@ -187,14 +188,21 @@ namespace Golowinskiy.Web.Controllers
             var model = new ProductDetailViewModel()
             {
                 Id = product.Id,
-                Email = product.User.Email,
-                Phone = product.User.PhoneNumber,
                 ProductName = product.ProductName,
                 Description = product.Description,
                 Price = product.Price,
                 MainImageLink = product.MainImage,
                 AdditionalImagesLink = addtImgs
             };
+
+            if(currentUser!=null && product.UserId == currentUser.Id)
+            {
+                ViewBag.IsChange = true;
+            }
+            else
+            {
+                ViewBag.IsChange = false;
+            }
 
             return PartialView(model);
         }
@@ -236,7 +244,7 @@ namespace Golowinskiy.Web.Controllers
 
             return View("~/Views/Product/Product.cshtml", model);
         }
-
+       
 
         [HttpPut]
         public async Task<IActionResult> EditProduct(EditProductViewModel model)

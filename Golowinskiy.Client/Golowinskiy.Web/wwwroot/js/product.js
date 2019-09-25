@@ -5,7 +5,7 @@ window.onload = function () {
     spinner.style.display = 'block';
     $.ajax({
         type: "GET",
-        url: "/Category/GetCategories",
+        url: "/Category/GetAllCategories",
         success: function (data) {
             spinner.style.display = 'none';
             $('#categories').append(data);
@@ -303,6 +303,8 @@ function categoryClick(li, categoryId) {
         success: function (data) {
             $('#breadcrumbs').empty();
             $('#breadcrumbs').append(data);
+            $('#categories').remove();
+            $('#categ').remove();
         }
     });
 

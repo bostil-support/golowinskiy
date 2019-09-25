@@ -92,6 +92,7 @@
     <Content Include="Views\Cabinet\Header.cshtml" />
     <Content Include="Views\Category\Categories.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Product\CategProd.cshtml" />
     <Content Include="Views\Product\Product.cshtml" />
     <Content Include="Views\Product\BreadCrumbs.cshtml" />
     <Content Include="Views\Product\CategoryProducts.cshtml" />

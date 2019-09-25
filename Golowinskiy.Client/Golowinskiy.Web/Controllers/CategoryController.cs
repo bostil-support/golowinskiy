@@ -21,7 +21,7 @@ namespace Golowinskiy.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetCategories()
+        public async Task<IActionResult> GetAllCategories()
         {
             var categories = await db.Categories.Include(x => x.Products).ToListAsync();
             List<CategoryViewModel> outputCategories = new List<CategoryViewModel>();
@@ -37,7 +37,29 @@ namespace Golowinskiy.Web.Controllers
                 });
             }
             
-            var output = GenerateCategories(outputCategories);
+            var output = GenerateAllCategories(outputCategories);
+            return PartialView("~/Views/Category/Categories.cshtml", output);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetNotNullCategories()
+        {
+            var categories = await db.Categories.Where(x => x.Products.Count > 0).Include(x => x.Products).ToListAsync();
+            categories = GenerateCategories(categories);
+            List<CategoryViewModel> outputCategories = new List<CategoryViewModel>();
+
+            foreach (var item in categories)
+            {
+                outputCategories.Add(new CategoryViewModel()
+                {
+                    Id = item.Id,
+                    ParentId = item.ParentId,
+                    Name = item.Name,
+                    Count = item.Products.Count
+                });
+            }
+
+            var output = GenerateAllCategories(outputCategories);
             return PartialView("~/Views/Category/Categories.cshtml", output);
         }
 
@@ -47,7 +69,7 @@ namespace Golowinskiy.Web.Controllers
             string userId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var products = db.Products.Include(x => x.AdditionalImages).ToList();
             var userCategory = await db.Categories.Where(x => x.Products.Count > 0 && x.Products.Any(y => y.UserId == userId)).Include(x => x.Products).ToListAsync();
-            var categories = GenerateUserCategory(userCategory);
+            var categories = GenerateCategories(userCategory);
 
             List<CategoryViewModel> outputCategories = new List<CategoryViewModel>();
 
@@ -62,12 +84,12 @@ namespace Golowinskiy.Web.Controllers
                 });
             }
 
-            var output = GenerateCategories(outputCategories);
+            var output = GenerateAllCategories(outputCategories);
 
             return PartialView("~/Views/Category/Categories.cshtml", output);
         }
 
-        public List<CategoryViewModel> GenerateCategories(List<CategoryViewModel> listOnputModel)
+        public List<CategoryViewModel> GenerateAllCategories(List<CategoryViewModel> listOnputModel)
         {
             List<CategoryViewModel> parentsCategories = (
                 from a in listOnputModel
@@ -108,7 +130,7 @@ namespace Golowinskiy.Web.Controllers
             }
         }
 
-        public List<Category> GenerateUserCategory(List<Category> categories)
+        public List<Category> GenerateCategories(List<Category> categories)
         {
             List<Category> outputCategories = new List<Category>();
 

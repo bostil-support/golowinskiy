@@ -10,7 +10,7 @@
 
     $.ajax({
         type: "GET",
-        url: "/Category/GetCategories",
+        url: "/Category/GetNotNullCategories",
         success: function (data) {
             $('#categories').append(data);
         }

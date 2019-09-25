@@ -52,9 +52,9 @@
                 url: "/Product/BreadCrumbs?categoryId=" + @ViewBag.categoryId + "&action=" + false,
                 success: function (data) {
                     $('#breadcrumbs').append(data);
+                    spinner.style.display = 'none';
                 }
             });
-            spinner.style.display = 'none';
         };
 
         function showDetails(choosenDiv, id) {

@@ -32,26 +32,32 @@
                 <p>@Model.Price руб.</p>
             </div>
 
-            <div class="change">
-                <div class="edit" onclick="window.location.href='../Product/GetEditProductView?id=@Model.Id'">
-                    <span>Редактировать</span>
-                </div>
+            @if (ViewBag.IsChange)
+            { 
+                <div class="change">
+                    <div class="edit" onclick="window.location.href='../Product/GetEditProductView?id=@Model.Id'">
+                        <span>Редактировать</span>
+                    </div>
 
-                <div class="delete" onclick="deleteProduct(@Model.Id)">
-                    <span>Удалить</span>
+                    <div class="delete" onclick="deleteProduct(@Model.Id)">
+                        <span>Удалить</span>
+                    </div>
                 </div>
-            </div>
+            }
 
-            @*<div>
+            @if (!ViewBag.IsChange)
+            {
+                <div id="basketDiv">
                     <div class="basketShop" onclick="putInBasket(this)">
                         <img src="~/images/white-cart.png">
                         <span>В корзину</span>
                     </div>
-                    <div class="basketShop in_cart">
-                        <i class="fa fa-check"></i>
-                        <span>В корзине</span>
-                    </div>
-                </div>*@
+                    @*<div class="basketShop in_cart">
+                            <i class="fa fa-check"></i>
+                            <span>В корзине</span>
+                        </div>*@
+                </div>
+            }
         </div>
     </div>
 
@@ -60,24 +66,26 @@
         <p></p>
 
         <div class="additional_images">
-                <div class="images">
-                    @foreach (var img in Model.AdditionalImagesLink)
-                    {
-                        <img src="@img" onmouseover="showAddtImage('@img')" onmouseout="showAddtImage('@Model.MainImageLink')">
-                    }
-                </div>
+            <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            <div class="images">
+                @foreach (var img in Model.AdditionalImagesLink)
+                {
+                    <img src="@img" onmouseover="showAddtImage('@img')" onmouseout="showAddtImage('@Model.MainImageLink')">
+                }
             </div>
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+        </div>
 
         <div class="description" id="show_description">
             <p>@Model.Description</p>
             <h6>Контакты</h6>
             <div class="phone">
                 <i class="fa fa-phone" aria-hidden="true"></i>
-                <span>@Model.Phone</span>
+                <span>8-916-1616146</span>
             </div>
             <div class="email">
                 <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                <span>@Model.Email</span>
+                <span>golovinskiy-rf@mail.ru</span>
             </div>
         </div>
 
@@ -87,3 +95,4 @@
         </div>
     </div>
 </div>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
