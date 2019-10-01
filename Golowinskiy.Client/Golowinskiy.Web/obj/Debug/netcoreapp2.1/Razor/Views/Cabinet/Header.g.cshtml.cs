@@ -59,7 +59,7 @@ using Golowinskiy.Web.Models;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(50, 66, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "ca7be4bbedd64a4d887613619e614e61", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "b23a98d0bf584785994e6e244ba6ea20", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -98,7 +98,7 @@ WriteAttributeValue("", 190, Model.UserId, 190, 13, false);
             WriteLiteral("</span>\r\n            </span>\r\n        </div>\r\n        <div class=\"cabinet-user_item dropdown-menu\" aria-labelledby=\"dropdownMenu\" id=\"logMenu\">\r\n            ");
             EndContext();
             BeginContext(628, 245, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "464dcc633f504406ac323d4254204ba0", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "887867254f0447dea45deffdeabed5ea", async() => {
                 BeginContext(685, 184, true);
                 WriteLiteral("\r\n                <span class=\"dropdown-item\" id=\"exitSpan\">\r\n                    <i class=\"fa fa-power-off icon\"></i>\r\n                    Выйти\r\n                </span>\r\n            ");
                 EndContext();
