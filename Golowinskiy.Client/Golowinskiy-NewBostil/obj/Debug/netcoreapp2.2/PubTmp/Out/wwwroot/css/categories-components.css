@@ -1,0 +1,124 @@
+﻿ul.left-menu > li {
+    cursor: pointer;
+    list-style: none;
+    background: #ffffff;
+}
+
+    ul.left-menu > li.choose {
+        background: #189691;
+        /*cursor: pointer;
+        list-style: none;
+        background: #ffffff;*/
+    }
+
+
+        ul.left-menu > li.choose > a {
+            color: #ffff;
+        }
+
+ul.left-menu {
+    margin: 0px 0 0 0;
+    padding: 0;
+}
+
+ul {
+    padding: 0;
+    width: 250px;
+    position: relative;
+    border: 2px solid #189691;
+}
+@media screen and (max-width:900px){
+    ul{
+        width:100% !important;
+    }
+}
+@media screen and (max-width: 1078px) {
+    h5 {
+        border: none;
+    }
+}
+
+@media screen and (max-width: 1078px) {
+    ul#first-menu {
+        border-right: 2px solid #189691;
+        border-left: 2px solid #189691;
+    }
+}
+
+li {
+    cursor: pointer;
+    list-style: none;
+    background: #ffffff;
+}
+
+@media screen and (max-width: 1078px) {
+    li {
+        border-top: 1px solid #189691;
+        border-bottom: 1px solid #189691;
+    }
+}
+
+li > a {
+    display: block;
+    color: #000000;
+    font-size: 12px;
+    padding: 2px 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+a:focus {
+    color:#000000;
+    text-decoration: none;
+}
+
+li.active > a {
+    /*background: #189691;
+    color: #fff;*/
+    color:#000000;
+    padding-left: 5px;
+}
+
+.active > ul {
+    display: none !important;
+    position: absolute;
+    top: -2px;
+    left: 246px;
+}
+
+@media screen and (max-width: 1078px) {
+    .active > ul {
+        position: static;
+        width: 100%;
+    }
+}
+
+.text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.flex-nowrap {
+    flex-wrap: nowrap !important;
+}
+
+.flex-column {
+    flex-direction: column !important;
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+/*.choose {
+    background: #189691;
+    display: block !important;
+    position: absolute;
+    top: -2px;
+    left: 246px;
+}*/

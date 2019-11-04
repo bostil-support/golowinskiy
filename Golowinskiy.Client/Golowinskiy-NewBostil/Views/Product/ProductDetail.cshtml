@@ -1,0 +1,84 @@
+﻿@model Golowinskiy_NewBostil.Models.Product.ProductDetailViewModel
+
+<link rel="stylesheet" href="~/css/detail-page-components.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    .carousel-inner > .item > img,
+    .carousel-inner > .item > a > img {
+        width: 70%;
+        margin: auto;
+    }
+</style>
+<div id="detail-page" class="detail_product">
+    <div class="close">
+        <i class="fa fa-times" aria-hidden="true" onclick="closeWindow()"></i>
+    </div>
+    <div class="detail_product_item detail_product_item_left">
+        <div class="detail_product_item_images">
+            <div class="arrows prew">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            </div>
+            <div class="image">
+                <img src="@Model.MainImageLink" id="mainImg">
+            </div>
+            <div class="arrows next" onclick="showNextProduct()">
+                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            </div>
+        </div>
+
+        <div class="detail_product_item_main_information">
+            <div class="text">
+                <h4>@Model.ProductName</h4>
+                <p>@Model.Price руб.</p>
+            </div>
+
+            @if (ViewBag.IsChange)
+            { 
+                <div class="change">
+                    <div class="edit" onclick="window.location.href='../Product/GetEditProductView?id=@Model.Id'">
+                        <span>Редактировать</span>
+                    </div>
+
+                    <div class="delete" onclick="deleteProduct(@Model.Id)">
+                        <span>Удалить</span>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="detail_product_item detail_product_item_right">
+        @if (Model.AdditionalImagesLink == null)
+        {
+            <div class="additional_images">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                <div class="images">
+                    @foreach (var img in Model.AdditionalImagesLink)
+                    {
+                        <img src="@img" onmouseover="showAddtImage('@img')" onmouseout="showAddtImage('@Model.MainImageLink')">
+                    }
+                </div>
+                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            </div>
+        }
+
+        <div class="description" id="show_description">
+            <p>@Model.Description</p>
+            <h6>Контакты</h6>
+            <div class="phone">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                <span>8-916-1616146</span>
+            </div>
+            <div class="email">
+                <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                <span>golovinskiy-rf@mail.ru</span>
+            </div>
+        </div>
+
+        <div class="application">
+            <img src="~/images/app1.png">
+            <img src="~/images/app2.png">
+        </div>
+    </div>
+</div>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>

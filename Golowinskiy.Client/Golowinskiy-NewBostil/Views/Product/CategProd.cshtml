@@ -1,0 +1,27 @@
+﻿@model List<Golowinskiy_NewBostil.Models.Product.ProductCategoryViewModel>
+
+<link rel="stylesheet" href="~/css/products-components.css">
+<div class="showSpinner" id="spinProd">
+    <i class="fa fa-spinner fa-spin"></i>
+</div>
+<div id="selectedCategory">
+    <div id="breadcrumbs" class="breadcrumbs_container">
+    </div>
+    <div class="products_list">
+        @foreach (var product in Model)
+        {
+            <input type="hidden" value="@product.Id" />
+            <div class="products_list_item" onclick="showDetails(this, '@product.Id')">
+                <div class="products_list_item_main">
+                    <img src="@product.MainImageLink">
+                </div>
+                <div class="products_list_item_footer">
+                    <h4>@product.Name</h4>
+                    <div class="price">
+                        <p>@product.Price руб.</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

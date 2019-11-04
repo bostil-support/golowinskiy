@@ -1,0 +1,34 @@
+﻿@model List<Golowinskiy_NewBostil.Models.Product.ProductCategoryViewModel>
+
+@{
+    ViewData["Title"] = "UserProducts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="~/css/admin.css">
+<div class="showSpinner">
+    <i class="fa fa-spinner fa-spin"></i>
+</div>
+<div class="dropdownULUser">
+    <h4><i class="fa fa-user" aria-hidden="true"></i> @ViewBag.Username, всего объявлений @Model.Count</h4>
+    <div class="products_list">
+        @foreach (var product in Model)
+        {
+            <input type="hidden" value="@product.Id" />
+            <div class="products_list_item" onclick="showDetails(this, '@product.Id')">
+                <div class="products_list_item_main">
+                    <img src="@product.MainImageLink">
+                </div>
+                <div class="products_list_item_footer">
+                    <h4>@product.Name</h4>
+                    <div class="price">
+                        <p>@product.Price руб.</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<script src="~/js/admin.js"></script>
+

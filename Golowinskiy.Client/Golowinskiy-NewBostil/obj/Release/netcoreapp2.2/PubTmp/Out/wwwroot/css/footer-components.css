@@ -1,0 +1,132 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+footer {
+    background: #127387;
+    opacity: 0.9;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    height: 65px;
+}
+
+
+.footer_list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 15px 8px;
+    height: 65px;
+    line-height: 0.8;
+    align-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 430px) {
+    .footer_list {
+       
+    }
+}
+
+@media screen and (max-width:330px) {
+    .footer_list_item {
+        color: #ffffff;
+        text-align: right;
+        font-size: 10px;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer_list_item_right {
+        color: #ffffff;
+        text-align: right;
+        font-size: 10px;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer_list {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 5px;
+        padding: 0;
+        height: 100%;
+        line-height: 0.8;
+        align-content: center;
+        align-items: center;
+    }
+
+    @media screen and (min-width:312px) and (max-width:336px) {
+        .footer_list {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+           
+            padding: 0;
+            height: 100%;
+            line-height: 0.8;
+            align-content: center;
+            align-items: center;
+        }
+
+        .footer_list_item {
+            color: #ffffff;
+            font-size: 12px;
+            height: 100%;
+            line-height: 0.2;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+        }
+
+        .footer_list_item_right {
+            color: #ffffff;
+            text-align: right;
+            font-size: 12px;
+            height: 100%;
+            line-height: 0.2;
+        }
+    }
+
+    p {
+        font-size: 14px;
+    }
+}
+
+.footer_list_item {
+    color: #ffffff;
+    font-size: 16px;
+    height: 100%;
+    line-height: 0.2;
+}
+
+.footer_list_item_right {
+    color: #ffffff;
+    text-align: right;
+    font-size: 16px;
+    height: 100%;
+    line-height: 0.2;
+}
