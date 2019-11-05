@@ -182,6 +182,7 @@ function categoryClick(li, categoryId, event) {
 
 function categoryClickSuccess(data) {
     $('#categories').hide();
+    $('.ps-widget__content').remove();
     $('.middle').empty();
     $('.middle').append(data);
 
@@ -246,8 +247,20 @@ function LocationAddProduct() {
 }
 
 function goToCategory(categoryId) {
+    let spinner = document.getElementsByClassName('showSpinner')[0];
+    spinner.style.display = 'block';
+
     localStorage.setItem('id', categoryId);
-    window.location.href = '../Home/Index';  
+    $('#categories').show();
+    $('.middle').empty();
+
+    $.ajax({
+        type: "GET",
+        url: "/Category/GetNotNullCategories",
+        success: this.categoriesSuccess
+    });
+
+    spinner.style.display = 'none';
 }
 
 function showDetails(choosenDiv, id) {

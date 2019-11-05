@@ -11,7 +11,7 @@ namespace Golowinskiy_NewBostil.Controllers
     public class HomeController : Controller
     {
         public IActionResult Index()
-        {
+        { 
             return View();
         }
 

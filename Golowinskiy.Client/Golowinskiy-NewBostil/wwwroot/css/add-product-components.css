@@ -140,10 +140,7 @@ section.advertisement > .btn {
 }
 
     .upload > img {
-        max-width: 100%;
-        width: auto !important;
-     
-        max-height: 70px;
+   
         position: absolute;
         left: 0;
         right: 0;
@@ -204,10 +201,7 @@ section.advertisement > .other_fields > p {
 
         .upload-images > div > img {
             background-size: contain;
-            max-width: 100%;
-            width: auto;
-            height: 70px;
-            max-height: 70px;
+
             vertical-align: middle;
             border-style: none;
         }

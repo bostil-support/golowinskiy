@@ -172,17 +172,17 @@
                             <input type="file" id="mainImage" onchange="attachMainImage(this)">
                             @if (ViewBag.IsEdit == false)
                             {
-                                   <img id="mainImg" style="width:100px; height:70px">
+                                   <img id="mainImg" >
                             }
                             else
                             {
                                 @if (Model.MainImageLink.Contains("noimage.png"))
                                 {
-                                    <img id="mainImg" style="width:100px; height:70px" alt="">
+                                    <img id="mainImg" alt="">
                                 }
                                 else
                                 {
-                                    <img id="mainImg" src="@Model.MainImageLink" style="width:100px; height:70px" alt="">
+                                    <img id="mainImg" src="@Model.MainImageLink"  alt="">
                                 }
                             }
                             <i class="fa fa-upload arrow" aria-hidden="true"></i>
@@ -211,7 +211,7 @@
                             {
                                 <div class="upload btn-file" id="additional-div-img1">
                                     <input id="additionalImage1" type="file" onchange="attachAdditImage(this)" disabled>
-                                    <img id="addtImg1" class="upload-add" style="width:100px; height:70px" alt="">
+                                    <img id="addtImg1" class="upload-add"  alt="">
                                     <i class="fa fa-upload arrow disabled" aria-hidden="true"></i>
                                 </div>
                                 <i class="fa fa-times delete" id="removeImg1" style="visibility:hidden" onclick="removeAdditionalImage(this, 1)"></i>
@@ -223,7 +223,7 @@
                                 {
                                     <div class="upload btn-file" id="@("additional-div-img"+ i)">
                                         <input id="@("additionalImage" + i)" type="file">
-                                        <img id="@("addtImg"+ i)" style="width:100px; height:70px" alt="" src="@item.Value">
+                                        <img id="@("addtImg"+ i)"  alt="" src="@item.Value">
                                         <i class="fa fa-upload arrow" aria-hidden="true"></i>
                                     </div>
                                     <i class="fa fa-times delete" id="@("removeImg" + i)" onclick="removeExistAdditionalImage(this, @i, @item.Key)"></i>
@@ -231,7 +231,7 @@
                                 }
                                 <div class="upload btn-file" id="@("additional-div-img" + i)">
                                     <input id="@("additionalImage" + i)" type="file" onchange="attachAdditImage(this)">
-                                    <img id="@("addtImg" + i)" style="width:100px; height:70px" alt="">
+                                    <img id="@("addtImg" + i)"  alt="">
                                     <i class="fa fa-upload arrow" aria-hidden="true"></i>
                                 </div>
                                 <i class="fa fa-times delete" id="@("removeImg" + i)" onclick="removeAdditionalImage(this, @i)" style="visibility:hidden"></i>

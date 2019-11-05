@@ -18,13 +18,16 @@ function categoriesSuccess(data) {
         li.classList.add('choose');
         li.classList.remove('active');
 
-        if (li.childNodes[1] !== null) {
+        if (li.childNodes[1] !== null && $(window).width() >= 900) {
             li.childNodes[1].style.display = 'block !important';
             li.childNodes[1].style.position = 'absolute';
             li.childNodes[1].style.top = '-2px';
             li.childNodes[1].style.left = '246px';
             li.parentNode.style.overflow = 'visible';
+        } else {
+            checkChoosenCategory(li.parentNode);
         }
+
         li = li.parentNode.parentNode;
         while (li.id > 0) {
             showSubCategories(li, event);
@@ -43,6 +46,8 @@ function attachMainImage(input) {
 
         reader.onload = function (e) {
             document.getElementById('mainImg').src = e.target.result;
+            document.getElementById('mainImg').style.width = '100%';
+            document.getElementById('mainImg').style.height = '100%';
         };
 
         reader.readAsDataURL(input.files[0]);
@@ -74,6 +79,8 @@ function attachAdditImage(input) {
 
             let countChildDivs = element.getElementsByClassName('upload').length;
             document.getElementById('addtImg' + countChildDivs).src = e.target.result;
+            document.getElementById('addtImg' + countChildDivs).style.width = '100%';
+            document.getElementById('addtImg' + countChildDivs).style.height = '100%';
 
             let array = document.getElementsByClassName('delete');
             array[array.length - 1].style["visibility"] = "visible";
@@ -98,6 +105,9 @@ function removeMainImage() {
     mainImg.removeAttribute('src');
     mainImg.value = '';
     mainImg.style = '';
+
+    document.getElementById('mainImage').value = '';
+
     document.getElementById('remove-main').style.visibility = 'hidden';
 
     let element = document.getElementById("addt-imgs");
@@ -186,6 +196,7 @@ function saveProductSuccess() {
     let descr = document.getElementById('TDescription');
     descr.value = "";
     removeMainImage();
+    removeAddtImg();
 
     document.getElementById('btn-sbmt').style.opacity = 0.65;
     document.getElementById('btn-sbmt').style.cursor = 'default';
@@ -194,6 +205,23 @@ function saveProductSuccess() {
     window.setTimeout(() => {
         document.getElementsByClassName('alert')[0].textContent = '';
     }, 10000);
+}
+
+function removeAddtImg() {
+    let addtDiv = document.getElementById('addt-imgs');
+    let countImgs = addtDiv.getElementsByClassName('upload').length;
+
+    for (let i = 1; i < countImgs; i++) {
+        let removeDiv = document.getElementById('additional-div-img' + i);
+        let removeCross = document.getElementById('removeImg' + i);
+        removeDiv.remove();
+        removeCross.remove();
+    }
+
+    document.getElementById('additional-div-img' + countImgs).id = 'additional-div-img1';
+    document.getElementById('additionalImage' + countImgs).id = 'additionalImage1';
+    document.getElementById('addtImg' + countImgs).id = 'addtImg1';
+    document.getElementById('removeImg' + countImgs).id = 'removeImg1';
 }
 
 function editProduct() {
@@ -323,7 +351,9 @@ function showSubCategories(li, event) {
            
         }
         else {
-            li.childNodes[1].style.position = 'unset';
+            //li.childNodes[1].style.position = 'unset';
+            let widget = parent.querySelectorAll(".active");
+            widget.style.display = "none";
         }
     }
 
@@ -348,8 +378,15 @@ function checkChoosenCategory(parent) {
 
     if (x.length !== 0) {
         let ul = x[0].childNodes[1];
-        checkChoosenCategory(ul);
+        if (ul !== undefined) {
+            checkChoosenCategory(ul);
+        }
     }
+
+    //if (x.length !== 0) {
+    //    let ul = x[0].childNodes[1];
+    //    checkChoosenCategory(ul);
+    //}
 
     x.forEach(node => node.className = node.className.replace('choose', 'active'));
 }
@@ -358,6 +395,7 @@ function showMobileSubCategories(li) {
     let parent = li.parentNode;
 
     if (li.classList.contains('choose')) {
+        checkChoosenCategory(parent);
         li.classList.remove('choose');
         li.classList.add('active');
 
@@ -399,7 +437,6 @@ function categoryClick(li, categoryId, event) {
 }
 
 function goToCategory(categoryId) {
-    $('#breadcrumbs').empty();
     $('#breadcrumbs').empty();
     $('.ps-widget__content').empty();
     $('#categories').show();
