@@ -9,9 +9,11 @@ using Microsoft.AspNetCore.Http;
 using Golowinskiy_NewBostil.Context;
 using System.Collections.Generic;
 using System.Linq;
+using System.Drawing;
 using Microsoft.EntityFrameworkCore;
 using Golowinskiy_NewBostil.Models.Category;
 using Microsoft.AspNetCore.Hosting;
+using System.Drawing.Imaging;
 
 namespace Golowinskiy_NewBostil.Controllers
 {

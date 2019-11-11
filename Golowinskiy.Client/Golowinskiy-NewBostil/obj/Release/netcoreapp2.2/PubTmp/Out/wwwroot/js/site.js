@@ -119,13 +119,18 @@ function checkChoosenCategory(parent) {
 }
 
 function showMobileSubCategories(li) {
-    let parent = li.parentNode;
+    let products = document.getElementsByClassName('products_list')[0];
+    if (products !== undefined) {
+        products.remove();
+    }
 
+    let parent = li.parentNode;
+   
     if (li.classList.contains('choose')) {
         checkChoosenCategory(parent);
         li.classList.remove('choose');
         li.classList.add('active');
-
+           
         let widget = $(parent).children('.active');
         $(widget).css('display', 'block');
     } else {
@@ -182,7 +187,9 @@ function categoryClick(li, categoryId, event) {
 
 function categoryClickSuccess(data) {
     $('#categories').hide();
-    $('.ps-widget__content').remove();
+    if ($(window).width() >= 900) {
+        $('.ps-widget__content').remove();
+    }
     $('.middle').empty();
     $('.middle').append(data);
 

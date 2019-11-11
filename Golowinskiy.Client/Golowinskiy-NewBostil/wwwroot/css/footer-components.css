@@ -27,17 +27,31 @@ footer {
     align-items: center;
 }
 
-@media screen and (max-width: 430px) {
-    .footer_list {
-       
+@media screen and (max-width: 550px) {
+    .footer_list_item > p {
+        font-size: 12px !important;
+    }
+
+    .footer_list_item_right > p {
+        font-size: 12px !important;
     }
 }
+@media screen and (max-width: 700px) {
+    .footer_list_item > p {
+        font-size: 14px !important;
+    }
+
+    .footer_list_item_right > p {
+        font-size: 14px !important;
+    }
+}
+
 
 @media screen and (max-width:330px) {
     .footer_list_item {
         color: #ffffff;
         text-align: right;
-        font-size: 10px;
+      
         height: 100%;
         margin: 0;
         padding: 0;
@@ -69,14 +83,14 @@ footer {
         justify-content: space-between;
         align-items: center;
         max-width: 1200px;
-        margin: 5px;
+       
         padding: 0;
         height: 100%;
         line-height: 0.8;
         align-content: center;
         align-items: center;
     }
-
+    
     @media screen and (min-width:312px) and (max-width:336px) {
         .footer_list {
             display: flex;
@@ -93,7 +107,7 @@ footer {
 
         .footer_list_item {
             color: #ffffff;
-            font-size: 12px;
+            
             height: 100%;
             line-height: 0.2;
             display: flex;
@@ -101,14 +115,20 @@ footer {
             align-content: center;
             align-items: center;
         }
-
+        .footer_list_item>p{
+            font-size:12px !important;
+        }
+        .footer_list_item_right > p {
+            font-size: 12px !important;
+        }
         .footer_list_item_right {
             color: #ffffff;
             text-align: right;
-            font-size: 12px;
+           
             height: 100%;
             line-height: 0.2;
         }
+           
     }
 
     p {
@@ -118,7 +138,7 @@ footer {
 
 .footer_list_item {
     color: #ffffff;
-    font-size: 16px;
+    font-size: 14px;
     height: 100%;
     line-height: 0.2;
 }
@@ -126,7 +146,7 @@ footer {
 .footer_list_item_right {
     color: #ffffff;
     text-align: right;
-    font-size: 16px;
+    font-size: 14px;
     height: 100%;
     line-height: 0.2;
 }
