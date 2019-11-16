@@ -9,6 +9,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <_PublishTargetUrl>C:\inetpub\GolowinskiyNew</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
+    <File Include="wwwroot/js/auth.js">
+      <publishTime>11/16/2019 11:02:17</publishTime>
+    </File>
     <File Include="wwwroot/js/product.js">
       <publishTime>10/28/2019 11:57:39</publishTime>
     </File>

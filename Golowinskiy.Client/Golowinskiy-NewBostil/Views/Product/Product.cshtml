@@ -182,7 +182,7 @@
                                 }
                                 else
                                 {
-                                    <img id="mainImg" src="@Model.MainImageLink"  alt="">
+                                    <img id="mainImg" src="@Model.MainImageLink"  alt="" style="width:100%; height:100%">
                                 }
                             }
                             <i class="fa fa-upload arrow" aria-hidden="true"></i>
@@ -223,7 +223,7 @@
                                 {
                                     <div class="upload btn-file" id="@("additional-div-img"+ i)">
                                         <input id="@("additionalImage" + i)" type="file">
-                                        <img id="@("addtImg"+ i)"  alt="" src="@item.Value">
+                                        <img id="@("addtImg"+ i)"  alt="" src="@item.Value" style="width:100%; height:100%">
                                         <i class="fa fa-upload arrow" aria-hidden="true"></i>
                                     </div>
                                     <i class="fa fa-times delete" id="@("removeImg" + i)" onclick="removeExistAdditionalImage(this, @i, @item.Key)"></i>

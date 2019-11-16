@@ -839,6 +839,7 @@ li.active > a {
         margin-left: 0%;
     }
 }
-    
 
-    
+.product-count {
+    display: none;
+}

@@ -8,6 +8,10 @@ window.onload = function () {
         url: "/Category/GetAllCategories",
         success: categoriesSuccess
     });
+
+    if (document.getElementById('mainImg').src === '') {
+        document.getElementById('remove-main').style.display = 'none';
+    }
 };
 
 function categoriesSuccess(data) {
@@ -100,8 +104,10 @@ function attachAdditImage(input) {
     }
 }
 
+var mainImgSrc;
 function removeMainImage() {
     let mainImg = document.getElementById('mainImg');
+    mainImgSrc = mainImg.src;
     mainImg.removeAttribute('src');
     mainImg.value = '';
     mainImg.style = '';

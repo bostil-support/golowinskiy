@@ -13,12 +13,18 @@ namespace Golowinskiy_NewBostil.Controllers
 {
     public class CabinetController : Controller
     {
+        private readonly UserManager<User> _userManager;
+        public CabinetController(UserManager<User> userManager)
+        {
+            _userManager = userManager;
+        }
+
         [HttpGet]
         public IActionResult Cabinet()
         {
             bool isAuthenticate = (HttpContext.User != null)
                            && HttpContext.User.Identity.IsAuthenticated;
-
+           
             if (isAuthenticate)
             {
                 return View();
@@ -31,10 +37,11 @@ namespace Golowinskiy_NewBostil.Controllers
 
         [HttpGet]
         public IActionResult Header()
-        {  
+        {
             var model = new CabinetViewModel();
-            model.UserName = HttpContext.User.Identity.Name;
             model.UserId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = _userManager.FindByIdAsync(model.UserId);
+            model.UserName = user.Result.DisplayName;
             return PartialView(model);
         }
     }

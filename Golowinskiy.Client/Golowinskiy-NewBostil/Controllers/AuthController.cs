@@ -86,9 +86,17 @@ namespace Golowinskiy_NewBostil.Controllers
                 User user = new User
                 {
                     UserName = model.UserName,
+                    DisplayName = model.UserName,
                     Email = model.Email,
                     PhoneNumber = model.PhoneNumber
                 };
+
+                var userName = await _userManager.FindByNameAsync(model.UserName);
+
+                if (userName != null)
+                {
+                    user.UserName = model.UserName + Guid.NewGuid();
+                }
 
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

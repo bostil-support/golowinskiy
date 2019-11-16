@@ -1,22 +1,20 @@
 ﻿<h2>Восстановление пароля</h2>
-@*<div class="showSpinner" *ngIf="showSpinner">
+<div class="showSpinner" id="spinLogin">
     <i class="fa fa-spinner fa-spin"></i>
 </div>
-<div class="showMessage" *ngIf="message.text">
-    <div class="alert alert-{{message.type}}">
-        {{ message.text }}
+<div class="showMessage">
+    <div class="alert">
     </div>
-</div>*@
+</div>
 <form>
     <div class="form-group">
-        <input type="text" placeholder="Ваш мобильный номер" id="Mobile" onkeypress="return /[+,0-9.]/i.test(event.key)">
+        <input type="text" placeholder="Введите email" id="Email">
         <span class="error-msg">
-            <span>Заполните моб.номер</span>
-            <span>Введите корректный моб.номер</span>
+            <span>Введите корректный email</span>
         </span>
     </div>
     <div class="form-group">
-        <button class="btn btn-block btn-primary" type="submit">
+        <button class="btn btn-block btn-primary" type="button" onclick="RecoveryPassword()">
             Восстановить
         </button>
     </div>

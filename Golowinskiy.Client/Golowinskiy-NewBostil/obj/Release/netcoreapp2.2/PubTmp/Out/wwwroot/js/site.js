@@ -282,9 +282,17 @@ function showDetails(choosenDiv, id) {
         let parent = child.parentNode;
         parent.removeChild(child);
     }
+
+    let url = "/Product/ProductDetail?id=" + id + "&isChange=";
+    if (window.location.href.includes('Cabinet')) {
+        url +='true';
+    } else {
+        url += 'false';
+    }
+
     $.ajax({
         type: "GET",
-        url: "/Product/ProductDetail?id=" + id,
+        url: url,
         success: function (data) {
             $('.middle').append(data);
             if (document.getElementsByClassName('products_list_item').length > 1) {
@@ -336,7 +344,7 @@ function deleteProduct(id) {
 function deleteProducSuccess() {
     closeWindow();
     $('.middle').empty();
-   // window.location.href = '../Product/GetProductsByCategory?categoryId=' + chooseCategoryId;
+
     $.ajax({
         type: 'GET',
         url: '/Product/GetProductsByCategory?categoryId=' + chooseCategoryId,

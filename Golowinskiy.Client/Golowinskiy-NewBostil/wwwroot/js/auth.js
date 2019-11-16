@@ -137,6 +137,35 @@ function Registration() {
     });
 }
 
+function RecoveryPassword() {
+    let spinner = document.getElementsByClassName('showSpinner')[0];
+    spinner.style.display = 'block';
+    let showMessage = document.getElementsByClassName('showMessage')[0];
+    let alert = document.getElementsByClassName('alert')[0];
+
+    let email = document.getElementById("Email").value;
+
+    $.ajax({
+        type: 'POST',
+        url: '/Password/RecoveryPassword',
+        data: { Email: email },
+        success: function (data) {
+            spinner.style.display = 'none';
+            showMessage.style.display = 'block';
+            alert.classList.remove('alert-danger');
+            alert.classList.add('alert-success');
+            alert.innerHTML = data;
+        },
+        error: function (jqXHR, exception) {
+            spinner.style.display = 'none';
+            showMessage.style.display = 'block';
+            alert.classList.remove('alert-success');
+            alert.classList.add('alert-danger');
+            alert.innerHTML = jqXHR.responseText;
+        }
+    });
+}
+
 function CloseModalWindow() {
     let modal = document.getElementById("myModal");
     modal.style.display = "none";

@@ -1,4 +1,5 @@
 ﻿@model Golowinskiy_NewBostil.Models.Product.ProductDetailViewModel
+@using System.Web
 
 <link rel="stylesheet" href="~/css/detail-page-components.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -18,7 +19,7 @@
             <div class="arrows prew">
                 <i class="fa fa-chevron-left" aria-hidden="true"></i>
             </div>
-            <div class="image">
+            <div class="image" style="margin:auto">
                 <img src="@Model.MainImageLink" id="mainImg">
             </div>
             <div class="arrows next" onclick="showNextProduct()">
@@ -29,9 +30,9 @@
         <div class="detail_product_item_main_information">
             <div class="text">
                 <h4>@Model.ProductName</h4>
-                <p>@Model.Price руб.</p>
+                <p>@Model.Price руб. </p>
             </div>
-
+            
             @if (ViewBag.IsChange)
             { 
                 <div class="change">
@@ -48,7 +49,7 @@
     </div>
 
     <div class="detail_product_item detail_product_item_right">
-        @if (Model.AdditionalImagesLink == null)
+        @if (Model.AdditionalImagesLink.Count > 0)
         {
             <div class="additional_images">
                 <i class="fa fa-chevron-left" aria-hidden="true"></i>

@@ -33,8 +33,8 @@ namespace Golowinskiy_NewBostil.TagHelpers
                     AddCategory(item.ListInnerCat, output);
                 }
                 else
-                {                   
-                    output.Content.AppendHtml($@"<li class='menu-item active' id='{item.Id}' onclick='categoryClick(this, {item.Id}, event)'><a>{item.Name} ({item.Count})</a>");
+                {
+                    output.Content.AppendHtml($@"<li class='menu-item active' id='{item.Id}' onclick='categoryClick(this, {item.Id}, event)'><a>{item.Name} <span class='product-count'>({item.Count})</span></a>");
                 }
 
                 output.Content.AppendHtml($@"</li>");

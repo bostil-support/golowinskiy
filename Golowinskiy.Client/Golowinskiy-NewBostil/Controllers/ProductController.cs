@@ -43,7 +43,7 @@ namespace Golowinskiy_NewBostil.Controllers
                 EditProductViewModel model = new EditProductViewModel()
                 {
                     UserId = user.Id,
-                    UserName = user.UserName,
+                    UserName = user.DisplayName,
                     Email = user.Email
                 };
 
@@ -91,7 +91,7 @@ namespace Golowinskiy_NewBostil.Controllers
 
             if (product.AdditionalImages != null)
             {               
-                SaveAddtImages(product.AdditionalImages, lastProduct);
+                await SaveAddtImages(product.AdditionalImages, lastProduct);
             }
 
             return Ok();
@@ -111,12 +111,12 @@ namespace Golowinskiy_NewBostil.Controllers
             await image.CopyToAsync(stream);
             await stream.FlushAsync();
 
-            currentProduct.MainImage = path.Remove(0, 7).Replace('\\','/') + '/'  + image.FileName;
+            currentProduct.MainImage = "/images/products/" + currentProduct.Id.ToString() + "/" + image.FileName;
             db.Products.Update(currentProduct);
             db.SaveChanges();
         }
 
-        public void SaveAddtImages(List<IFormFile> additionalImages, Product currentProduct)
+        public async Task SaveAddtImages(List<IFormFile> additionalImages, Product currentProduct)
         {
             int productId = currentProduct.Id;
             var webRoot = _env.ContentRootPath;
@@ -130,13 +130,13 @@ namespace Golowinskiy_NewBostil.Controllers
             foreach(var img in additionalImages)
             {
                 var stream = new FileStream(Path.Combine(path, img.FileName), FileMode.Create);
-                img.CopyToAsync(stream);
+                await img.CopyToAsync(stream);
 
                 var newImage = new AdditionalImage()
                 {
                     ProductId = productId,
-                    ImageLink = path.Remove(0, 7).Replace('\\', '/') + '/' + img.FileName
-                };
+                    ImageLink = "/images/products/" + currentProduct.Id.ToString() + "/additionalImages/" + img.FileName
+            };
 
                 addtImages.Add(newImage);
             }
@@ -190,10 +190,9 @@ namespace Golowinskiy_NewBostil.Controllers
             return categoryNames;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> ProductDetail(int id)
+       [HttpGet]
+        public async Task<IActionResult> ProductDetail(int id, bool isChange)
         {
-            var users = db.Users.ToList();
             var currentUser = await _userManager.GetUserAsync(User);
             var product = await db.Products.Include(x => x.AdditionalImages).FirstOrDefaultAsync(x => x.Id == id);
             
@@ -213,17 +212,26 @@ namespace Golowinskiy_NewBostil.Controllers
                 AdditionalImagesLink = addtImgs
             };
 
-            if(currentUser!=null && product.UserId == currentUser.Id)
+            if (currentUser != null)
             {
-                ViewBag.IsChange = true;
+                if (product.UserId == currentUser.Id && isChange)
+                {
+                    ViewBag.isChange = true;
+                }
+                else
+                {
+                    ViewBag.isChange = false;
+                }
             }
             else
             {
-                ViewBag.IsChange = false;
+                ViewBag.isChange = false;
             }
 
             return PartialView(model);
-        }
+        } 
+
+
 
         [HttpGet]
         public async Task<IActionResult> GetEditProductView(int id)
@@ -245,7 +253,7 @@ namespace Golowinskiy_NewBostil.Controllers
             {
                 Id = product.Id,
                 CategoryId = product.CategoryId,
-                UserName = user.UserName,
+                UserName = user.DisplayName,
                 Email = user.Email,
                 ProductName = product.ProductName,
                 Description = product.Description,
@@ -286,12 +294,18 @@ namespace Golowinskiy_NewBostil.Controllers
 
             if(model.MainImage != null)
             {
-                SaveMainImage(model.MainImage, product);
+                await SaveMainImage(model.MainImage, product);     
             }
-            
+            else 
+            {             
+                product.MainImage = "/images/noimage.png";
+                db.Products.Update(product);
+                db.SaveChanges();
+            }
+
             if (model.AdditionalImages != null)
             {
-                SaveAddtImages(model.AdditionalImages, product);
+                await SaveAddtImages(model.AdditionalImages, product);
             }
 
             return Ok();
@@ -308,6 +322,13 @@ namespace Golowinskiy_NewBostil.Controllers
 
             db.Products.Remove(product);
             await db.SaveChangesAsync();
+
+
+            if (Directory.Exists(product.MainImage) && product.MainImage != "/images/noimage.png")
+            {
+                Directory.Delete(product.MainImage);
+            }
+
 
             return NoContent();
         }
