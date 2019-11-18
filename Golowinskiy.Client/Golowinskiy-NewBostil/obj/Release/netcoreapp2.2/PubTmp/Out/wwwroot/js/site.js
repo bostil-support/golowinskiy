@@ -38,7 +38,7 @@ function categoriesSuccess(data) {
         li.classList.add('choose');
         li.classList.remove('active');
 
-        if (li.childNodes !== null && $(window).width() >= 900) {
+        if (li.childNodes[1] !== undefined && $(window).width() >= 900) {
             li.childNodes[1].style.display = 'block !important';
             li.childNodes[1].style.position = 'absolute';
             li.childNodes[1].style.top = '-2px';
@@ -320,7 +320,7 @@ function showAddtImage(src) {
     mainImg.src = src;
 }
 
-function showNextProduct(currProd) {
+function showNextProduct() {
     let choosenDiv = document.getElementsByClassName('choose')[0];
     let arrProdDivs = Array.from(document.getElementsByClassName('products_list_item'));
     let index = arrProdDivs.indexOf(choosenDiv);
@@ -332,6 +332,20 @@ function showNextProduct(currProd) {
         arrProdDivs[0].click();
     }
 }
+
+function showPrevProduct() {
+    let choosenDiv = document.getElementsByClassName('choose')[0];
+    let arrProdDivs = Array.from(document.getElementsByClassName('products_list_item'));
+    let index = arrProdDivs.indexOf(choosenDiv);
+
+    choosenDiv.classList.remove('choose');
+    if (index !== 0) {
+        arrProdDivs[index - 1].click();
+    } else {
+        arrProdDivs[arrProdDivs.length - 1].click();
+    }
+}
+
 
 function deleteProduct(id) {
     $.ajax({

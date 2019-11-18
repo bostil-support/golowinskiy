@@ -22,7 +22,7 @@ function categoriesSuccess(data) {
         li.classList.add('choose');
         li.classList.remove('active');
 
-        if (li.childNodes[1] !== null && $(window).width() >= 900) {
+        if (li.childNodes[1] !== undefined && $(window).width() >= 900) {
             li.childNodes[1].style.display = 'block !important';
             li.childNodes[1].style.position = 'absolute';
             li.childNodes[1].style.top = '-2px';
