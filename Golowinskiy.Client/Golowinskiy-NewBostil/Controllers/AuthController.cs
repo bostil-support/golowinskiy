@@ -88,7 +88,8 @@ namespace Golowinskiy_NewBostil.Controllers
                     UserName = model.UserName,
                     DisplayName = model.UserName,
                     Email = model.Email,
-                    PhoneNumber = model.PhoneNumber
+                    PhoneNumber = model.PhoneNumber,
+                    DisplayPassword = model.Password
                 };
 
                 var userName = await _userManager.FindByNameAsync(model.UserName);

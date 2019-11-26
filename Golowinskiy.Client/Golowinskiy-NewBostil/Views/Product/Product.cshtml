@@ -165,7 +165,7 @@
             <div class="mb-3">
                 <div class="row justify-content-md-center">
                     <div class="col-lg-4">
-                        <label>Основная фотография *</label>
+                        <label>Основная фотография</label>
                     </div>
                     <div class="col-lg-4">
                         <div class="upload btn-file" id="DMP">
@@ -207,7 +207,7 @@
                     </div>
                     <div class="col-lg-4 col-xs-12">
                         <div class="upload-images" id="addt-imgs">
-                            @if (ViewBag.IsEdit == false || Model.AdditionalImageLinks == null)
+                            @if (Model.AdditionalImageLinks == null || Model.AdditionalImageLinks.Count == 0 || ViewBag.IsEdit == false )
                             {
                                 <div class="upload btn-file" id="additional-div-img1">
                                     <input id="additionalImage1" type="file" onchange="attachAdditImage(this)" disabled>

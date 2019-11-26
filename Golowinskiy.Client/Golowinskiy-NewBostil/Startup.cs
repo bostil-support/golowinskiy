@@ -49,7 +49,7 @@ namespace Golowinskiy_NewBostil
 
             services.ConfigureApplicationCookie(options =>
             {
-                options.ExpireTimeSpan = TimeSpan.FromDays(30);
+                options.Cookie.Expiration = TimeSpan.FromDays(30);
                 options.SlidingExpiration = true;
             });
             var webRoot = _env.ContentRootPath;

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Golowinskiy_NewBostil.Context;
 using Golowinskiy_NewBostil.Entities;
 using Golowinskiy_NewBostil.Models.Password;
@@ -22,19 +23,18 @@ namespace Golowinskiy_NewBostil.Controllers
         public async Task<IActionResult> RecoveryPassword(PasswordRecoveryViewModel model)
         {
             var user = await _userManager.FindByEmailAsync(model.Email);
-
             if (user == null)
             {
-                return Ok(new
+                return BadRequest(new
                 {
-                    Message = "Пользователь не найден!",
+                    Message = "Пользователь с данным email не найден!",
                     Founded = false
                 });
             }
             else
             {
                 EmailService emailService = new EmailService();
-                await emailService.SendEmailAsync(model.Email, "Востановление пароля Головинский", "Password");
+                await emailService.SendEmailAsync(model.Email, "Востановление пароля Головинский", "Ваш пароль: " +  user.DisplayPassword);
                 return Ok(new
                 {
                     Message = $"Ваш пароль отправлен на email: { model.Email }",

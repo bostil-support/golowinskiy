@@ -74,7 +74,8 @@ function Login() {
         url: '/Auth/LoginAsync',
         data: {
             PhoneNumber: mobile,
-            Password: password
+            Password: password,
+            RememberMe: true
         },
         success: function (data) {
             spinner.style.display = 'none';
@@ -154,14 +155,14 @@ function RecoveryPassword() {
             showMessage.style.display = 'block';
             alert.classList.remove('alert-danger');
             alert.classList.add('alert-success');
-            alert.innerHTML = data;
+            alert.innerHTML = data.message;
         },
         error: function (jqXHR, exception) {
             spinner.style.display = 'none';
             showMessage.style.display = 'block';
             alert.classList.remove('alert-success');
             alert.classList.add('alert-danger');
-            alert.innerHTML = jqXHR.responseText;
+            alert.innerHTML = JSON.parse(jqXHR.responseText).message;
         }
     });
 }
