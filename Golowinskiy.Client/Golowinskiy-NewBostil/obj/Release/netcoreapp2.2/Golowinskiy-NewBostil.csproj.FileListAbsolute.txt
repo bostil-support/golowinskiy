@@ -36,10 +36,10 @@ C:\Users\RSamuseu\Documents\mk\Golowinskiy-NewBostil\Golowinskiy-NewBostil\obj\R
 C:\Users\RSamuseu\Documents\mk\Golowinskiy-NewBostil\Golowinskiy-NewBostil\obj\Release\netcoreapp2.2\Razor\Views\Product\CategoryProducts.cshtml.g.cs
 C:\Users\RSamuseu\Documents\mk\Golowinskiy-NewBostil\Golowinskiy-NewBostil\obj\Release\netcoreapp2.2\Razor\Views\Product\CategProd.cshtml.g.cs
 C:\Users\RSamuseu\Documents\mk\Golowinskiy-NewBostil\Golowinskiy-NewBostil\obj\Release\netcoreapp2.2\Razor\Views\Product\Product.cshtml.g.cs
-C:\Users\RSamuseu\Documents\mk\Golowinskiy-NewBostil\Golowinskiy-NewBostil\obj\Release\netcoreapp2.2\Razor\Views\Product\ProductDetail.cshtml.g.cs
 C:\Users\RSamuseu\Documents\mk\Golowinskiy-NewBostil\Golowinskiy-NewBostil\obj\Release\netcoreapp2.2\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\RSamuseu\Documents\mk\Golowinskiy-NewBostil\Golowinskiy-NewBostil\obj\Release\netcoreapp2.2\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
 C:\Users\RSamuseu\Documents\mk\Golowinskiy-NewBostil\Golowinskiy-NewBostil\obj\Release\netcoreapp2.2\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\RSamuseu\Documents\mk\Golowinskiy-NewBostil\Golowinskiy-NewBostil\obj\Release\netcoreapp2.2\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\RSamuseu\Documents\mk\Golowinskiy-NewBostil\Golowinskiy-NewBostil\obj\Release\netcoreapp2.2\Razor\Views\_ViewImports.cshtml.g.cs
 C:\Users\RSamuseu\Documents\mk\Golowinskiy-NewBostil\Golowinskiy-NewBostil\obj\Release\netcoreapp2.2\Razor\Views\_ViewStart.cshtml.g.cs
+C:\Users\RSamuseu\Documents\mk\Golowinskiy-NewBostil\Golowinskiy-NewBostil\obj\Release\netcoreapp2.2\Razor\Views\Product\ProductsDetail.cshtml.g.cs

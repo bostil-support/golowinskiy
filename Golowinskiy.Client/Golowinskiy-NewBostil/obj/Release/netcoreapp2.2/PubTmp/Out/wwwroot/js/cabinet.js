@@ -84,17 +84,6 @@ function openLogOut() {
 
 function categoryClick(li, categoryId, event) {
     event.cancelBubble = true;
-    //if ($(window).width() <= 900) {
-    //    localStorage.setItem('categoryId', categoryId);
-    //}
-
-    //chooseCategoryId = categoryId;
-
-    //$.ajax({
-    //    type: 'GET',
-    //    url: '/Product/GetProductsByCategory?categoryId=' + categoryId,
-    //    success: categoryClickSuccess
-    //});
 
     if ($(window).width() <= 900) {
         let parent = li.parentNode;

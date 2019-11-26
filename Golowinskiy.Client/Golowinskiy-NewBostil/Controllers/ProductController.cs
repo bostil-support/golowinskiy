@@ -190,46 +190,37 @@ namespace Golowinskiy_NewBostil.Controllers
             return categoryNames;
         }
 
-       [HttpGet]
-        public async Task<IActionResult> ProductDetail(int id, bool isChange)
+        [HttpGet]
+        public async Task<IActionResult> ProductsDetail(int categoryId, bool isChange)
         {
             var currentUser = await _userManager.GetUserAsync(User);
-            var product = await db.Products.Include(x => x.AdditionalImages).FirstOrDefaultAsync(x => x.Id == id);
-            
-            List<string> addtImgs = new List<string>();
-            foreach(var img in product.AdditionalImages)
-            {
-                addtImgs.Add(img.ImageLink);
-            }
+            var products =  db.Products.Include(x => x.AdditionalImages).Where(x => x.CategoryId == categoryId);
 
-            var model = new ProductDetailViewModel()
-            {
-                Id = product.Id,
-                ProductName = product.ProductName,
-                Description = product.Description,
-                Price = product.Price,
-                MainImageLink = product.MainImage,
-                AdditionalImagesLink = addtImgs
-            };
+            var model = new List<ProductDetailViewModel>();
 
-            if (currentUser != null)
+            foreach(var prod in products)
             {
-                if (product.UserId == currentUser.Id && isChange)
+                List<string> addtImgs = new List<string>();
+                foreach (var img in prod.AdditionalImages)
                 {
-                    ViewBag.isChange = true;
+                    addtImgs.Add(img.ImageLink);
                 }
-                else
+
+                var prodModel = new ProductDetailViewModel()
                 {
-                    ViewBag.isChange = false;
-                }
-            }
-            else
-            {
-                ViewBag.isChange = false;
+                    Id = prod.Id,
+                    ProductName = prod.ProductName,
+                    Description = prod.Description,
+                    Price = prod.Price,
+                    MainImageLink = prod.MainImage,
+                    AdditionalImagesLink = addtImgs
+                };
+
+                model.Add(prodModel);
             }
 
             return PartialView(model);
-        } 
+        }
 
 
 

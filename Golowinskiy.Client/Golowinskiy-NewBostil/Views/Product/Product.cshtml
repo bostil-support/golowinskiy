@@ -127,16 +127,16 @@
             <div class="form-group">
                 <div class="row justify-content-md-center">
                     <div class="col-lg-4">
-                        <label>Описание товара, услуги *</label>
+                        <label>Описание товара, услуги</label>
                     </div>
                     <div class="col-lg-4">
                         @if (ViewBag.IsEdit == false)
                         {
-                            <textarea type="textarea" id="TDescription" onchange="checkFilledRequiredFields()"></textarea>
+                            <textarea type="textarea" id="TDescription"></textarea>
                         }
                         else
                         {
-                            <textarea type="textarea" id="TDescription" onchange="checkFilledRequiredFields()">@Model.Description</textarea>
+                            <textarea type="textarea" id="TDescription">@Model.Description</textarea>
                         }
                     </div>
                 </div>
@@ -145,18 +145,18 @@
             <div class="form-group">
                 <div class="row justify-content-md-center">
                     <div class="col-lg-4">
-                        <label>Цена *</label>
+                        <label>Цена</label>
                     </div>
                     <div class="col-lg-4">
                         @if (ViewBag.IsEdit == false)
                         {
                             <input type="text" id="TCost"
-                                   onkeypress="return /[0-9.]/i.test(event.key)" onchange="checkFilledRequiredFields()">
+                                   onkeypress="return /[0-9.]/i.test(event.key)">
                         }
                         else
                         {
                             <input type="text" id="TCost" value="@Model.Price"
-                                   onkeypress="return /[0-9.]/i.test(event.key)" onchange="checkFilledRequiredFields()">
+                                   onkeypress="return /[0-9.]/i.test(event.key)">
                         }
                     </div>
                 </div>

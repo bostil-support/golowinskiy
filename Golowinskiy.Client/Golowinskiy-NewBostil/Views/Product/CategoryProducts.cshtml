@@ -11,7 +11,7 @@
         @foreach (var product in Model)
         {
             <input type="hidden" value="@product.Id" />
-            <div class="products_list_item" onclick="showDetails(this, '@product.Id')">
+            <div class="products_list_item" onclick="getDetails(this, '@product.Id')">
                 <div class="products_list_item_main">
                     <img src="@product.MainImageLink">
                 </div>

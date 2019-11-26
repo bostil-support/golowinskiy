@@ -313,15 +313,13 @@ function checkFilledRequiredFields() {
     let isFilled = false;
 
     let name = document.getElementById('TName').value;
-    let descripton = document.getElementById('TDescription').value;
-    let price = document.getElementById('TCost').value;
 
     if ($('#categories').length) {
-        if (productCategoryId && name && descripton && price) {
+        if (productCategoryId && name) {
             isFilled = true;
         }
     } else {
-        if (name && descripton && price) {
+        if (name) {
             isFilled = true;
         }
     }
@@ -359,7 +357,6 @@ function showSubCategories(li, event) {
            
         }
         else {
-            //li.childNodes[1].style.position = 'unset';
             let widget = parent.querySelectorAll(".active");
             widget.style.display = "none";
         }
