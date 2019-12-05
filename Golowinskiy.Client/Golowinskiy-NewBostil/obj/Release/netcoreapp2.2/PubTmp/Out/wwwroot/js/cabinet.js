@@ -1,4 +1,8 @@
 ﻿window.onload = function () {
+    $('.header_list_item_welcom > h4').text('Личный кабинет');
+    $('.header_list_item_welcom > h4').css('font-size', '28px');
+    $('.header_list_item_welcom > span').text('');
+
     $.ajax({
         type: "GET",
         url: "/Cabinet/Header",
@@ -116,7 +120,7 @@ function categoryClick(li, categoryId, event) {
 
     $.ajax({
         type: 'GET',
-        url: '/Product/GetProductsByCategory?categoryId=' + categoryId,
+        url: '/Product/GetProductsByUserCategory?categoryId=' + categoryId,
         success: categoryClickSuccess
     });
 }

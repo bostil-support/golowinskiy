@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Golowinskiy_NewBostil.Models.Category;
 using Microsoft.AspNetCore.Hosting;
 using System.Drawing.Imaging;
+using System.Security.Claims;
 
 namespace Golowinskiy_NewBostil.Controllers
 {
@@ -167,6 +168,29 @@ namespace Golowinskiy_NewBostil.Controllers
             return PartialView("~/Views/Product/CategoryProducts.cshtml", productModel);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetProductsByUserCategory(int categoryId)
+        {
+            string userId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var products = await db.Products.Where(x => x.CategoryId == categoryId && x.UserId == userId).Include(x => x.User).ToListAsync();
+            var productModel = new List<ProductCategoryViewModel>();
+
+            foreach (var prod in products)
+            {
+                productModel.Add(new ProductCategoryViewModel()
+                {
+                    Id = prod.Id,
+                    Name = prod.ProductName,
+                    Price = prod.Price,
+                    MainImageLink = prod.MainImage
+                });
+            }
+
+            ViewBag.CategoryId = categoryId;
+
+            return PartialView("~/Views/Product/CategoryProducts.cshtml", productModel);
+        }
+
         public IActionResult BreadCrumbs(int categoryId, bool action)
         {
             List<BreadCrumbViewModel> model = new List<BreadCrumbViewModel>();
@@ -194,7 +218,16 @@ namespace Golowinskiy_NewBostil.Controllers
         public async Task<IActionResult> ProductsDetail(int categoryId, bool isChange)
         {
             var currentUser = await _userManager.GetUserAsync(User);
-            var products =  db.Products.Include(x => x.AdditionalImages).Where(x => x.CategoryId == categoryId);
+            List<Product> products = new List<Product>();
+
+            if (isChange)
+            {
+                products = await db.Products.Include(x => x.AdditionalImages).Where(x => x.CategoryId == categoryId && x.UserId == currentUser.Id).ToListAsync();
+            }
+            else
+            {
+                products = await db.Products.Include(x => x.AdditionalImages).Where(x => x.CategoryId == categoryId).ToListAsync();
+            }
 
             var model = new List<ProductDetailViewModel>();
 
@@ -213,16 +246,20 @@ namespace Golowinskiy_NewBostil.Controllers
                     Description = prod.Description,
                     Price = prod.Price,
                     MainImageLink = prod.MainImage,
-                    AdditionalImagesLink = addtImgs
+                    AdditionalImagesLink = addtImgs,
+                    VideoLink = prod.VideoLink
                 };
+
+                if(isChange)
+                {
+                    prodModel.IsChange = true;
+                }
 
                 model.Add(prodModel);
             }
 
             return PartialView(model);
         }
-
-
 
         [HttpGet]
         public async Task<IActionResult> GetEditProductView(int id)

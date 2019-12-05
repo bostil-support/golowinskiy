@@ -273,6 +273,7 @@ function goToCategory(categoryId) {
 function getDetails(choosenDiv, id) {
     event.cancelBubble = true;
 
+ 
     choosenDiv.classList.add('choose');
     let show = document.getElementsByTagName("body");
     for (let i = 0; i < show.length; i++) {
@@ -301,13 +302,9 @@ function getDetails(choosenDiv, id) {
 }
 
 function showProductDetail(id) {
-    if (document.getElementsByClassName('products_list_item').length > 1) {
-        $('.detail_product').hide();
-        let currDiv = document.getElementById('detail-page' + id);
-        $(currDiv).show();
-        currDiv.querySelectorAll('.arrows')[0].style.display = 'block';
-        currDiv.querySelectorAll('.arrows')[1].style.display = 'block';
-    }
+    $('.detail_product').hide();
+    let currDiv = document.getElementById('detail-page' + id);
+    $(currDiv).show();
 }
 
 function closeWindow() {
@@ -333,9 +330,7 @@ function showNextProduct() {
     choosenDiv.classList.remove('choose');
     if (index !== arrProdDivs.length - 1) {
         $(arrProdDivs[index + 1]).click();
-    } else {
-        $(arrProdDivs[0]).click();
-    }
+    } 
 }
 
 function showPrevProduct() {
@@ -346,11 +341,8 @@ function showPrevProduct() {
     choosenDiv.classList.remove('choose');
     if (index !== 0) {
         $(arrProdDivs[index - 1]).click();
-    } else {
-        $(arrProdDivs[arrProdDivs.length - 1]).click();
-    }
+    } 
 }
-
 
 function deleteProduct(id) {
     $.ajax({
@@ -361,14 +353,20 @@ function deleteProduct(id) {
 }
 
 function deleteProducSuccess() {
+    let countProducts = document.getElementsByClassName('products_list_item').length - 1;
     closeWindow();
     $('.middle').empty();
 
     $.ajax({
         type: 'GET',
-        url: '/Product/GetProductsByCategory?categoryId=' + chooseCategoryId,
+        url: '/Product/GetProductsByUserCategory?categoryId=' + chooseCategoryId,
         success: categoryClickSuccess
     });
+
+    let listChoosnCategory = document.getElementsByClassName('choose');
+    let lastLi = listChoosnCategory[listChoosnCategory.length - 1];
+    let span = lastLi.querySelector('span');
+    span.textContent = '(' + countProducts + ')';
 }
 
 function openCategory(li, event) {

@@ -67,7 +67,13 @@ namespace Golowinskiy_NewBostil.Controllers
         {
             string userId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var products = db.Products.Include(x => x.AdditionalImages).ToList();
-            var userCategory = await db.Categories.Where(x => x.Products.Count > 0 && x.Products.Exists(y=>y.UserId == userId)).Include(x => x.Products).ToListAsync();
+            var userCategory = await db.Categories.Where(x=>x.Products.Exists(c=>c.UserId == userId)).ToListAsync();
+
+            foreach(var item in userCategory)
+            {
+                item.Products = item.Products.Where(x => x.UserId == userId).ToList();
+            }
+
             var categories = GenerateCategories(userCategory);
 
             List<CategoryViewModel> outputCategories = new List<CategoryViewModel>();

@@ -110,16 +110,16 @@ section.advertisement > .btn {
 .btn-file {
     background-size: contain;
     position: relative;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
     .btn-file input[type=file] {
         position: absolute;
         top: 0;
         right: 0;
-        min-width: 100%;
-        min-height: 100%;
-        font-size: 100px;
+        width: 100%;
+        height: 100%;
+        font-size: 12px;
         text-align: right;
         filter: alpha(opacity=0);
         opacity: 0;
@@ -128,6 +128,7 @@ section.advertisement > .btn {
         background: white;
         cursor: inherit;
         display: block;
+        z-index: 10000000;
     }
 
 .upload {

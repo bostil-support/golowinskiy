@@ -271,7 +271,14 @@
                             <label>Ссылка на видео</label>
                         </div>
                         <div class="col-lg-4">
-                            <input type="text" id="youtube" value="@Model.VideoLink">
+                            @if (ViewBag.IsEdit == false)
+                            {
+                                <input type="text" id="youtube">
+                            }
+                            else
+                            {
+                                <input type="text" id="youtube" value="@Model.VideoLink">
+                            }
                         </div>
                     </div>
 

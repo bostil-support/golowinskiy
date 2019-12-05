@@ -177,7 +177,13 @@ function saveProduct() {
     formData.append('ProductName', $('#TName').val());
     formData.append('Description', $('#TDescription').val());
     formData.append('Price', $('#TCost').val());
-    formData.append('VideoLink', $('#youtube').val());
+
+    if ($('#youtube').val() !== "") {
+        let link = $('#youtube').val();
+        link = link.replace('watch?v=', 'embed/');
+        formData.append('VideoLink', link);
+    }
+ 
     formData.append('ProductType', $('#TypeProd').val());
     formData.append('ProductArticle', $('#Article').val());
     formData.append('TransformationMechanism', $('#TransformMech').val());
@@ -246,17 +252,7 @@ function editProduct() {
 
     let addtImgs = document.getElementById('addt-imgs');
     let count = addtImgs.getElementsByTagName('div').length;
-    let mainIMG = document.getElementById('mainImg').style.visibility = "hidden";
- 
-    let removeImg1 = document.getElementById('removeImg1');
-    let addtImg1 = document.getElementById('addtImg1').style.visibility = "hidden";
-   
-    let cross = document.getElementById('remove-main');
-   
-    cross.style.display = "none";
-    removeImg1.style.display = "none";
     
-    mainIMG.style = "width:0px;height:0px";
     for (let i = 0; i < count - 1; i++) {
         formData.append('AdditionalImages', $('#additionalImage' + (i + 1))[0].files[0]);
     }
@@ -264,7 +260,13 @@ function editProduct() {
     formData.append('ProductName', $('#TName').val());
     formData.append('Description', $('#TDescription').val());
     formData.append('Price', $('#TCost').val());
-    formData.append('VideoLink', $('#youtube').val());
+
+    if ($('#youtube').val() !== "") {
+        let link = $('#youtube').val();
+        link = link.replace('watch?v=', 'embed/');
+        formData.append('VideoLink', link);
+    }
+
     formData.append('ProductType', $('#TypeProd').val());
     formData.append('ProductArticle', $('#Article').val());
     formData.append('TransformationMechanism', $('#TransformMech').val());
@@ -290,6 +292,9 @@ function editProductSuccess() {
 
     let descr = document.getElementById('TDescription');
     descr.value = "";
+
+    removeMainImage();
+    removeAddtImg();
 
     document.getElementById('btn-sbmt').style.opacity = 0.65;
     document.getElementById('btn-sbmt').style.cursor = 'default';

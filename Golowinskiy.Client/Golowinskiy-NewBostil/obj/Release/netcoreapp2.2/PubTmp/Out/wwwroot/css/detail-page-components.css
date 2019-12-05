@@ -101,6 +101,15 @@
         flex-basis: 100%;
         height: calc(71vh);
     }
+
+    .youtube {
+        margin-top: 1%;
+    }
+
+    iframe {
+        width: 250px;
+        height: 150px;
+    }
 }
 
 .detail_product_item_images {
@@ -136,13 +145,6 @@
 .arrows {
     font-size: 34px;
     cursor: pointer;
-    display: none;
-}
-
-@media screen and (max-width: 1078px) {
-    .arrows {
-        display: none;
-    }
 }
 
 .detail_product_item_left > .additional_images {
@@ -196,7 +198,7 @@
     justify-content: space-between;
     align-items: center;
     align-content: center;
-    max-height: calc(8.4vh);
+    max-height: calc(6.4vh);
     padding: 0 23px;
 }
 

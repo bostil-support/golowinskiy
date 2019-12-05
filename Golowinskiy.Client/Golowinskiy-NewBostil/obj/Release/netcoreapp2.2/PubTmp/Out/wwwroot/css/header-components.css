@@ -9,6 +9,7 @@ header {
     width: 100%;
     z-index: 10;
     height: 50px;
+    z-index: 60;
 }
 
 .header_list {
