@@ -14095,11 +14095,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\RSamuseu\\Documents\\mk\\Golowinskiy-NewBostil\\Golowinskiy-NewBostil\\Golowinskiy-NewBostil.csproj",
+      "projectUniqueName": "C:\\Users\\RSamuseu\\Documents\\golowinskiy-client-tmp\\golowinskiy\\Golowinskiy.Client\\Golowinskiy-NewBostil\\Golowinskiy-NewBostil.csproj",
       "projectName": "Golowinskiy-NewBostil",
-      "projectPath": "C:\\Users\\RSamuseu\\Documents\\mk\\Golowinskiy-NewBostil\\Golowinskiy-NewBostil\\Golowinskiy-NewBostil.csproj",
+      "projectPath": "C:\\Users\\RSamuseu\\Documents\\golowinskiy-client-tmp\\golowinskiy\\Golowinskiy.Client\\Golowinskiy-NewBostil\\Golowinskiy-NewBostil.csproj",
       "packagesPath": "C:\\Users\\RSamuseu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\RSamuseu\\Documents\\mk\\Golowinskiy-NewBostil\\Golowinskiy-NewBostil\\obj\\",
+      "outputPath": "C:\\Users\\RSamuseu\\Documents\\golowinskiy-client-tmp\\golowinskiy\\Golowinskiy.Client\\Golowinskiy-NewBostil\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

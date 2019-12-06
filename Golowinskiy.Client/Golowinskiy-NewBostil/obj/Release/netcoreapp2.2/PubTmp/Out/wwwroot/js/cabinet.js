@@ -29,7 +29,14 @@
     $.ajax({
         type: "GET",
         url: "/Category/GetCategoriesByUser",
-        success: categoriesSuccess
+        success: function (data) {
+            categoriesSuccess(data);
+            let categoryId = sessionStorage.getItem('categoryId');
+            if (categoryId !== null) {
+                let li = document.getElementById(categoryId);
+                categoryClick(li, categoryId, event);
+            }
+        }
     });
 
     var fon = this.document.getElementById('fon-image');
@@ -48,7 +55,17 @@
 
 function categoriesSuccess(data) {
     $('#categories').append(data);
-    let categoryId = localStorage.getItem('id');
+
+    let categoryId = null;
+
+    if (sessionStorage.getItem('categoryId') !== null) {
+        categoryId = sessionStorage.getItem('categoryId');
+    }
+
+    if (localStorage.getItem('id') !== null) {
+        categoryId = localStorage.getItem('id');;
+    }
+
     if (categoryId !== null) {
         let li = document.getElementById(categoryId);
         li.classList.add('choose');
@@ -89,6 +106,8 @@ function openLogOut() {
 function categoryClick(li, categoryId, event) {
     event.cancelBubble = true;
 
+    localStorage.setItem('categoryId', categoryId);
+
     if ($(window).width() <= 900) {
         let parent = li.parentNode;
         li.classList.remove('choose');
@@ -98,8 +117,6 @@ function categoryClick(li, categoryId, event) {
         let chlds = $(parent).children();
         $(chlds).css('display', 'none');
         $(activeChilds).css('display', 'block');
-
-        localStorage.setItem('categoryId', categoryId);
 
         if (li.classList.contains('choose')) {
             li.classList.remove('choose');
@@ -151,12 +168,20 @@ function categoryClickSuccess(data) {
         });
     }
 
+    let choosenDivId = sessionStorage.getItem('choosenDivId');
+    if (choosenDivId !== null) {
+        let choosenDiv = document.getElementById(choosenDivId);
+        choosenDiv.click();
+        sessionStorage.clear();
+    }
     spinner.style.display = 'none';
 }
 
 function goToCategory(categoryId) {
     let spinner = document.getElementsByClassName('showSpinner')[0];
-    spinner.style.display = 'block';
+    if (spinner !== undefined) {
+        spinner.style.display = 'block';
+    }
 
     localStorage.setItem('id', categoryId);
     $('#categories').show();
@@ -168,10 +193,19 @@ function goToCategory(categoryId) {
         success: this.categoriesSuccess
     });
 
-    spinner.style.display = 'none';
+    if (spinner !== undefined) {
+        spinner.style.display = 'none';
+    }
 }
 
 function LocationCatalog() {
     document.getElementById('mobileUl').style.display = 'none';
     window.location.href = '../Home/Index';
 }
+
+function goToEditPage(id) {
+    sessionStorage.setItem('choosenDivId', id);
+    sessionStorage.setItem('categoryId', localStorage.getItem('categoryId'));
+    window.location.href = '../Product/GetEditProductView?id=' + id;
+}
+

@@ -324,8 +324,8 @@ namespace Golowinskiy_NewBostil.Controllers
             {
                 await SaveMainImage(model.MainImage, product);     
             }
-            else 
-            {             
+            else if (product.MainImage == null)
+            {
                 product.MainImage = "/images/noimage.png";
                 db.Products.Update(product);
                 db.SaveChanges();

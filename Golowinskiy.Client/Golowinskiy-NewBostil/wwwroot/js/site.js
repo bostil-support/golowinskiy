@@ -272,7 +272,6 @@ function goToCategory(categoryId) {
 
 function getDetails(choosenDiv, id) {
     event.cancelBubble = true;
-
  
     choosenDiv.classList.add('choose');
     let show = document.getElementsByTagName("body");

@@ -31,7 +31,7 @@
         </div>
         <div class="row justify-content-md-center">
             <div class="col-lg-8 col-xs-12 back text-right mb-4">
-                <a onclick="location.href='../Cabinet/Cabinet'">ВЕРНУТЬСЯ в ЛИЧНЫЙ КАБИНЕТ</a>
+                <a onclick="goToCabinet()">ВЕРНУТЬСЯ в ЛИЧНЫЙ КАБИНЕТ</a>
             </div>
         </div>
 
@@ -172,17 +172,17 @@
                             <input type="file" id="mainImage" onchange="attachMainImage(this)">
                             @if (ViewBag.IsEdit == false)
                             {
-                                   <img id="mainImg" >
+                                   <img id="mainImg">
                             }
                             else
                             {
                                 @if (Model.MainImageLink.Contains("noimage.png"))
                                 {
-                                    <img id="mainImg" alt="">
+                                    <img id="mainImg">
                                 }
                                 else
                                 {
-                                    <img id="mainImg" src="@Model.MainImageLink"  alt="" style="width:100%; height:100%">
+                                    <img id="mainImg" src="@Model.MainImageLink" style="width:100%; height:100%">
                                 }
                             }
                             <i class="fa fa-upload arrow" aria-hidden="true"></i>

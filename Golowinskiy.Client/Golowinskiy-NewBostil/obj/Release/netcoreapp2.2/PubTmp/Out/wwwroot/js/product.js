@@ -303,6 +303,8 @@ function editProductSuccess() {
     window.setTimeout(() => {
         document.getElementsByClassName('alert')[0].textContent = '';
     }, 10000);
+
+    window.history.back();
 }
 
 function isEmptyTName() {
@@ -454,4 +456,9 @@ function goToCategory() {
         url: "/Category/GetAllCategories",
         success: categoriesSuccess
     });  
+}
+
+function goToCabinet() {
+    sessionStorage.clear();
+    window.location.href = '../Cabinet/Cabinet';
 }
