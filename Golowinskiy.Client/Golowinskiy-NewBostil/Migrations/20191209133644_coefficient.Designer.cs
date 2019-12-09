@@ -4,14 +4,16 @@ using Golowinskiy_NewBostil.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Golowinskiy_NewBostil.Migrations
 {
     [DbContext(typeof(GolowinskiyDBContext))]
-    partial class GolowinskiyDBContextModelSnapshot : ModelSnapshot
+    [Migration("20191209133644_coefficient")]
+    partial class coefficient
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

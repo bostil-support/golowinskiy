@@ -215,6 +215,38 @@ namespace Golowinskiy_NewBostil.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> ProductDetailById(int id, bool isChange)
+        {
+            var currentUser = await _userManager.GetUserAsync(User);
+            Product product = new Product();
+            product = await db.Products.Include(x => x.AdditionalImages).FirstOrDefaultAsync(x => x.Id == id);
+
+            List<string> addtImgs = new List<string>();
+            foreach (var img in product.AdditionalImages)
+            {
+                addtImgs.Add(img.ImageLink);
+            }
+
+            var model = new ProductDetailViewModel()
+            {
+                Id = product.Id,
+                ProductName = product.ProductName,
+                Description = product.Description,
+                Price = product.Price,
+                MainImageLink = product.MainImage,
+                AdditionalImagesLink = addtImgs,
+                VideoLink = product.VideoLink
+            };
+
+            if (isChange)
+            {
+                model.IsChange = true;
+            }
+
+            return PartialView("~/Views/Product/ProductDetail.cshtml", model);
+        }
+
+        [HttpGet]
         public async Task<IActionResult> ProductsDetail(int categoryId, bool isChange)
         {
             var currentUser = await _userManager.GetUserAsync(User);

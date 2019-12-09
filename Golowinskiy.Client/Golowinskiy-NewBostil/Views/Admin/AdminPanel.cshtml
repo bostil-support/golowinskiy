@@ -1,5 +1,4 @@
-﻿@using Golowinskiy_NewBostil.Entities
-@model Dictionary<User, int> 
+﻿@model List<Golowinskiy_NewBostil.Models.Admin.AdminPanelViewModel>
 
 @{
     ViewData["Title"] = "AdminPanel";
@@ -16,7 +15,15 @@
 <ul class="list-group">
     @foreach (var item in Model)
     {
-        <li class="list-group-item" onclick="GetUserProducts('@item.Key.Id')"><i class="fa fa-user" aria-hidden="true"></i>@item.Key.UserName (@item.Value)</li>
+        <li class="list-group-item" onclick="GetUserProducts('@item.UserId')">
+            <i class="fa fa-user" aria-hidden="true"></i>@item.UserName
+        </li>
+        <li class="list-group-item">
+            @item.CountProducts
+        </li>
+        <li class="list-group-item">
+            @item.Coefficient
+        </li>
     }
 </ul>
     </div>

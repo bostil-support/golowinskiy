@@ -11,7 +11,7 @@ namespace Golowinskiy_NewBostil.Entities
 
         public int ProductId { get; set; }
 
-        public  Product Product { get; set; }
+        public Product Product { get; set; }
 
         public string ImageLink { get; set; }
     }

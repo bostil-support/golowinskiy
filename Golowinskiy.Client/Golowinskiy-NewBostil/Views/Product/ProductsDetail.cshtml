@@ -10,95 +10,97 @@
         margin: auto;
     }
 </style>
-@for(int i = 0; i < Model.Count; i++)
-{
-<div id=@("detail-page" + Model[i].Id) class="detail_product">
-    <div class="close">
-        <i class="fa fa-times" aria-hidden="true" onclick="closeWindow()"></i>
-    </div>
-    <div class="detail_product_item detail_product_item_left">
-        <div class="detail_product_item_images">
-            @if (i != 0)
-            {
-                <div class="arrows prew" onclick="showPrevProduct()">
-                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
-                </div>
-            }
-            <div class="image" style="margin:auto">
-                <img src="@Model[i].MainImageLink" id="mainImg">
+<div class="detail-products">
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        <div id=@("detail-page" + Model[i].Id) class="detail_product">
+            <div class="close">
+                <i class="fa fa-times" aria-hidden="true" onclick="closeWindow()"></i>
             </div>
-            @if (i < Model.Count - 1 && Model.Count > 1)
-            {
-                <div class="arrows next" onclick="showNextProduct()">
-                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                </div>
-            }
-        </div>
-
-        <div class="detail_product_item_main_information">
-            <div class="text">
-                <h4>@Model[i].ProductName</h4>
-                <p>@Model[i].Price руб. </p>
-            </div>
-            @if (Model[i].IsChange)
-            {
-                <div class="change">
-                    <div class="edit">
-                        <div class="edit" onclick="goToEditPage('@Model[i].Id')">
-                            <span>Редактировать</span>
-                        </div>
-                    </div>
-                    <div class="delete" onclick="deleteProduct('@Model[i].Id')">
-                        <span>Удалить</span>
-                    </div>
-                </div>
-            }
-        </div>
-    </div>
-
-    <div class="detail_product_item detail_product_item_right">
-        @if (Model[i].AdditionalImagesLink.Count > 0)
-        {
-            <div class="additional_images">
-                <i class="fa fa-chevron-left" aria-hidden="true"></i>
-                <div class="images">
-                    @foreach (var img in Model[i].AdditionalImagesLink)
+            <div class="detail_product_item detail_product_item_left">
+                <div class="detail_product_item_images">
+                    @if (i != 0)
                     {
-                        <img src="@img" onmouseover="showAddtImage('@img')" onmouseout="showAddtImage('@Model[i].MainImageLink')">
+                        <div class="arrows prew" onclick="showPrevProduct()">
+                            <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                        </div>
+                    }
+                    <div class="image" style="margin:auto">
+                        <img src="@Model[i].MainImageLink" id="mainImg">
+                    </div>
+                    @if (i < Model.Count - 1 && Model.Count > 1)
+                    {
+                        <div class="arrows next" onclick="showNextProduct()">
+                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                        </div>
                     }
                 </div>
-                <i class="fa fa-chevron-right" aria-hidden="true"></i>
-            </div>
-        }
 
-        @if (Model[i].VideoLink != null)
-        {
-            <div class="youtube">
-                <iframe width="300" height="200" src="@Model[i].VideoLink" frameborder="0" allowfullscreen></iframe>
-            </div>
-        }
-
-        <div class="description" id="show_description">
-            <p>@Model[i].Description</p>
-            <div>
-                <h6 class="contactu">Контакты</h6>
-                <div class="contacts_data">
-                    <div class="phone">
-                        <i class="fa fa-phone" aria-hidden="true"></i>
-                        <span>8-916-1616146</span>
+                <div class="detail_product_item_main_information">
+                    <div class="text">
+                        <h4>@Model[i].ProductName</h4>
+                        <p>@Model[i].Price руб. </p>
                     </div>
-                    <div class="email">
-                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                        <span>golovinskiy-rf@mail.ru</span>
-                    </div>
+                    @if (Model[i].IsChange)
+                    {
+                        <div class="change">
+                            <div class="edit">
+                                <div class="edit" onclick="goToEditPage('@Model[i].Id')">
+                                    <span>Редактировать</span>
+                                </div>
+                            </div>
+                            <div class="delete" onclick="deleteProduct('@Model[i].Id')">
+                                <span>Удалить</span>
+                            </div>
+                        </div>
+                    }
                 </div>
-                <div class="application">
-                    <img src="~/images/app1.png">
-                    <img src="~/images/app2.png">
+            </div>
+
+            <div class="detail_product_item detail_product_item_right">
+                @if (Model[i].AdditionalImagesLink.Count > 0)
+                {
+                    <div class="additional_images">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                        <div class="images">
+                            @foreach (var img in Model[i].AdditionalImagesLink)
+                            {
+                                <img src="@img" onmouseover="showAddtImage('@img')" onmouseout="showAddtImage('@Model[i].MainImageLink')">
+                            }
+                        </div>
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </div>
+                }
+
+                @if (Model[i].VideoLink != null)
+                {
+                    <div class="youtube">
+                        <iframe width="300" height="200" src="@Model[i].VideoLink" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                }
+
+                <div class="description" id="show_description">
+                    <p>@Model[i].Description</p>
+                    <div>
+                        <h6 class="contactu">Контакты</h6>
+                        <div class="contacts_data">
+                            <div class="phone">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                                <span>8-916-1616146</span>
+                            </div>
+                            <div class="email">
+                                <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                <span>golovinskiy-rf@mail.ru</span>
+                            </div>
+                        </div>
+                        <div class="application">
+                            <img src="~/images/app1.png">
+                            <img src="~/images/app2.png">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+    }
     </div>
-</div>
-}
-<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>

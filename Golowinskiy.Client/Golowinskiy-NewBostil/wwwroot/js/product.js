@@ -459,6 +459,5 @@ function goToCategory() {
 }
 
 function goToCabinet() {
-    sessionStorage.clear();
     window.location.href = '../Cabinet/Cabinet';
 }

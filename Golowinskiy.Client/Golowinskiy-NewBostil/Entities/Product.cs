@@ -20,13 +20,15 @@ namespace Golowinskiy_NewBostil.Entities
 
         public string MainImage { get; set; }
 
-        public  List<AdditionalImage> AdditionalImages { get; set; }
+        public List<AdditionalImage> AdditionalImages { get; set; }
 
         public string ProductName { get; set; }
 
         public string Description { get; set; }
 
         public double Price { get; set; }
+
+        public double Coefficient { get; set; }
 
         public string VideoLink { get; set; }
 

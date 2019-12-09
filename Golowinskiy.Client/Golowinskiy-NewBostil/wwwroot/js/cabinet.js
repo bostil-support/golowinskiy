@@ -1,56 +1,84 @@
 ﻿window.onload = function () {
-    $('.header_list_item_welcom > h4').text('Личный кабинет');
-    $('.header_list_item_welcom > h4').css('font-size', '28px');
-    $('.header_list_item_welcom > span').text('');
+    if (sessionStorage.getItem('htmlPage') !== null) {
+        let currentPage = sessionStorage.getItem('htmlPage');
+        let currentDiv = sessionStorage.getItem('htmlDiv');
+        let id = sessionStorage.getItem('productId');
 
-    $.ajax({
-        type: "GET",
-        url: "/Cabinet/Header",
-        success: function (data) {
-            $('#sumLink').css('display', 'none');
-            $('.header_list_item_cabinet').css('display', 'none');
-            $('#spanBack').css('display', 'inline');
-            $('#cbn-u').html(data);
-            $('.name').css('display', 'inline');
-            $('#userName').css('display', 'inline');
-            $('#spanCab').text('Вернуться к каталогу');
-            $('#spanCab').attr("onclick", "LocationCatalog()");
+        let url = "/Product/ProductDetailById?id=" + id + "&isChange=";
+        if (window.location.href.includes('Cabinet')) {
+            url += 'true';
+        } else {
+            url += 'false';
         }
-    });
 
-    var backgroundImgs = [
-        'http://golowinskiy-api.bostil.ru/mainimages/08.12.2018.jpg',
-        'http://golowinskiy-api.bostil.ru/mainimages/10.01.2019.jpg',
-        'http://golowinskiy-api.bostil.ru/mainimages/18.01.2019.jpg',
-        'http://golowinskiy-api.bostil.ru/mainimages/19.01.2019.jpg',
-        'http://golowinskiy-api.bostil.ru/mainimages/21.01.2019.jpg'
-    ];
-
-    $.ajax({
-        type: "GET",
-        url: "/Category/GetCategoriesByUser",
-        success: function (data) {
-            categoriesSuccess(data);
-            let categoryId = sessionStorage.getItem('categoryId');
-            if (categoryId !== null) {
-                let li = document.getElementById(categoryId);
-                categoryClick(li, categoryId, event);
+        $.ajax({
+            type: "GET",
+            url: url,
+            success: function (data) {
+                console.log(currentDiv);
+                currentPage = currentPage.replace(currentDiv, data);
+                console.log(data);
+                document.getElementsByTagName('html')[0].innerHTML = currentPage;
+                sessionStorage.clear();
+              //  $('.middle').append(data);
+               // showProductDetail(id);
             }
-        }
-    });
+        });
 
-    var fon = this.document.getElementById('fon-image');
-    var index = Math.floor(Math.random() * 5);
-    fon.style.background = 'url("' + backgroundImgs[index] + '") 50% 50% no-repeat';
+    } else {
+        $('.header_list_item_welcom > h4').text('Личный кабинет');
+        $('.header_list_item_welcom > h4').css('font-size', '28px');
+        $('.header_list_item_welcom > span').text('');
 
-    let now = new Date();
-    document.getElementById('doc_clock').textContent = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
-    document.getElementById('doc_day').textContent = now.toLocaleDateString('ru', { weekday: 'long', month: 'long', day: 'numeric' });
+        $.ajax({
+            type: "GET",
+            url: "/Cabinet/Header",
+            success: function (data) {
+                $('#sumLink').css('display', 'none');
+                $('.header_list_item_cabinet').css('display', 'none');
+                $('#spanBack').css('display', 'inline');
+                $('#cbn-u').html(data);
+                $('.name').css('display', 'inline');
+                $('#userName').css('display', 'inline');
+                $('#spanCab').text('Вернуться к каталогу');
+                $('#spanCab').attr("onclick", "LocationCatalog()");
+            }
+        });
 
-    setTimeout(() => {
-        document.getElementById('doc_clock').style.opacity = 0;
-        document.getElementById('doc_day').style.opacity = 0;
-    }, 3000);
+        var backgroundImgs = [
+            'http://golowinskiy-api.bostil.ru/mainimages/08.12.2018.jpg',
+            'http://golowinskiy-api.bostil.ru/mainimages/10.01.2019.jpg',
+            'http://golowinskiy-api.bostil.ru/mainimages/18.01.2019.jpg',
+            'http://golowinskiy-api.bostil.ru/mainimages/19.01.2019.jpg',
+            'http://golowinskiy-api.bostil.ru/mainimages/21.01.2019.jpg'
+        ];
+
+        $.ajax({
+            type: "GET",
+            url: "/Category/GetCategoriesByUser",
+            success: function (data) {
+                categoriesSuccess(data);
+                let categoryId = sessionStorage.getItem('categoryId');
+                if (categoryId !== null) {
+                    let li = document.getElementById(categoryId);
+                    categoryClick(li, categoryId, event);
+                }
+            }
+        });
+
+        var fon = this.document.getElementById('fon-image');
+        var index = Math.floor(Math.random() * 5);
+        fon.style.background = 'url("' + backgroundImgs[index] + '") 50% 50% no-repeat';
+
+        let now = new Date();
+        document.getElementById('doc_clock').textContent = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
+        document.getElementById('doc_day').textContent = now.toLocaleDateString('ru', { weekday: 'long', month: 'long', day: 'numeric' });
+
+        setTimeout(() => {
+            document.getElementById('doc_clock').style.opacity = 0;
+            document.getElementById('doc_day').style.opacity = 0;
+        }, 3000);
+    }
 };
 
 function categoriesSuccess(data) {
@@ -58,12 +86,12 @@ function categoriesSuccess(data) {
 
     let categoryId = null;
 
-    if (sessionStorage.getItem('categoryId') !== null) {
-        categoryId = sessionStorage.getItem('categoryId');
-    }
+    //if (sessionStorage.getItem('categoryId') !== null) {
+    //    categoryId = sessionStorage.getItem('categoryId');
+    //}
 
     if (localStorage.getItem('id') !== null) {
-        categoryId = localStorage.getItem('id');;
+        categoryId = localStorage.getItem('id');
     }
 
     if (categoryId !== null) {
@@ -204,8 +232,11 @@ function LocationCatalog() {
 }
 
 function goToEditPage(id) {
-    sessionStorage.setItem('choosenDivId', id);
-    sessionStorage.setItem('categoryId', localStorage.getItem('categoryId'));
+    sessionStorage.setItem('htmlPage', document.getElementsByTagName('html')[0].innerHTML);
+    sessionStorage.setItem('htmlDiv', document.getElementById('detail-page' + id).innerHTML);
+    sessionStorage.setItem('productId', id);
+    //sessionStorage.setItem('choosenDivId', id);
+    //sessionStorage.setItem('categoryId', localStorage.getItem('categoryId'));
     window.location.href = '../Product/GetEditProductView?id=' + id;
 }
 

@@ -33,7 +33,7 @@
                 <p>@Model.Price руб. </p>
             </div>
             
-            @if (ViewBag.IsChange)
+            @if (Model.IsChange)
             { 
                 <div class="change">
                     <div class="edit" onclick="window.location.href='../Product/GetEditProductView?id=@Model.Id'">
