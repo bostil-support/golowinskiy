@@ -44,9 +44,9 @@ namespace Golowinskiy_NewBostil
                 options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+"
                 + "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ-._@+";
             })
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<GolowinskiyDBContext>();
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
-
             services.ConfigureApplicationCookie(options =>
             {
                 options.Cookie.Expiration = TimeSpan.FromDays(30);

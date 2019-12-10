@@ -158,7 +158,7 @@ namespace Golowinskiy_NewBostil.Controllers
                 {
                     Id = prod.Id,
                     Name = prod.ProductName,
-                    Price = prod.Price,
+                    Price = prod.Price * prod.Coefficient,
                     MainImageLink = prod.MainImage
                 });
             }

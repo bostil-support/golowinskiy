@@ -7,15 +7,16 @@ using Golowinskiy_NewBostil.Entities;
 using Golowinskiy_NewBostil.Models.Admin;
 using Golowinskiy_NewBostil.Models.Product;
 using Golowinskiy_NewBostil.Views.Admin;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Golowinskiy_NewBostil.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         GolowinskiyDBContext db;
-
         public AdminController(GolowinskiyDBContext context)
         {
             db = context;
@@ -63,13 +64,13 @@ namespace Golowinskiy_NewBostil.Controllers
             return PartialView("~/Views/Admin/UserProducts.cshtml", productModel);
         }
 
+        [HttpPost]
         public async Task<IActionResult> AddCoefficient(AddCoefficientViewModel model)
         {
-            var products = await db.Products.ToListAsync();
+            var products = await db.Products.Where(x => x.UserId == model.UserId).ToListAsync();
             foreach(var item in products)
             {
                 item.Coefficient = model.Coefficient;
-                item.Price = item.Price * model.Coefficient;
             }
 
             db.Products.UpdateRange(products);
