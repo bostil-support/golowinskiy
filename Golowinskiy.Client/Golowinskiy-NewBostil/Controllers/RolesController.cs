@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Golowinskiy_NewBostil.Entities;
-using Golowinskiy_NewBostil.Models.Role;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -27,7 +25,7 @@ namespace Golowinskiy_NewBostil.Controllers
         [HttpGet]
         public async Task<List<IdentityRole>> GetAllRoles() => await _roleManager.Roles.ToListAsync();
 
-  
+
         [HttpGet]
         public async Task AddRole(string name)
         {

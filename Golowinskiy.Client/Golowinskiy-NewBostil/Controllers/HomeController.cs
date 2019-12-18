@@ -11,7 +11,12 @@ namespace Golowinskiy_NewBostil.Controllers
     public class HomeController : Controller
     {
         public IActionResult Index()
-        { 
+        {
+            if (User.IsInRole("Admin"))
+            {
+                return RedirectToAction("AdminPanel", "Admin");
+            }
+
             return View();
         }
 

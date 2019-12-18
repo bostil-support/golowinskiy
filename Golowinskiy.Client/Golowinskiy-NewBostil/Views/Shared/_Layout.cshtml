@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Golowinskiy_NewBostil.DAL.Entities.User> SignInManager
+@inject UserManager<Golowinskiy_NewBostil.DAL.Entities.User> UserManager
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -6,7 +10,7 @@
     <title>@ViewData["Title"] - Golowinskiy_NewBostil</title>
 
     <environment include="Development">
-        <link rel="stylesheet" href="~/css/reset.css"/>
+        <link rel="stylesheet" href="~/css/reset.css" />
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/styles.css" />
         <link rel="stylesheet" href="~/css/header-components.css" />
@@ -55,28 +59,32 @@
                         <!-- end -->
                     </div>
                 </div>
+
                 <div class="header_list_item" id="header-viget">
                     <!-- begin show for desktop fersion-->
-                    <a>
-                        <div class="header_list_item_back">
-                            <span id="spanBack" onclick="location.href='../Home/Index'">Вернуться к каталогу</span>
-                        </div>
-                    </a>
-                    <a>
-                        <div class="header_list_item_cabinet">
-                            <i class="fa fa-user" aria-hidden="true"></i>
-                            <span onclick="location.href='../Cabinet/Cabinet'">Личный кабинет</span>
-                            @*<span onclick="showAuthWindow()">Личный кабинет</span>*@
-                        </div>
-                    </a>
-                    <div id="cbn-u"></div>
-                    <!-- end -->
-                    <!-- begin show for desktop fersion-->
-                    <a>
-                        <div class="header_list_item_advertisement">
-                            <button onclick="location.href='../Product/GetProductView'" type="button">Подать объявление</button>
-                        </div>
-                    </a>
+                    @if (!User.IsInRole("Admin"))
+                    {
+                        <!-- begin show for desktop fersion-->
+                        <a>
+                            <div class="header_list_item_back">
+                                <span id="spanBack" onclick="location.href='../Home/Index'">Вернуться к каталогу</span>
+                            </div>
+                        </a>
+                        <a>
+                            <div class="header_list_item_cabinet">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <span onclick="location.href='../Cabinet/Cabinet'">Личный кабинет</span>
+                                @*<span onclick="showAuthWindow()">Личный кабинет</span>*@
+                            </div>
+                        </a>
+                        <div id="cbn-u"></div>
+                        <!-- end -->
+                        <a>
+                            <div class="header_list_item_advertisement">
+                                <button onclick="location.href='../Product/GetProductView'" type="button">Подать объявление</button>
+                            </div>
+                        </a>
+                    }
                     <!-- end -->
 
 

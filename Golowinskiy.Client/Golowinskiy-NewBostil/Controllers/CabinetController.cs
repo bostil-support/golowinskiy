@@ -1,22 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Golowinskiy_NewBostil.Entities;
-using Golowinskiy_NewBostil.Models;
-using Microsoft.AspNetCore.Authorization;
+﻿using Golowinskiy_NewBostil.Models;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
+using Golowinskiy_NewBostil.BLL.Interfaces;
+using System.Threading.Tasks;
 
 namespace Golowinskiy_NewBostil.Controllers
 {
     public class CabinetController : Controller
     {
-        private readonly UserManager<User> _userManager;
-        public CabinetController(UserManager<User> userManager)
+        private readonly IAuthService _authService;
+
+        public CabinetController(IAuthService authService)
         {
-            _userManager = userManager;
+            _authService = authService;
         }
 
         [HttpGet]
@@ -27,6 +24,11 @@ namespace Golowinskiy_NewBostil.Controllers
            
             if (isAuthenticate)
             {
+                if (User.IsInRole("Admin"))
+                {
+                    return RedirectToAction("AdminPanel", "Admin");
+                }
+
                 return View();
             }
             else
@@ -36,12 +38,14 @@ namespace Golowinskiy_NewBostil.Controllers
         }
 
         [HttpGet]
-        public IActionResult Header()
+        public async Task<IActionResult> Header()
         {
             var model = new CabinetViewModel();
+
             model.UserId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var user = _userManager.FindByIdAsync(model.UserId);
-            model.UserName = user.Result.DisplayName;
+            var name = await _authService.GetUser(model.UserId);
+            model.UserName = name.DisplayName;
+
             return PartialView(model);
         }
     }

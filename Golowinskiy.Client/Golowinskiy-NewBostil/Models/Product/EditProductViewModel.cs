@@ -14,7 +14,7 @@ namespace Golowinskiy_NewBostil.Models.Product
 
         public string UserName { get; set; }
 
-        public Dictionary<int, string> AdditionalImageLinks { get; set; }
+        public Dictionary<int, string> AdditionalDictImagesLinks { get; set; }
 
         public IFormFile MainImage { get; set; }
 

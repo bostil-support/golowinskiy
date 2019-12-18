@@ -8,26 +8,27 @@
 </div>
 <form>
     <div class="form-group">
-        <input type="text" placeholder="Ваше имя" id="userName">
+        <input type="text" placeholder="Ваше имя" id="userName" onchange="checkFilledRequiredRegFields()">
     </div>
     <div class="form-group">
-        <input type="text" placeholder="Ваш мобильный номер" id="mobile" onkeypress="return /[+,0-9.]/i.test(event.key)">
+        <input type="text" placeholder="Ваш мобильный номер" id="mobile" 
+               onkeypress="return /[+,0-9.]/i.test(event.key)" onchange="checkFilledRequiredRegFields()">
     </div>
     <div class="form-group">
-        <input type="email" placeholder="Ваш e-mail" id="email">
+        <input type="email" placeholder="Ваш e-mail" id="email" onchange="checkFilledRequiredRegFields()">
         <span class="error-msg">
             <span>Заполните Email</span>
             <span>Введите корректный Email</span>
         </span>
     </div>
     <div class="form-group">
-        <input type="password" placeholder="Пароль" id="password">
+        <input type="password" placeholder="Пароль" id="password" onchange="checkFilledRequiredRegFields()">
         <span class="error-msg">
             <span>Заполните пароль</span>
         </span>
     </div>
     <div class="form-group">
-        <button class="btn btn-block btn-primary" type="button" onclick="Registration()">
+        <button class="btn btn-block btn-primary" id="btnReg" type="button" onclick="Registration()">
             Зарегистрироваться
         </button>
     </div>

@@ -30,8 +30,10 @@ namespace Golowinskiy_NewBostil.Models.Product
 
         public string MainImageLink { get; set; }
 
-        public List<string> AdditionalImagesLink { get; set; }
+        public List<string> AdditionalImagesLinks { get; set; }
 
         public bool IsChange { get; set; }
+
+        public string Position { get; set; }
     }
 }

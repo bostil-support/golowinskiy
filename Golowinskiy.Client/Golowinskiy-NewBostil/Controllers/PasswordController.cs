@@ -1,28 +1,25 @@
-﻿using System;
-using System.Threading.Tasks;
-using Golowinskiy_NewBostil.Context;
-using Golowinskiy_NewBostil.Entities;
+﻿using System.Threading.Tasks;
+using Golowinskiy_NewBostil.BLL.Interfaces;
+using Golowinskiy_NewBostil.BLL.Services;
 using Golowinskiy_NewBostil.Models.Password;
-using Golowinskiy_NewBostil.Services;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Golowinskiy_NewBostil.Controllers
 {
     public class PasswordController : Controller
     {
-        private GolowinskiyDBContext db;
-        private readonly UserManager<User> _userManager;
-        public PasswordController(GolowinskiyDBContext context, UserManager<User> userManager)
+        private readonly IPasswordService _passwordService;
+        private readonly IEmailSender _emailService;
+        public PasswordController(IPasswordService passwordService, IEmailSender emailService)
         {
-            db = context;
-            _userManager = userManager;
+            _passwordService = passwordService;
+            _emailService = emailService;
         }
 
         [HttpPost]
         public async Task<IActionResult> RecoveryPassword(PasswordRecoveryViewModel model)
         {
-            var user = await _userManager.FindByEmailAsync(model.Email);
+            var user = await _passwordService.RecoveryPassword(model.Email);
             if (user == null)
             {
                 return BadRequest(new
@@ -33,8 +30,7 @@ namespace Golowinskiy_NewBostil.Controllers
             }
             else
             {
-                EmailService emailService = new EmailService();
-                await emailService.SendEmailAsync(model.Email, "Востановление пароля Головинский", "Ваш пароль: " +  user.DisplayPassword);
+                await _emailService.SendEmailAsync(model.Email, "Востановление пароля Головинский", "Ваш пароль: " +  user.DisplayPassword);
                 return Ok(new
                 {
                     Message = $"Ваш пароль отправлен на email: { model.Email }",

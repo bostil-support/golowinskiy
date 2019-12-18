@@ -1,39 +1,45 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Golowinskiy_NewBostil.Context;
-using Golowinskiy_NewBostil.Entities;
+using AutoMapper;
+using Golowinskiy_NewBostil.AutoMapper;
+using Golowinskiy_NewBostil.BLL.Interfaces;
+using Golowinskiy_NewBostil.BLL.Services;
+using Golowinskiy_NewBostil.DAL.Context;
+using Golowinskiy_NewBostil.DAL.Entities;
+using Golowinskiy_NewBostil.DAL.Interfaces;
+using Golowinskiy_NewBostil.DAL.Repositories;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.Extensions.Hosting;
 
 namespace Golowinskiy_NewBostil
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration, IHostingEnvironment env)
+        public Startup(IConfiguration configuration, IHostEnvironment env)
         {
             Configuration = configuration;
             _env = env;
         }
 
         public IConfiguration Configuration { get; }
-        private IHostingEnvironment _env;
+        private IHostEnvironment _env;
 
         public void ConfigureServices(IServiceCollection services)
         {
             string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<GolowinskiyDBContext>(options =>
-                options.UseSqlServer(connection));
+            {
+                options.UseSqlServer(connection);
+            });
             services.AddIdentity<User, IdentityRole>(options =>
             {
                 options.Password.RequiredLength = 1;
@@ -44,28 +50,46 @@ namespace Golowinskiy_NewBostil
                 options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+"
                 + "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ-._@+";
             })
-                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<GolowinskiyDBContext>();
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
+
+            services.AddTransient<IAddtImageRepository, AdditionalImageRepository>();
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
+            services.AddTransient<IProductRepository, ProductRepository>();
+
+            services.AddTransient<IAuthService, AuthService>();
+            services.AddTransient<ICategoryService, CategoryService>();
+            services.AddTransient<IEmailSender, EmailService>();
+            services.AddTransient<IPasswordService, PasswordService>();
+            services.AddTransient<IProductService, ProductService>();
+
             services.ConfigureApplicationCookie(options =>
             {
-                options.Cookie.Expiration = TimeSpan.FromDays(30);
-                options.SlidingExpiration = true;
+                options.ExpireTimeSpan = TimeSpan.FromDays(30);
             });
-            var webRoot = _env.ContentRootPath;
-
-            services.AddSingleton<IFileProvider>(
-              new PhysicalFileProvider(
-                Path.Combine(webRoot, "wwwroot")));
-
+            
             services.Configure<CookiePolicyOptions>(options =>
             {
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new BLL.AutoMapper.MapperProfile());
+                mc.AddProfile(new MapperProfile());
+            });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
+            var webRoot = _env.ContentRootPath;
+
+            services.AddSingleton<IFileProvider>(
+              new PhysicalFileProvider(
+                Path.Combine(webRoot, "wwwroot")));
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
 
         public void Configure(IApplicationBuilder app)
@@ -80,17 +104,16 @@ namespace Golowinskiy_NewBostil
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+//            app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseDefaultFiles();
             app.UseCookiePolicy();
+            app.UseRouting();
             app.UseAuthentication();
-
-            app.UseMvc(routes =>
+            app.UseAuthorization();
+            app.UseEndpoints(routes =>
             {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                routes.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

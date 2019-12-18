@@ -11,20 +11,33 @@
     <i class="fa fa-spinner fa-spin"></i>
 </div>
 <div class="dropdownUL">
-<h4>Список пользователей</h4>
-<ul class="list-group">
-    @foreach (var item in Model)
-    {
-        <li class="list-group-item" onclick="GetUserProducts('@item.UserId')">
-            <i class="fa fa-user" aria-hidden="true"></i>@item.UserName
-        </li>
-        <li class="list-group-item">
-            @item.CountProducts
-        </li>
-        <li class="list-group-item">
-            @item.Coefficient
-        </li>
-    }
-</ul>
-    </div>
-<script src="~/js/admin.js"></script>
+    <!---->
+
+    <table class="list-group">
+        <tr class="static_title">
+            <td>
+                Имя пользователя
+            </td>
+
+            <td>Коэффициент наценки</td>
+            <td>Количество товаров</td>
+        </tr>
+
+        @for(int i = 0; i < Model.Count; i++)
+        {
+            <tr>
+                <td>  <i class="fa fa-user" value="@Model[i].UserId"></i> @Model[i].UserName</td>
+                <td class="coef">
+                    <p> @Model[i].Coefficient</p>
+                    <button class="buttonSendReplace"></button>
+                    <input class="formReplace" onkeypress="return /[0-9.]/i.test(event.key)">
+                </td>
+                <td> @Model[i].CountProducts</td>
+            </tr>
+        }
+    </table>
+</div>
+
+@section Scripts{
+    <script src="~/js/admin.js"></script>
+}

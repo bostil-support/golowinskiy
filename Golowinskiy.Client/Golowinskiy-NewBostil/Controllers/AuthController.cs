@@ -1,29 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Golowinskiy_NewBostil.Models.Auth;
-using Microsoft.AspNetCore.Identity;
-using Golowinskiy_NewBostil.Entities;
 using Microsoft.AspNetCore.Http;
-using System.Data.SqlClient;
+using Golowinskiy_NewBostil.Models.Auth;
+using Golowinskiy_NewBostil.BLL.DTO;
+using Golowinskiy_NewBostil.BLL.Interfaces;
+using AutoMapper;
 
 namespace Golowinskiy_NewBostil.Controllers
 {
     public class AuthController : Controller
     {
-        private readonly UserManager<User> _userManager;
-        private readonly SignInManager<User> _signInManager;
-        IHttpContextAccessor _httpContextAccessor;
+        IAuthService _authService;
+        private readonly IMapper _mapper;
 
-        public AuthController(UserManager<User> userManager,
-            SignInManager<User> signInManager,
-            IHttpContextAccessor httpContextAccessor)
+        public AuthController(IAuthService authService,
+            IMapper mapper)
         {
-            _userManager = userManager;
-            _signInManager = signInManager;
-            _httpContextAccessor = httpContextAccessor;
+            _authService = authService;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -33,37 +27,33 @@ namespace Golowinskiy_NewBostil.Controllers
         }
 
         [HttpPost]
+        [Route("Auth/LoginAsync")]
         public async Task<IActionResult> LoginAsync(LoginViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var user = _userManager.Users.FirstOrDefault(item => item.PhoneNumber == model.PhoneNumber);
+                var loginDto = _mapper.Map<LoginDTO>(model);
+                var result = await _authService.LoginAsync(loginDto);
 
-                if(user == null)
+                if (result == null)
                 {
-                    return BadRequest("Неправильный моб.номер");
+                    return BadRequest("Введены неверные данные");
                 }
 
-                var result =
-                    await _signInManager.PasswordSignInAsync(user,
-                    model.Password, model.RememberMe, false);
-                if (result.Succeeded)
+                else
                 {
-                    if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
-                    {
-                        return Redirect(model.ReturnUrl);
-                    }
-                    else
+                    if (User.IsInRole("User"))
                     {
                         return Ok("Вы вошли в систему как пользователь");
                     }
-                }
-                else
-                {
-                    return BadRequest("Неправильный пароль");
+                    else
+                    {
+                        return Ok("Вы вошли в систему как администратор");
+                    }
 
                 }
             }
+
             return View("~Views/Auth/Login", model);
         }
 
@@ -74,43 +64,26 @@ namespace Golowinskiy_NewBostil.Controllers
         }
 
         [HttpPost]
+        [Route("Auth/RegistrationAsync")]
         public async Task<IActionResult> RegistrationAsync(RegistrationViewModel model)
         {
             if (ModelState.IsValid)
             {
-                bool IsPhoneExist = _userManager.Users.Any(item => item.PhoneNumber == model.PhoneNumber);
-                if(IsPhoneExist)
+                var registrationDto = _mapper.Map<RegistrationDTO>(model);
+                var result = await _authService.RegistrationAsync(registrationDto);
+
+                if (result == null)
                 {
                     return BadRequest("Пользователь с таким номером телефона уже существует");
                 }
 
-                User user = new User
-                {
-                    UserName = model.UserName,
-                    DisplayName = model.UserName,
-                    Email = model.Email,
-                    PhoneNumber = model.PhoneNumber,
-                    DisplayPassword = model.Password
-                };
-
-                var userName = await _userManager.FindByNameAsync(model.UserName);
-
-                if (userName != null)
-                {
-                    user.UserName = model.UserName + Guid.NewGuid();
-                }
-
-                var result = await _userManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
-                {
-                    await _signInManager.SignInAsync(user, false);
-                    return Ok("Вы зарегистрированы успешно");
-                }
                 else
                 {
-                    return BadRequest(result.Errors.ElementAt(0).Code);
+                    return Ok("Вы зарегистрированы успешно");
+
                 }
             }
+
             return View("~Views/Auth/Registration", model);
         }
 
@@ -123,7 +96,7 @@ namespace Golowinskiy_NewBostil.Controllers
         [HttpGet]
         public async Task<IActionResult> LogOut()
         {
-            await _signInManager.SignOutAsync();
+            await _authService.LogOut();
             return RedirectToAction("Index", "Home");
         }
 

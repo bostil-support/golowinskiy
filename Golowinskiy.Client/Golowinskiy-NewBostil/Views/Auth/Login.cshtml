@@ -8,19 +8,19 @@
 </div>
 <form>
     <div class="form-group">
-        <input type="text" placeholder="Ваш моб.телефон" id="mobile" onkeypress="return /[+,0-9.]/i.test(event.key)">
+        <input type="text" placeholder="Ваш моб.телефон" id="mobile" onkeypress="return /[+,0-9.]/i.test(event.key)" onchange="checkFilledRequiredLoginFields()">
         <span class="form-help-text">
             <span>Заполните моб.телефон</span>
         </span>
     </div>
     <div class="form-group">
-        <input type="password" placeholder="Пароль" id="password">
+        <input type="password" placeholder="Пароль" id="password" onchange="checkFilledRequiredLoginFields()">
         <span class="form-help-text">
             <span>Заполните пароль</span>
         </span>
     </div>
     <div class="form-group">
-        <button class="btn btn-block btn-primary" type="button" onclick="Login()">
+        <button class="btn btn-block btn-primary" id="btnLog" type="button" onclick="Login()">
             Войти
         </button>
     </div>
