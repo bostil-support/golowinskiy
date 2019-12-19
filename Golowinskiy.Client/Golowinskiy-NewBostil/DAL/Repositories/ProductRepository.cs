@@ -30,7 +30,8 @@ namespace Golowinskiy_NewBostil.DAL.Repositories
 
         public async Task<Product> GetLastProduct()
         {
-            return await _db.Products.LastOrDefaultAsync();
+            var products = await _db.Products.ToListAsync();
+            return  products.LastOrDefault();
         }
 
         public async Task<List<Product>> GetAll()

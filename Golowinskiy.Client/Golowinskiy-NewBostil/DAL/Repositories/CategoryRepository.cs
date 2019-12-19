@@ -33,7 +33,6 @@ namespace Golowinskiy_NewBostil.DAL.Repositories
         public async Task<List<Category>> GetAllByUser(string userId)
         {
             return await _db.Categories.Include(x => x.Products).Where(x => x.Products.Any(c => c.UserId == userId)).ToListAsync();
-           // return await _db.Categories.Include(x=>x.Products).Where(x => x.Products!=null && x.Products.Exists(c => c.UserId == userId)).ToListAsync();
         }
 
         public async Task<Category> GetByParentId(int parentId)
