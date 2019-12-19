@@ -9,19 +9,9 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="9.0.0" />
-    <PackageReference Include="MailKit" Version="2.4.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.0" />
     <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
   </ItemGroup>
@@ -29,6 +19,11 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\images\products\" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\Golowinskiy-NewBostil.BLL\Golowinskiy-NewBostil.BLL.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Golowinskiy_NewBostil.DAL.Entities
+﻿namespace Golowinskiy_NewBostil.DAL.Entities
 {
     public class AdditionalImage
     {

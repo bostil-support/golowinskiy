@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>Golowinskiy_NewBostil.BLL</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="MailKit" Version="2.4.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.0" />
+    <PackageReference Include="MimeKit" Version="2.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Golowinskiy-NewBostil.DAL\Golowinskiy-NewBostil.DAL.csproj" />
+  </ItemGroup>
+
+</Project>

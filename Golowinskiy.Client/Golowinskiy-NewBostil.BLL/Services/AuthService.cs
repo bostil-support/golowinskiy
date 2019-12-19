@@ -1,14 +1,14 @@
-﻿using AutoMapper;
+﻿using System;
+using System.Linq;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using AutoMapper;
 using Golowinskiy_NewBostil.BLL.DTO;
 using Golowinskiy_NewBostil.BLL.Interfaces;
 using Golowinskiy_NewBostil.DAL.Context;
 using Golowinskiy_NewBostil.DAL.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Golowinskiy_NewBostil.BLL.Services
 {

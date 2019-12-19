@@ -1,8 +1,6 @@
 ﻿using Golowinskiy_NewBostil.DAL.Entities;
 using Microsoft.AspNetCore.Identity;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Golowinskiy_NewBostil.DAL.Interfaces
