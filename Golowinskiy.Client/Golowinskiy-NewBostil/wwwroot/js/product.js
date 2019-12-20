@@ -424,10 +424,10 @@ function categoryClick(li, categoryId, event) {
 
     li.classList.remove('active');
     li.classList.add('choose');
-    //let x = Array.from(document.getElementsByClassName('choose'));
-    //if (x.length !== 0) {
-    //    x.forEach(node => node.classList.remove('choose'));
-    //}
+    let x = Array.from(document.getElementsByClassName('choose'));
+    if (x.length !== 0) {
+        x.forEach(node => node.classList.remove('choose'));
+    }
 
     productCategoryId = categoryId;
     $.ajax({
@@ -436,8 +436,8 @@ function categoryClick(li, categoryId, event) {
         success: function (data) {
             $('#breadcrumbs').empty();
             $('#breadcrumbs').append(data);
-            //$('#categories').hide();
-            //$('#categ').hide();
+            $('#categories').hide();
+            $('#categ').hide();
         }
     });
 

@@ -42,14 +42,14 @@ namespace Golowinskiy_NewBostil.Controllers
 
                 else
                 {
-                    if (User.IsInRole("User"))
-                    {
+                    //if (User.IsInRole("Admin"))
+                    //{
                         return Ok("Вы вошли в систему как пользователь");
-                    }
-                    else
-                    {
-                        return Ok("Вы вошли в систему как администратор");
-                    }
+                    //}
+                    //else
+                    //{
+                    //    return Ok("Вы вошли в систему как администратор");
+                    //}
 
                 }
             }
