@@ -72,14 +72,14 @@ namespace Golowinskiy_NewBostil.Controllers
                 var registrationDto = _mapper.Map<RegistrationDTO>(model);
                 var result = await _authService.RegistrationAsync(registrationDto);
 
-                if (result == null)
+                if (!result.Equals("Вы зарегистрированы успешно"))
                 {
-                    return BadRequest("Пользователь с таким номером телефона уже существует");
+                    return BadRequest(result);
                 }
 
                 else
                 {
-                    return Ok("Вы зарегистрированы успешно");
+                    return Ok(result);
 
                 }
             }

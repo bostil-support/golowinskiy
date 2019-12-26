@@ -30,6 +30,16 @@ namespace Golowinskiy_NewBostil.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> GetNotNullCategories()
+        {
+            var categories = await _service.GetNotNullCategories();
+            List<CategoryViewModel> outputCategories = new List<CategoryViewModel>();
+            outputCategories = _mapper.Map<List<CategoryViewModel>>(categories);
+
+            return PartialView("~/Views/Category/Categories.cshtml", outputCategories);
+        }
+
+        [HttpGet]
         public async Task<IActionResult> GetCategoriesByUser()
         {
             string userId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);

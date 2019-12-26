@@ -8,6 +8,7 @@ namespace Golowinskiy_NewBostil.DAL.Interfaces
     {
         Task<Category> Get(int id);
         Task<List<Category>> GetAll();
+        Task<List<Category>> GetNotNull();
         Task<List<Category>> GetAllByUser(string userId);
         Task<Category> GetByParentId(int parentId);
     }

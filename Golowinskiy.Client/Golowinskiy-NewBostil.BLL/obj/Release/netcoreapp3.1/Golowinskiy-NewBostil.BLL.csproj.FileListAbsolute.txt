@@ -1,11 +1,11 @@
 C:\Users\RSamuseu\Documents\mk\Golowinskiy-NewBostil\Golowinskiy-NewBostil.BLL\bin\Release\netcoreapp3.1\Golowinskiy-NewBostil.BLL.deps.json
 C:\Users\RSamuseu\Documents\mk\Golowinskiy-NewBostil\Golowinskiy-NewBostil.BLL\bin\Release\netcoreapp3.1\Golowinskiy-NewBostil.BLL.dll
+C:\Users\RSamuseu\Documents\mk\Golowinskiy-NewBostil\Golowinskiy-NewBostil.BLL\bin\Release\netcoreapp3.1\Golowinskiy-NewBostil.BLL.pdb
+C:\Users\RSamuseu\Documents\mk\Golowinskiy-NewBostil\Golowinskiy-NewBostil.BLL\bin\Release\netcoreapp3.1\Golowinskiy-NewBostil.DAL.dll
+C:\Users\RSamuseu\Documents\mk\Golowinskiy-NewBostil\Golowinskiy-NewBostil.BLL\bin\Release\netcoreapp3.1\Golowinskiy-NewBostil.DAL.pdb
 C:\Users\RSamuseu\Documents\mk\Golowinskiy-NewBostil\Golowinskiy-NewBostil.BLL\obj\Release\netcoreapp3.1\Golowinskiy-NewBostil.BLL.csprojAssemblyReference.cache
 C:\Users\RSamuseu\Documents\mk\Golowinskiy-NewBostil\Golowinskiy-NewBostil.BLL\obj\Release\netcoreapp3.1\Golowinskiy-NewBostil.BLL.AssemblyInfoInputs.cache
 C:\Users\RSamuseu\Documents\mk\Golowinskiy-NewBostil\Golowinskiy-NewBostil.BLL\obj\Release\netcoreapp3.1\Golowinskiy-NewBostil.BLL.AssemblyInfo.cs
-C:\Users\RSamuseu\Documents\mk\Golowinskiy-NewBostil\Golowinskiy-NewBostil.BLL\bin\Release\netcoreapp3.1\Golowinskiy-NewBostil.DAL.dll
-C:\Users\RSamuseu\Documents\mk\Golowinskiy-NewBostil\Golowinskiy-NewBostil.BLL\bin\Release\netcoreapp3.1\Golowinskiy-NewBostil.BLL.pdb
-C:\Users\RSamuseu\Documents\mk\Golowinskiy-NewBostil\Golowinskiy-NewBostil.BLL\bin\Release\netcoreapp3.1\Golowinskiy-NewBostil.DAL.pdb
 C:\Users\RSamuseu\Documents\mk\Golowinskiy-NewBostil\Golowinskiy-NewBostil.BLL\obj\Release\netcoreapp3.1\Golowinskiy-NewBostil.BLL.csproj.CopyComplete
 C:\Users\RSamuseu\Documents\mk\Golowinskiy-NewBostil\Golowinskiy-NewBostil.BLL\obj\Release\netcoreapp3.1\Golowinskiy-NewBostil.BLL.dll
 C:\Users\RSamuseu\Documents\mk\Golowinskiy-NewBostil\Golowinskiy-NewBostil.BLL\obj\Release\netcoreapp3.1\Golowinskiy-NewBostil.BLL.pdb

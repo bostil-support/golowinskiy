@@ -8,6 +8,7 @@ namespace Golowinskiy_NewBostil.BLL.Interfaces
     public interface ICategoryService
     {
         Task<List<CategoryDTO>> GetAllCategories();
+        Task<List<CategoryDTO>> GetNotNullCategories();
         Task<List<CategoryDTO>> GetUserCategory(string userId);
         Task<List<Category>> GetParentsCategories(List<Category> categories);
         Task<List<Category>> AddParentCategories(List<Category> outputCategories, int parentId);

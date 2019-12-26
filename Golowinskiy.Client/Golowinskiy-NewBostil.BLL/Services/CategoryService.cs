@@ -147,5 +147,14 @@ namespace Golowinskiy_NewBostil.BLL.Services
 
             return categoriesDto;
         }
+
+        public async Task<List<CategoryDTO>> GetNotNullCategories()
+        {
+            var categories = await _repository.GetNotNull();        
+            categories = await GetParentsCategories(categories);
+            var categoriesDto = ConvertToDto(categories);
+            categoriesDto = await GenerateAllCategories(categoriesDto);
+            return categoriesDto;
+        }
     }
 }

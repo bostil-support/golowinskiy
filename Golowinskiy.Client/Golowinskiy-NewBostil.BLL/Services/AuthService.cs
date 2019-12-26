@@ -52,13 +52,20 @@ namespace Golowinskiy_NewBostil.BLL.Services
             }
         }
 
-        public async Task<IdentityResult> RegistrationAsync(RegistrationDTO registrationDto)
+        public async Task<string> RegistrationAsync(RegistrationDTO registrationDto)
         {
             bool IsPhoneExist = _userManager.Users.Any(item => item.PhoneNumber == registrationDto.PhoneNumber);
             
             if (IsPhoneExist)
             {
-                return null;
+                return "Пользователь с таким номером телефона уже существует";
+            }
+
+            bool isEmailExist = _userManager.Users.Any(item => item.Email == registrationDto.Email);
+
+            if (isEmailExist)
+            {
+                return "Пользователь с таким Email уже существует";
             }
 
             User user = _mapper.Map<User>(registrationDto);
@@ -73,9 +80,10 @@ namespace Golowinskiy_NewBostil.BLL.Services
             if (result.Succeeded)
             {
                 await _signInManager.SignInAsync(user, false);
+                await UpdateCoefficient(1, user.Id);
             }
 
-            return result;
+            return "Вы зарегистрированы успешно";
         }
 
         public async Task LogOut()

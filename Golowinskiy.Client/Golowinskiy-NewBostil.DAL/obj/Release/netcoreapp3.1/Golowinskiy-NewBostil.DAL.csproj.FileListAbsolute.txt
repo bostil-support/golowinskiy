@@ -1,8 +1,7 @@
 C:\Users\RSamuseu\Documents\mk\Golowinskiy-NewBostil\Golowinskiy-NewBostil.DAL\bin\Release\netcoreapp3.1\Golowinskiy-NewBostil.DAL.deps.json
 C:\Users\RSamuseu\Documents\mk\Golowinskiy-NewBostil\Golowinskiy-NewBostil.DAL\bin\Release\netcoreapp3.1\Golowinskiy-NewBostil.DAL.dll
-C:\Users\RSamuseu\Documents\mk\Golowinskiy-NewBostil\Golowinskiy-NewBostil.DAL\obj\Release\netcoreapp3.1\Golowinskiy-NewBostil.DAL.csprojAssemblyReference.cache
+C:\Users\RSamuseu\Documents\mk\Golowinskiy-NewBostil\Golowinskiy-NewBostil.DAL\bin\Release\netcoreapp3.1\Golowinskiy-NewBostil.DAL.pdb
 C:\Users\RSamuseu\Documents\mk\Golowinskiy-NewBostil\Golowinskiy-NewBostil.DAL\obj\Release\netcoreapp3.1\Golowinskiy-NewBostil.DAL.AssemblyInfoInputs.cache
 C:\Users\RSamuseu\Documents\mk\Golowinskiy-NewBostil\Golowinskiy-NewBostil.DAL\obj\Release\netcoreapp3.1\Golowinskiy-NewBostil.DAL.AssemblyInfo.cs
-C:\Users\RSamuseu\Documents\mk\Golowinskiy-NewBostil\Golowinskiy-NewBostil.DAL\bin\Release\netcoreapp3.1\Golowinskiy-NewBostil.DAL.pdb
 C:\Users\RSamuseu\Documents\mk\Golowinskiy-NewBostil\Golowinskiy-NewBostil.DAL\obj\Release\netcoreapp3.1\Golowinskiy-NewBostil.DAL.dll
 C:\Users\RSamuseu\Documents\mk\Golowinskiy-NewBostil\Golowinskiy-NewBostil.DAL\obj\Release\netcoreapp3.1\Golowinskiy-NewBostil.DAL.pdb

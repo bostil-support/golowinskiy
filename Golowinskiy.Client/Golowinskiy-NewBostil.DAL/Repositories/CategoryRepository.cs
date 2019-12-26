@@ -27,7 +27,7 @@ namespace Golowinskiy_NewBostil.DAL.Repositories
 
         public async Task<List<Category>> GetAll()
         {
-            return await _db.Categories.Where(x => x.Products.Count > 0).Include(x => x.Products).ToListAsync();
+            return await _db.Categories.Include(x => x.Products).ToListAsync();
         }
 
         public async Task<List<Category>> GetAllByUser(string userId)
@@ -38,6 +38,11 @@ namespace Golowinskiy_NewBostil.DAL.Repositories
         public async Task<Category> GetByParentId(int parentId)
         {
             return await _db.Categories.Include(x => x.Products).FirstOrDefaultAsync(x => x.Id == parentId);
+        }
+
+        public async Task<List<Category>> GetNotNull()
+        {
+            return await _db.Categories.Where(x => x.Products.Count > 0).Include(x => x.Products).ToListAsync();
         }
     }
 }

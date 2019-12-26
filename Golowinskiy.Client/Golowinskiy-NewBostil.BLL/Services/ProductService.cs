@@ -226,8 +226,6 @@ namespace Golowinskiy_NewBostil.BLL.Services
             }
 
             var productDto = _mapper.Map<ProductInfoDTO>(product);
-            productDto.Coefficient = await _authService.GetCoefficient(productDto.UserId);
-            productDto.Price *= productDto.Coefficient;
             productDto.AdditionalDictImagesLinks = addtImgsDictionary;
                 
             return productDto;

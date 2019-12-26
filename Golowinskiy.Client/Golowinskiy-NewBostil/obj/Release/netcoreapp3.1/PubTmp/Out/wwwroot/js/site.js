@@ -10,7 +10,7 @@
 
     $.ajax({
         type: "GET",
-        url: "/Category/GetAllCategories",
+        url: "/Category/GetNotNullCategories",
         success: this.categoriesSuccess
     });
 
@@ -263,7 +263,7 @@ function goToCategory(categoryId) {
 
     $.ajax({
         type: "GET",
-        url: "/Category/GetAllCategories",
+        url: "/Category/GetNotNullCategories",
         success: this.categoriesSuccess
     });
 
