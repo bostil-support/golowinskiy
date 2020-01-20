@@ -23,7 +23,7 @@ namespace Golowinskiy_NewBostil.BLL.Services
             {
                 client.ServerCertificateValidationCallback = (s, c, h, e) => true;
                 await client.ConnectAsync("smtp.gmail.com", 465, true);
-                await client.AuthenticateAsync("romashkasamusev@gmail.com", "Petersburg2018");
+                await client.AuthenticateAsync("mail@gmail.com", "Password");
                 await client.SendAsync(emailMessage);
 
                 await client.DisconnectAsync(true);

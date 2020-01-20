@@ -1,0 +1,8 @@
+C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy-NewBostil.DAL\bin\Debug\netcoreapp3.1\Golowinskiy-NewBostil.DAL.deps.json
+C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy-NewBostil.DAL\bin\Debug\netcoreapp3.1\Golowinskiy-NewBostil.DAL.dll
+C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy-NewBostil.DAL\bin\Debug\netcoreapp3.1\Golowinskiy-NewBostil.DAL.pdb
+C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy-NewBostil.DAL\obj\Debug\netcoreapp3.1\Golowinskiy-NewBostil.DAL.csprojAssemblyReference.cache
+C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy-NewBostil.DAL\obj\Debug\netcoreapp3.1\Golowinskiy-NewBostil.DAL.AssemblyInfoInputs.cache
+C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy-NewBostil.DAL\obj\Debug\netcoreapp3.1\Golowinskiy-NewBostil.DAL.AssemblyInfo.cs
+C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy-NewBostil.DAL\obj\Debug\netcoreapp3.1\Golowinskiy-NewBostil.DAL.dll
+C:\Users\RSamuseu\Documents\golowinskiy-client-tmp\golowinskiy\Golowinskiy.Client\Golowinskiy-NewBostil.DAL\obj\Debug\netcoreapp3.1\Golowinskiy-NewBostil.DAL.pdb

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\RSamuseu\\Documents\\mk\\Golowinskiy-NewBostil\\Golowinskiy-NewBostil\\Golowinskiy-NewBostil.csproj": {}
+    "C:\\Users\\RSamuseu\\Documents\\golowinskiy-client-tmp\\golowinskiy\\Golowinskiy.Client\\Golowinskiy-NewBostil\\Golowinskiy-NewBostil.csproj": {}
   },
   "projects": {
-    "C:\\Users\\RSamuseu\\Documents\\mk\\Golowinskiy-NewBostil\\Golowinskiy-NewBostil.BLL\\Golowinskiy-NewBostil.BLL.csproj": {
+    "C:\\Users\\RSamuseu\\Documents\\golowinskiy-client-tmp\\golowinskiy\\Golowinskiy.Client\\Golowinskiy-NewBostil.BLL\\Golowinskiy-NewBostil.BLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\RSamuseu\\Documents\\mk\\Golowinskiy-NewBostil\\Golowinskiy-NewBostil.BLL\\Golowinskiy-NewBostil.BLL.csproj",
+        "projectUniqueName": "C:\\Users\\RSamuseu\\Documents\\golowinskiy-client-tmp\\golowinskiy\\Golowinskiy.Client\\Golowinskiy-NewBostil.BLL\\Golowinskiy-NewBostil.BLL.csproj",
         "projectName": "Golowinskiy-NewBostil.BLL",
-        "projectPath": "C:\\Users\\RSamuseu\\Documents\\mk\\Golowinskiy-NewBostil\\Golowinskiy-NewBostil.BLL\\Golowinskiy-NewBostil.BLL.csproj",
+        "projectPath": "C:\\Users\\RSamuseu\\Documents\\golowinskiy-client-tmp\\golowinskiy\\Golowinskiy.Client\\Golowinskiy-NewBostil.BLL\\Golowinskiy-NewBostil.BLL.csproj",
         "packagesPath": "C:\\Users\\RSamuseu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\RSamuseu\\Documents\\mk\\Golowinskiy-NewBostil\\Golowinskiy-NewBostil.BLL\\obj\\",
+        "outputPath": "C:\\Users\\RSamuseu\\Documents\\golowinskiy-client-tmp\\golowinskiy\\Golowinskiy.Client\\Golowinskiy-NewBostil.BLL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -30,8 +30,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\RSamuseu\\Documents\\mk\\Golowinskiy-NewBostil\\Golowinskiy-NewBostil.DAL\\Golowinskiy-NewBostil.DAL.csproj": {
-                "projectPath": "C:\\Users\\RSamuseu\\Documents\\mk\\Golowinskiy-NewBostil\\Golowinskiy-NewBostil.DAL\\Golowinskiy-NewBostil.DAL.csproj"
+              "C:\\Users\\RSamuseu\\Documents\\golowinskiy-client-tmp\\golowinskiy\\Golowinskiy.Client\\Golowinskiy-NewBostil.DAL\\Golowinskiy-NewBostil.DAL.csproj": {
+                "projectPath": "C:\\Users\\RSamuseu\\Documents\\golowinskiy-client-tmp\\golowinskiy\\Golowinskiy.Client\\Golowinskiy-NewBostil.DAL\\Golowinskiy-NewBostil.DAL.csproj"
               }
             }
           }
@@ -85,18 +85,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\RSamuseu\\Documents\\mk\\Golowinskiy-NewBostil\\Golowinskiy-NewBostil.DAL\\Golowinskiy-NewBostil.DAL.csproj": {
+    "C:\\Users\\RSamuseu\\Documents\\golowinskiy-client-tmp\\golowinskiy\\Golowinskiy.Client\\Golowinskiy-NewBostil.DAL\\Golowinskiy-NewBostil.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\RSamuseu\\Documents\\mk\\Golowinskiy-NewBostil\\Golowinskiy-NewBostil.DAL\\Golowinskiy-NewBostil.DAL.csproj",
+        "projectUniqueName": "C:\\Users\\RSamuseu\\Documents\\golowinskiy-client-tmp\\golowinskiy\\Golowinskiy.Client\\Golowinskiy-NewBostil.DAL\\Golowinskiy-NewBostil.DAL.csproj",
         "projectName": "Golowinskiy-NewBostil.DAL",
-        "projectPath": "C:\\Users\\RSamuseu\\Documents\\mk\\Golowinskiy-NewBostil\\Golowinskiy-NewBostil.DAL\\Golowinskiy-NewBostil.DAL.csproj",
+        "projectPath": "C:\\Users\\RSamuseu\\Documents\\golowinskiy-client-tmp\\golowinskiy\\Golowinskiy.Client\\Golowinskiy-NewBostil.DAL\\Golowinskiy-NewBostil.DAL.csproj",
         "packagesPath": "C:\\Users\\RSamuseu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\RSamuseu\\Documents\\mk\\Golowinskiy-NewBostil\\Golowinskiy-NewBostil.DAL\\obj\\",
+        "outputPath": "C:\\Users\\RSamuseu\\Documents\\golowinskiy-client-tmp\\golowinskiy\\Golowinskiy.Client\\Golowinskiy-NewBostil.DAL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -150,18 +150,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\RSamuseu\\Documents\\mk\\Golowinskiy-NewBostil\\Golowinskiy-NewBostil\\Golowinskiy-NewBostil.csproj": {
+    "C:\\Users\\RSamuseu\\Documents\\golowinskiy-client-tmp\\golowinskiy\\Golowinskiy.Client\\Golowinskiy-NewBostil\\Golowinskiy-NewBostil.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\RSamuseu\\Documents\\mk\\Golowinskiy-NewBostil\\Golowinskiy-NewBostil\\Golowinskiy-NewBostil.csproj",
+        "projectUniqueName": "C:\\Users\\RSamuseu\\Documents\\golowinskiy-client-tmp\\golowinskiy\\Golowinskiy.Client\\Golowinskiy-NewBostil\\Golowinskiy-NewBostil.csproj",
         "projectName": "Golowinskiy-NewBostil",
-        "projectPath": "C:\\Users\\RSamuseu\\Documents\\mk\\Golowinskiy-NewBostil\\Golowinskiy-NewBostil\\Golowinskiy-NewBostil.csproj",
+        "projectPath": "C:\\Users\\RSamuseu\\Documents\\golowinskiy-client-tmp\\golowinskiy\\Golowinskiy.Client\\Golowinskiy-NewBostil\\Golowinskiy-NewBostil.csproj",
         "packagesPath": "C:\\Users\\RSamuseu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\RSamuseu\\Documents\\mk\\Golowinskiy-NewBostil\\Golowinskiy-NewBostil\\obj\\",
+        "outputPath": "C:\\Users\\RSamuseu\\Documents\\golowinskiy-client-tmp\\golowinskiy\\Golowinskiy.Client\\Golowinskiy-NewBostil\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -180,8 +180,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\RSamuseu\\Documents\\mk\\Golowinskiy-NewBostil\\Golowinskiy-NewBostil.BLL\\Golowinskiy-NewBostil.BLL.csproj": {
-                "projectPath": "C:\\Users\\RSamuseu\\Documents\\mk\\Golowinskiy-NewBostil\\Golowinskiy-NewBostil.BLL\\Golowinskiy-NewBostil.BLL.csproj"
+              "C:\\Users\\RSamuseu\\Documents\\golowinskiy-client-tmp\\golowinskiy\\Golowinskiy.Client\\Golowinskiy-NewBostil.BLL\\Golowinskiy-NewBostil.BLL.csproj": {
+                "projectPath": "C:\\Users\\RSamuseu\\Documents\\golowinskiy-client-tmp\\golowinskiy\\Golowinskiy.Client\\Golowinskiy-NewBostil.BLL\\Golowinskiy-NewBostil.BLL.csproj"
               }
             }
           }
@@ -238,7 +238,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
